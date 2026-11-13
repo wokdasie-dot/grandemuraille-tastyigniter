@@ -225,10 +225,10 @@ bodyClass: page-home
     <div class="wok-hero-content">
         <div class="wok-hero-frame">
             <div class="wok-hero-copy">
-                <p class="wok-eyebrow">Cuisine chinoise</p>
+                <p class="wok-eyebrow">@lang('restoline.content::frontend.home.eyebrow')</p>
                 <h1>La Grande Muraille de Chine</h1>
-                <p>Une invitation à découvrir les saveurs de la cuisine chinoise, au cœur de Spa.</p>
-                <a class="wok-button wok-button-primary" href="{{ url('/grande-muraille/reservation') }}">Réserver une table</a>
+                <p>@lang('restoline.content::frontend.home.intro')</p>
+                <a class="wok-button wok-button-primary" href="{{ url('/grande-muraille/reservation') }}">@lang('restoline.content::frontend.home.reserve')</a>
             </div>
         </div>
     </div>
@@ -238,16 +238,16 @@ bodyClass: page-home
 <section id="reservation-rapide" class="wok-quick-booking" aria-labelledby="reservation-rapide-titre">
     <div class="wok-quick-booking-card">
         <div class="wok-quick-booking-intro">
-            <p class="wok-eyebrow">Réservation en ligne</p>
-            <h2 id="reservation-rapide-titre">Réserver</h2>
+            <p class="wok-eyebrow">@lang('restoline.content::frontend.home.quick_eyebrow')</p>
+            <h2 id="reservation-rapide-titre">@lang('restoline.content::frontend.home.quick_title')</h2>
         </div>
         @if(!$onlineBookingEnabled)
-            <p class="wok-quick-booking-closed">Les réservations en ligne sont momentanément fermées. Pour réserver, appelez-nous au <a href="tel:+3287220888">087 22 08 88</a>.</p>
+            <p class="wok-quick-booking-closed">@lang('restoline.content::frontend.home.closed_online', ['phone' => '087 22 08 88'])</p>
         @else
         <form class="wok-quick-booking-form" action="{{ url('/grande-muraille/reservation') }}" method="get" data-quick-booking>
             <input type="hidden" name="step" value="timeslot">
             <label class="wok-booking-field">
-                <span>Date</span>
+                <span>@lang('restoline.content::frontend.home.date')</span>
                 <input
                     type="date"
                     name="date"
@@ -255,28 +255,28 @@ bodyClass: page-home
                     min="{{ $quickBooking['min_date'] }}"
                     max="{{ $quickBooking['max_date'] }}"
                     required
-                    aria-label="Date de réservation"
+                    aria-label="@lang('restoline.content::frontend.home.date_aria')"
                     data-quick-booking-date
                 >
             </label>
             <label class="wok-booking-field">
-                <span>Personnes</span>
-                <select name="guest" required aria-label="Nombre de personnes">
+                <span>@lang('restoline.content::frontend.home.people')</span>
+                <select name="guest" required aria-label="@lang('restoline.content::frontend.home.people_aria')">
                     @for($guest = $quickBooking['min_guest']; $guest <= $quickBooking['max_guest']; $guest++)
                         <option value="{{ $guest }}" @selected($guest === min(max(2, $quickBooking['min_guest']), $quickBooking['max_guest']))>{{ $guest }}</option>
                     @endfor
                 </select>
             </label>
             <label class="wok-booking-field">
-                <span>Heure</span>
-                <select name="time" required aria-label="Heure de réservation">
+                <span>@lang('restoline.content::frontend.home.time')</span>
+                <select name="time" required aria-label="@lang('restoline.content::frontend.home.time_aria')">
                     @foreach($quickBooking['times'] as $time)
                         <option value="{{ $time }}" @selected($time === $quickBooking['default_time'])>{{ $time }}</option>
                     @endforeach
                 </select>
             </label>
-            <button class="wok-button wok-button-primary" type="submit">Trouver une table</button>
-            <p class="wok-quick-booking-hint" data-quick-booking-hint hidden>Le restaurant est fermé ce jour-là. Choisissez une autre date.</p>
+            <button class="wok-button wok-button-primary" type="submit">@lang('restoline.content::frontend.home.find_table')</button>
+            <p class="wok-quick-booking-hint" data-quick-booking-hint hidden>@lang('restoline.content::frontend.home.closed_day')</p>
         </form>
         @endif
     </div>
@@ -289,7 +289,7 @@ bodyClass: page-home
         const dateInput = form.querySelector('[data-quick-booking-date]');
         const hint = form.querySelector('[data-quick-booking-hint]');
         const closedWeekdays = @json($quickBooking['closed_weekdays']);
-        const closedMessage = 'Le restaurant est fermé ce jour-là. Choisissez une autre date.';
+        const closedMessage = @json(__('restoline.content::frontend.home.closed_day'));
 
         const checkClosedDay = () => {
             if (!dateInput?.value) return;
@@ -308,22 +308,22 @@ bodyClass: page-home
 
 <section id="buffet" class="wok-section wok-intro">
     <div class="wok-section-heading">
-        <p class="wok-eyebrow">Buffet à volonté</p>
-        <h2>Une table pour toutes les envies.</h2>
-        <p>Menus chinois, spécialités du chef et buffet à volonté : la Grande Muraille de Chine vous accueille à Spa pour partager un moment gourmand, en famille ou entre amis.</p>
+        <p class="wok-eyebrow">@lang('restoline.content::frontend.home.buffet_eyebrow')</p>
+        <h2>@lang('restoline.content::frontend.home.buffet_title')</h2>
+        <p>@lang('restoline.content::frontend.home.buffet_text')</p>
     </div>
     <div class="wok-buffet-details">
         <article>
-            <p class="wok-eyebrow">Adresse</p>
-            <h3>Au cœur de Spa</h3>
+            <p class="wok-eyebrow">@lang('restoline.content::frontend.footer.address')</p>
+            <h3>@lang('restoline.content::frontend.home.in_spa')</h3>
             <p>Avenue Reine Astrid 98<br>4900 Spa</p>
-            <a class="wok-text-link" href="https://www.google.com/maps/dir/?api=1&destination=Avenue+Reine+Astrid+98%2C+4900+Spa" target="_blank" rel="noopener noreferrer">Ouvrir l'itinéraire <span>→</span></a>
+            <a class="wok-text-link" href="https://www.google.com/maps/dir/?api=1&destination=Avenue+Reine+Astrid+98%2C+4900+Spa" target="_blank" rel="noopener noreferrer">@lang('restoline.content::frontend.footer.directions') <span>→</span></a>
         </article>
         <article id="horaires">
-            <p class="wok-eyebrow">Horaires</p>
-            <h3>Ouvert sauf le mardi</h3>
-            <p><strong>Lundi, mercredi à dimanche</strong><br>12:00 à 14:30<br>18:00 à 22:30</p>
-            <p>Fermeture hebdomadaire le mardi.</p>
+            <p class="wok-eyebrow">@lang('restoline.content::frontend.home.hours_eyebrow')</p>
+            <h3>@lang('restoline.content::frontend.home.open_except_tuesday')</h3>
+            <p><strong>@lang('restoline.content::frontend.home.days_strong')</strong><br>@lang('restoline.content::frontend.home.lunch_hours')<br>@lang('restoline.content::frontend.home.dinner_hours')</p>
+            <p>@lang('restoline.content::frontend.home.weekly_closed')</p>
         </article>
     </div>
 </section>
@@ -331,9 +331,9 @@ bodyClass: page-home
 @if($carteMenus->isNotEmpty())
 <section id="menus" class="wok-section">
     <div class="wok-section-heading">
-        <p class="wok-eyebrow">La carte</p>
-        <h2>Menus</h2>
-        <p>Ces menus se consultent sur place. La réservation en ligne ne prend pas de commande.</p>
+        <p class="wok-eyebrow">@lang('restoline.content::frontend.home.menu_eyebrow')</p>
+        <h2>@lang('restoline.content::frontend.home.menu_title')</h2>
+        <p>@lang('restoline.content::frontend.home.menu_note')</p>
     </div>
     <div class="wok-menu-list">
         @foreach($carteMenus as $menu)
@@ -352,25 +352,25 @@ bodyClass: page-home
 @if($buffetPricings->isNotEmpty())
 <section id="tarifs" class="wok-section">
     <div class="wok-section-heading">
-        <p class="wok-eyebrow">Nos tarifs</p>
-        <h2>Buffet à volonté</h2>
-        <p>Les boissons ne sont pas comprises dans les formules presentees ci-dessous.</p>
+        <p class="wok-eyebrow">@lang('restoline.content::frontend.home.prices_eyebrow')</p>
+        <h2>@lang('restoline.content::frontend.home.prices_title')</h2>
+        <p>@lang('restoline.content::frontend.home.prices_note')</p>
     </div>
     <div class="wok-pricing-grid">
         @foreach($buffetPricings as $pricing)
         <article>
             <span class="wok-eyebrow">{{ $pricing->label }}</span>
-            <h3>{{ $pricing->category === 'weekday_lunch' ? 'Midi' : ($pricing->category === 'sunday_holiday' ? 'Toute la journee' : 'Soir') }}</h3>
+            <h3>{{ $pricing->category === 'weekday_lunch' ? lang('restoline.content::frontend.home.meal_lunch') : ($pricing->category === 'sunday_holiday' ? lang('restoline.content::frontend.home.meal_all_day') : lang('restoline.content::frontend.home.meal_dinner')) }}</h3>
             <span class="wok-price-adult">{{ number_format($pricing->adult_price, 2, ',', '') }} &euro;</span>
-            <span class="wok-price-child">Adulte</span>
-            <span class="wok-price-child"><strong>{{ number_format($pricing->child_4_8_price, 2, ',', '') }} &euro;</strong> &middot; Enfant 4 à 9 ans</span>
-            <span class="wok-price-child"><strong>{{ number_format($pricing->child_9_13_price, 2, ',', '') }} &euro;</strong> &middot; Enfant 10 à 12 ans</span>
+            <span class="wok-price-child">@lang('restoline.content::frontend.home.adult')</span>
+            <span class="wok-price-child"><strong>{{ number_format($pricing->child_4_8_price, 2, ',', '') }} &euro;</strong> &middot; @lang('restoline.content::frontend.home.child_4_9')</span>
+            <span class="wok-price-child"><strong>{{ number_format($pricing->child_9_13_price, 2, ',', '') }} &euro;</strong> &middot; @lang('restoline.content::frontend.home.child_10_12')</span>
         </article>
         @endforeach
     </div>
     <div class="wok-buffet-notice" style="margin-top:22px;">
-        <p>Un supplement peut etre applique en cas de gaspillage de nourriture ou de boissons.</p>
-        <p>Pour toute demande particuliere, veuillez vous adresser au personnel.</p>
+        <p>@lang('restoline.content::frontend.home.waste')</p>
+        <p>@lang('restoline.content::frontend.home.special_request')</p>
     </div>
 </section>
 @endif
@@ -378,9 +378,9 @@ bodyClass: page-home
 @if($drinkCategories->isNotEmpty())
 <section id="boissons" class="wok-section">
     <div class="wok-section-heading">
-        <p class="wok-eyebrow">Carte des boissons</p>
-        <h2>Apéritifs, bières, vins et digestifs</h2>
-        <p>Consultez notre sélection de boissons pour accompagner votre repas.</p>
+        <p class="wok-eyebrow">@lang('restoline.content::frontend.home.drinks_eyebrow')</p>
+        <h2>@lang('restoline.content::frontend.home.drinks_title')</h2>
+        <p>@lang('restoline.content::frontend.home.drinks_text')</p>
     </div>
 
     <div class="wok-drinks-section" data-drinks-tabs>
@@ -393,7 +393,7 @@ bodyClass: page-home
         @foreach($drinkCategories as $category)
         <div class="wok-drinks-panel {{ $loop->first ? 'is-active' : '' }}" role="tabpanel" data-panel="drink-category-{{ $category->category_id }}">
             <table class="wok-drinks-table">
-                <thead><tr><th>{{ $category->name }}</th><th>Prix</th></tr></thead>
+                <thead><tr><th>{{ $category->name }}</th><th>@lang('restoline.content::frontend.home.price')</th></tr></thead>
                 <tbody>
                     @foreach($category->menus as $drink)
                         <tr><td>{{ $drink->menu_name }}</td><td>{{ number_format((float)$drink->menu_price, 2, ',', '') }} &euro;</td></tr>
@@ -408,23 +408,23 @@ bodyClass: page-home
 
 <section id="formule" class="wok-section">
     <div class="wok-section-heading">
-        <p class="wok-eyebrow">Réservation</p>
-        <h2>Jusqu'à 20 personnes en ligne.</h2>
-        <p>À partir de 12 personnes, nous confirmons en général par téléphone. Fermé le mardi, sauf jours fériés.</p>
+        <p class="wok-eyebrow">@lang('restoline.content::frontend.home.group_eyebrow')</p>
+        <h2>@lang('restoline.content::frontend.home.group_title')</h2>
+        <p>@lang('restoline.content::frontend.home.group_text')</p>
     </div>
 </section>
 
 @if($galleryItems->isNotEmpty())
 <section id="galerie" class="wok-section wok-gallery-section">
     <div class="wok-section-heading">
-        <p class="wok-eyebrow">En images</p>
-        <h2>Le restaurant en photos.</h2>
-        <p>Le buffet, le bar et la salle du La Grande Muraille de Chine. Cliquez sur une photo pour l’agrandir.</p>
+        <p class="wok-eyebrow">@lang('restoline.content::frontend.home.gallery_eyebrow')</p>
+        <h2>@lang('restoline.content::frontend.home.gallery_title')</h2>
+        <p>@lang('restoline.content::frontend.home.gallery_text')</p>
     </div>
     <div class="wok-gallery-grid">
         @foreach($galleryItems as $item)
-            <button class="wok-gallery-item" type="button" data-lightbox-src="{{ $item->image_url }}" aria-label="Agrandir la photo : {{ $item->title ?: 'La Grande Muraille de Chine' }}">
-                <img src="{{ $item->image_url }}" alt="{{ $item->title ?: 'Photo du restaurant La Grande Muraille de Chine' }}" loading="lazy" decoding="async" width="675" height="900">
+            <button class="wok-gallery-item" type="button" data-lightbox-src="{{ $item->image_url }}" aria-label="@lang('restoline.content::frontend.home.gallery_enlarge', ['title' => $item->title ?: 'La Grande Muraille de Chine'])">
+                <img src="{{ $item->image_url }}" alt="{{ $item->title ?: lang('restoline.content::frontend.home.gallery_alt') }}" loading="lazy" decoding="async" width="675" height="900">
                 @if($item->title)
                     <span>{{ $item->title }}</span>
                 @endif
@@ -436,15 +436,15 @@ bodyClass: page-home
 
 <section class="wok-story wok-story-text-only">
     <div class="wok-story-content">
-        <p class="wok-eyebrow">Reservation</p>
-        <h2>Preparez votre venue.</h2>
-        <p>Reservez votre table en ligne. Les disponibilites affichees sont mises a jour selon les horaires et la capacite du restaurant.</p>
-        <a class="wok-button wok-button-dark" href="{{ url('/grande-muraille/reservation') }}">Réserver une table</a>
+        <p class="wok-eyebrow">@lang('restoline.content::frontend.home.visit_eyebrow')</p>
+        <h2>@lang('restoline.content::frontend.home.visit_title')</h2>
+        <p>@lang('restoline.content::frontend.home.visit_text')</p>
+        <a class="wok-button wok-button-dark" href="{{ url('/grande-muraille/reservation') }}">@lang('restoline.content::frontend.home.reserve')</a>
     </div>
 </section>
 
-<div class="wok-lightbox" data-image-lightbox hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image en grand format">
-    <button type="button" data-image-lightbox-close aria-label="Fermer l'image">×</button>
+<div class="wok-lightbox" data-image-lightbox hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="@lang('restoline.content::frontend.home.lightbox')">
+    <button type="button" data-image-lightbox-close aria-label="@lang('restoline.content::frontend.home.lightbox_close')">×</button>
     <img src="" alt="">
 </div>
 <script>

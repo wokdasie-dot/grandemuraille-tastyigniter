@@ -4,22 +4,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $this->page->title ?? 'La Grande Muraille de Chine' }}</title>
     @php
         $canonicalUrl = url()->current();
-        $pageTitle = $this->page->title ?? 'La Grande Muraille de Chine';
-        $pageDescription = $this->page->description ?? 'Buffet asiatique a volonte a Spa. Reservation de table en ligne.';
+        $requestPath = trim(request()->path(), '/');
+        $pageTitle = lang('restoline.content::frontend.home.meta_title');
+        $pageDescription = lang('restoline.content::frontend.home.meta_description');
+        if (str_contains($requestPath, 'reservation/success')) {
+            $pageTitle = lang('restoline.content::frontend.success.meta_title');
+            $pageDescription = lang('restoline.content::frontend.success.meta_description');
+        } elseif (str_contains($requestPath, 'reservation')) {
+            $pageTitle = lang('restoline.content::frontend.booking.meta_title');
+            $pageDescription = lang('restoline.content::frontend.booking.meta_description');
+        } elseif (str_contains($requestPath, 'confidentialite')) {
+            $pageTitle = lang('restoline.content::frontend.privacy.meta_title');
+            $pageDescription = lang('restoline.content::frontend.privacy.meta_description');
+        }
         $shareImage = null;
     @endphp
+    <title>{{ $pageTitle }}</title>
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="La Grande Muraille de Chine">
     <meta property="og:title" content="{{ $pageTitle }}">
     <meta property="og:description" content="{{ $pageDescription }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
-    <meta property="og:image" content="{{ $shareImage }}">
+    @if($shareImage)
+        <meta property="og:image" content="{{ $shareImage }}">
+    @endif
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="description" content="{{ $this->page->description ?? 'Buffet asiatique a volonte a Spa. Reservation de table en ligne.' }}">
+    <meta name="description" content="{{ $pageDescription }}">
     @if(request()->is('reservation/gerer*'))
         <meta name="robots" content="noindex, nofollow">
     @endif
@@ -190,8 +203,12 @@
                     }
                 }
 
+                const bookingLocale = @json(app()->getLocale());
                 const localizeBookingText = (value) => {
                         let text = value;
+                        if (bookingLocale !== 'fr') {
+                            return to24Hour(text);
+                        }
                         text = text.replace(/\bReserve A Table\b/gi, 'Réserver une table');
                         text = text.replace(/\bNumber of guests\b/gi, 'Nombre de personnes');
                         text = text.replace(/\bFirst Name\b/gi, 'Prénom');

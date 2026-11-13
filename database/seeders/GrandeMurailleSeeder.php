@@ -34,6 +34,7 @@ class GrandeMurailleSeeder extends Seeder
             'sender_name' => (string)config('restoline.restaurant.name'),
             'sender_email' => (string)env('MAIL_FROM_ADDRESS', config('restoline.restaurant.notification_email')),
             'default_language' => 'fr',
+            'detect_language' => false,
         ]);
         Settings::set('ti_setup', 'installed', 'prefs');
     }
@@ -44,35 +45,40 @@ class GrandeMurailleSeeder extends Seeder
             return;
         }
 
-        DB::table('languages')->update(['is_default' => false]);
+        DB::table('languages')->update(['is_default' => false, 'status' => true]);
 
-        $french = DB::table('languages')->where('code', 'fr')->first();
-        if ($french) {
-            DB::table('languages')->where('code', 'fr')->update([
-                'name' => 'Français',
-                'idiom' => 'french',
-                'status' => true,
-                'is_default' => true,
-                'can_delete' => false,
-                'updated_at' => now(),
-            ]);
-        } else {
-            DB::table('languages')->insert([
-                'code' => 'fr',
-                'name' => 'Français',
-                'idiom' => 'french',
-                'status' => true,
-                'is_default' => true,
-                'can_delete' => false,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        $this->upsertLanguage('en', 'English', 'english', false);
+        $this->upsertLanguage('fr', 'Français', 'french', true);
+        $this->upsertLanguage('zh_CN', '中文（简体）', 'Chinese Simplified', false);
+        $this->upsertLanguage('nl', 'Nederlands', 'dutch', false);
 
         if (class_exists(Language::class)) {
             Language::applySupportedLanguages();
             Language::clearInternalCache();
         }
+    }
+
+    private function upsertLanguage(string $code, string $name, string $idiom, bool $default): void
+    {
+        $payload = [
+            'name' => $name,
+            'idiom' => $idiom,
+            'status' => true,
+            'is_default' => $default,
+            'can_delete' => !in_array($code, ['en', 'fr'], true),
+            'updated_at' => now(),
+        ];
+        $existing = DB::table('languages')->where('code', $code)->first();
+        if ($existing) {
+            DB::table('languages')->where('code', $code)->update($payload);
+
+            return;
+        }
+
+        DB::table('languages')->insert($payload + [
+            'code' => $code,
+            'created_at' => now(),
+        ]);
     }
 
     private function seedLocation(): Location
@@ -104,7 +110,13 @@ class GrandeMurailleSeeder extends Seeder
             'permalink_slug' => $restaurant['location_slug'],
         ]);
 
-        return $location->fresh();
+        $location = $location->fresh();
+        $this->translateAttributes($location, [
+            'en' => ['description' => 'An invitation to discover the flavours of Chinese cuisine, in the heart of Spa.'],
+            'nl' => ['description' => 'Een uitnodiging om de smaken van de Chinese keuken te ontdekken, in het hart van Spa.'],
+        ]);
+
+        return $location;
     }
 
     private function seedOpeningHours(Location $location): void
@@ -251,10 +263,25 @@ class GrandeMurailleSeeder extends Seeder
             ],
         ];
 
+        $labels = [
+            'weekend_dinner' => [
+                'en' => 'Buffet without drinks (Fri and Sat evening, Sunday lunch and dinner)',
+                'nl' => 'Buffet zonder dranken (vrijdag- en zaterdagavond, zondag middag en avond)',
+            ],
+            'weekend_drinks' => [
+                'en' => 'Buffet with drinks included (Fri and Sat evening, Sunday lunch and dinner)',
+                'nl' => 'Buffet met dranken inbegrepen (vrijdag- en zaterdagavond, zondag middag en avond)',
+            ],
+        ];
+
         foreach ($rows as $row) {
-            BuffetPricing::query()->create($row + [
+            $pricing = BuffetPricing::query()->create($row + [
                 'location_id' => $locationId,
                 'status' => true,
+            ]);
+            $this->translateAttributes($pricing, [
+                'en' => ['label' => $labels[$row['category']]['en']],
+                'nl' => ['label' => $labels[$row['category']]['nl']],
             ]);
         }
     }
@@ -291,6 +318,26 @@ class GrandeMurailleSeeder extends Seeder
                 'updated_at' => $now,
             ]);
         }
+
+        if (class_exists(\Igniter\Cart\Models\Category::class)) {
+            $categoryModel = \Igniter\Cart\Models\Category::query()->find($categoryId);
+            if ($categoryModel) {
+                $this->translateAttributes($categoryModel, [
+                    'en' => [
+                        'name' => 'Menus',
+                        'description' => 'Menus to read in the restaurant. Online booking does not take an order.',
+                    ],
+                    'nl' => [
+                        'name' => 'Menu’s',
+                        'description' => 'Menu’s om ter plaatse te lezen. Online reserveren neemt geen bestelling op.',
+                    ],
+                ]);
+            }
+        }
+
+        $menuTranslations = is_file(base_path('data/menu_translations.php'))
+            ? require base_path('data/menu_translations.php')
+            : [];
 
         foreach ($menus as $index => $menu) {
             $name = trim((string)($menu['name'] ?? ''));
@@ -335,6 +382,23 @@ class GrandeMurailleSeeder extends Seeder
                 }
             }
 
+            if (isset($menuTranslations[$name]) && class_exists(\Igniter\Cart\Models\Menu::class)) {
+                $menuModel = \Igniter\Cart\Models\Menu::query()->find($menuId);
+                if ($menuModel) {
+                    $translated = [];
+                    foreach (['en', 'nl'] as $locale) {
+                        $copy = $menuTranslations[$name][$locale] ?? null;
+                        if (is_array($copy)) {
+                            $translated[$locale] = [
+                                'menu_name' => (string)($copy['name'] ?? $name),
+                                'menu_description' => (string)($copy['description'] ?? ''),
+                            ];
+                        }
+                    }
+                    $this->translateAttributes($menuModel, $translated);
+                }
+            }
+
             if (Schema::hasTable('locationables')) {
                 $attached = DB::table('locationables')
                     ->where('location_id', $locationId)
@@ -351,6 +415,27 @@ class GrandeMurailleSeeder extends Seeder
                 }
             }
         }
+    }
+
+    /**
+     * @param array<string, array<string, string>> $byLocale
+     */
+    private function translateAttributes(object $model, array $byLocale): void
+    {
+        $canTranslate = $byLocale !== []
+            && method_exists($model, 'isClassExtendedWith')
+            && $model->isClassExtendedWith(\Igniter\Translate\Actions\TranslatableModel::class);
+        if (!$canTranslate) {
+            return;
+        }
+
+        foreach ($byLocale as $locale => $attributes) {
+            foreach ($attributes as $key => $value) {
+                $model->setAttributeTranslatedValue($key, $value, $locale);
+            }
+        }
+
+        $model->save();
     }
 
     private function disableOutOfScopeDefaults(): void

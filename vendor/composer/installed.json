@@ -13108,6 +13108,120 @@
             "install-path": "../tastyigniter/ti-ext-socialite"
         },
         {
+            "name": "tastyigniter/ti-ext-translate",
+            "version": "v4.0.13",
+            "version_normalized": "4.0.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tastyigniter/ti-ext-translate.git",
+                "reference": "60aa99c3f2094f1bddfb048a76358cb996bd1752"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://composer.tastyigniter.com/dist/tastyigniter/ti-ext-translate/tastyigniter-ti-ext-translate-60aa99c3f2094f1bddfb048a76358cb996bd1752-zip-9e277f.zip",
+                "reference": "60aa99c3f2094f1bddfb048a76358cb996bd1752",
+                "shasum": "81439022007e24ab649d138f683a97976060dfad"
+            },
+            "require": {
+                "tastyigniter/core": "^v4.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.2",
+                "pestphp/pest-plugin-laravel": "^3.0",
+                "rector/rector": "^2.0",
+                "sampoyigi/testbench": "^1.0"
+            },
+            "time": "2026-08-22T12:25:21+00:00",
+            "type": "tastyigniter-package",
+            "extra": {
+                "tastyigniter-extension": {
+                    "code": "igniter.translate",
+                    "name": "Translate",
+                    "icon": {
+                        "class": "fa fa-language",
+                        "backgroundColor": "#FF4900",
+                        "color": "#FFFFFF"
+                    },
+                    "homepage": "https://github.com/tastyigniter/ti-ext-translate"
+                },
+                "branch-alias": {
+                    "dev-master": "4.0.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Igniter\\Translate\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Igniter\\Translate\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://api.tastyigniter.com/v2/satis/downloads",
+            "scripts": {
+                "test:lint": [
+                    "vendor/bin/pint --test --ansi"
+                ],
+                "test:lint-fix": [
+                    "vendor/bin/pint --ansi"
+                ],
+                "test:refactor": [
+                    "vendor/bin/rector process --dry-run --ansi"
+                ],
+                "test:refactor-fix": [
+                    "vendor/bin/rector process --ansi"
+                ],
+                "test:static": [
+                    "vendor/bin/phpstan analyse --memory-limit=1056M --ansi"
+                ],
+                "test:static-fix": [
+                    "vendor/bin/phpstan --generate-baseline --memory-limit=1056M --ansi"
+                ],
+                "test:pest": [
+                    "vendor/bin/pest"
+                ],
+                "test:coverage": [
+                    "vendor/bin/pest --coverage --exactly=100 --compact"
+                ],
+                "test:type-coverage": [
+                    "vendor/bin/pest --type-coverage --min=100"
+                ],
+                "test": [
+                    "@test:refactor",
+                    "@test:static",
+                    "@test:lint",
+                    "@test:coverage"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Poyigi",
+                    "email": "sam@sampoyigi.com"
+                }
+            ],
+            "description": "Allows multilingual websites with TastyIgniter, making it easy to translate menu items.",
+            "support": {
+                "source": "https://github.com/tastyigniter/ti-ext-translate/tree/v4.0.13"
+            },
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/tastyigniter"
+                },
+                {
+                    "type": "open_collective",
+                    "url": "https://opencollective.com/tastyigniter"
+                }
+            ],
+            "install-path": "../tastyigniter/ti-ext-translate"
+        },
+        {
             "name": "tastyigniter/ti-ext-user",
             "version": "v4.1.2",
             "version_normalized": "4.1.2.0",

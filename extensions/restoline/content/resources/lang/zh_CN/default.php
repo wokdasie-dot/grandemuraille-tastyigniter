@@ -5,6 +5,7 @@ declare(strict_types=1);
 return [
     'admin_language' => [
         'switch_to_chinese' => '切换为中文后台',
+        'switch_to_english' => '切换为英文后台',
         'switch_to_french' => '切换为法语后台',
     ],
     'navigation' => [

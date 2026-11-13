@@ -212,6 +212,7 @@ class ComposerStaticInit081a54c824c14cd20e3737c2b96c9430
             'Illuminate\\Support\\' => 19,
             'Illuminate\\' => 11,
             'Igniter\\User\\' => 13,
+            'Igniter\\Translate\\' => 18,
             'Igniter\\Socialite\\' => 18,
             'Igniter\\Reservation\\' => 20,
             'Igniter\\PayRegister\\' => 20,
@@ -751,6 +752,10 @@ class ComposerStaticInit081a54c824c14cd20e3737c2b96c9430
         array (
             0 => __DIR__ . '/..' . '/tastyigniter/ti-ext-user/src',
         ),
+        'Igniter\\Translate\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src',
+        ),
         'Igniter\\Socialite\\' =>
         array (
             0 => __DIR__ . '/..' . '/tastyigniter/ti-ext-socialite/src',
@@ -1054,6 +1059,7 @@ class ComposerStaticInit081a54c824c14cd20e3737c2b96c9430
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Services\\Restoline\\GmInstaller' => __DIR__ . '/../..' . '/app/Services/Restoline/GmInstaller.php',
         'App\\Services\\Restoline\\GroupBenefitSmsService' => __DIR__ . '/../..' . '/app/Services/Restoline/GroupBenefitSmsService.php',
         'App\\Services\\Restoline\\PrivateEnvironment' => __DIR__ . '/../..' . '/app/Services/Restoline/PrivateEnvironment.php',
         'App\\Services\\Restoline\\SmsReservationConversationService' => __DIR__ . '/../..' . '/app/Services/Restoline/SmsReservationConversationService.php',
@@ -1695,6 +1701,7 @@ class ComposerStaticInit081a54c824c14cd20e3737c2b96c9430
         'DASPRiD\\Enum\\NullValue' => __DIR__ . '/..' . '/dasprid/enum/src/NullValue.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\GrandeMurailleSeeder' => __DIR__ . '/../..' . '/database/seeders/GrandeMurailleSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
@@ -3111,6 +3118,17 @@ class ComposerStaticInit081a54c824c14cd20e3737c2b96c9430
         'Igniter\\System\\Traits\\SessionMaker' => __DIR__ . '/..' . '/tastyigniter/core/src/System/Traits/SessionMaker.php',
         'Igniter\\System\\Traits\\VerifiesCsrfToken' => __DIR__ . '/..' . '/tastyigniter/core/src/System/Traits/VerifiesCsrfToken.php',
         'Igniter\\System\\Traits\\ViewMaker' => __DIR__ . '/..' . '/tastyigniter/core/src/System/Traits/ViewMaker.php',
+        'Igniter\\Translate\\Actions\\TranslatableAction' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/Actions/TranslatableAction.php',
+        'Igniter\\Translate\\Actions\\TranslatableModel' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/Actions/TranslatableModel.php',
+        'Igniter\\Translate\\Classes\\EventRegistry' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/Classes/EventRegistry.php',
+        'Igniter\\Translate\\Extension' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/Extension.php',
+        'Igniter\\Translate\\FormWidgets\\TRLBase' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/FormWidgets/TRLBase.php',
+        'Igniter\\Translate\\FormWidgets\\TRLMarkdownEditor' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/FormWidgets/TRLMarkdownEditor.php',
+        'Igniter\\Translate\\FormWidgets\\TRLRepeater' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/FormWidgets/TRLRepeater.php',
+        'Igniter\\Translate\\FormWidgets\\TRLRichEditor' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/FormWidgets/TRLRichEditor.php',
+        'Igniter\\Translate\\FormWidgets\\TRLText' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/FormWidgets/TRLText.php',
+        'Igniter\\Translate\\FormWidgets\\TRLTextarea' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/FormWidgets/TRLTextarea.php',
+        'Igniter\\Translate\\Models\\Attribute' => __DIR__ . '/..' . '/tastyigniter/ti-ext-translate/src/Models/Attribute.php',
         'Igniter\\User\\Actions\\LoginCustomer' => __DIR__ . '/..' . '/tastyigniter/ti-ext-user/src/Actions/LoginCustomer.php',
         'Igniter\\User\\Actions\\LogoutCustomer' => __DIR__ . '/..' . '/tastyigniter/ti-ext-user/src/Actions/LogoutCustomer.php',
         'Igniter\\User\\Actions\\RegisterCustomer' => __DIR__ . '/..' . '/tastyigniter/ti-ext-user/src/Actions/RegisterCustomer.php',

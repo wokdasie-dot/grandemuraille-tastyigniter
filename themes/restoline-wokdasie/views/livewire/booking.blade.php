@@ -39,7 +39,7 @@
     @if (in_array($pickerStep, [$this::STEP_BOOKING, $this::STEP_TIMESLOT]))
         <div class="card bg-white">
             <div class="card-body">
-                <a href="{{ page_url('reservation.reservation') }}">Recommencer la réservation</a>
+                <a href="{{ page_url('reservation.reservation') }}">@lang('restoline.content::frontend.booking.restart')</a>
             </div>
         </div>
     @endif

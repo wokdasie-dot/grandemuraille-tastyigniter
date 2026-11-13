@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'text_tab_reservations' => '预订',
+    'text_title' => '预订',
+    'text_form_name' => '预订',
+    'text_empty' => '没有预订。',
+    'text_booking_title' => '预订餐桌',
+    'text_time_heading' => '选择时间',
+    'text_time_msg' => '%s 可供 %s 位客人选择的时间',
+    'text_no_time_slot' => '<span class="text-danger">没有可预订的时间，请返回检查信息。</span>',
+    'text_person' => '位',
+    'text_people' => '位',
+    'text_side_menu_reservation' => '预订',
+    'label_guest_num' => '人数',
+    'label_date' => '日期',
+    'label_time' => '时间',
+    'label_location' => '餐厅',
+    'label_first_name' => '名',
+    'label_last_name' => '姓',
+    'label_email' => '电子邮箱',
+    'label_telephone' => '电话',
+    'label_comment' => '特殊要求',
+    'label_status' => '状态',
+    'button_find_table' => '查找餐桌',
+    'button_reservation' => '提交预订',
+    'column_id' => '编号',
+    'column_location' => '餐厅',
+    'column_status' => '状态',
+    'column_date' => '日期',
+    'column_table' => '餐桌',
+    'column_guest' => '人数',
+    'column_customer_name' => '客人',
+    'column_comment' => '备注',
+];

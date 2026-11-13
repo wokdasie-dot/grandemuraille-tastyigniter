@@ -28,22 +28,22 @@ bodyClass: page-booking
 
             $slots = $bookingManager->makeTimeSlots(\Carbon\Carbon::parse($requestedDate)->startOfDay());
             if (count($slots) === 0) {
-                $bookingUnavailableMessage = 'Aucune table n\'est disponible pour cette date : le restaurant est fermé ou complet. Choisissez une autre date.';
+                $bookingUnavailableMessage = lang('restoline.content::frontend.booking.unavailable');
             }
         } catch (\Throwable $exception) {
-            $bookingUnavailableMessage = 'Cette date n\'est pas disponible pour une réservation. Choisissez une autre date.';
+            $bookingUnavailableMessage = lang('restoline.content::frontend.booking.unavailable_other');
         }
     }
 @endphp
 <section class="wok-booking-page">
     <div class="wok-booking-heading">
-        <a href="{{ url('/') }}">← Retour à l'accueil</a>
+        <a href="{{ url('/') }}">← @lang('restoline.content::frontend.booking.back')</a>
         <p class="wok-eyebrow">La Grande Muraille de Chine</p>
-        <h1>Réserver une table</h1>
-        <p class="wok-booking-note">Réservation en ligne jusqu'à 20 personnes. À partir de 12 personnes, nous confirmons en général par téléphone. Fermé le mardi, sauf jours fériés.</p>
+        <h1>@lang('restoline.content::frontend.booking.title')</h1>
+        <p class="wok-booking-note">@lang('restoline.content::frontend.booking.note')</p>
         <div class="wok-booking-actions">
-            <a class="wok-button wok-button-dark" href="{{ url('/reservation/gerer') }}">Gérer ma réservation</a>
-            <p>Vous avez déjà réservé ? Modifiez ou annulez votre demande avec le numéro utilisé lors de la réservation.</p>
+            <a class="wok-button wok-button-dark" href="{{ url('/reservation/gerer') }}">@lang('restoline.content::frontend.nav.manage')</a>
+            <p>@lang('restoline.content::frontend.booking.already')</p>
         </div>
     </div>
     @if($turnstileSiteKey)
@@ -82,15 +82,15 @@ bodyClass: page-booking
     <div class="wok-booking-native">
         @if(!$onlineBookingEnabled)
             <div class="wok-otp-card">
-                <strong>Réservation en ligne momentanément fermée</strong>
-                <p>Les réservations en ligne sont temporairement désactivées. Pour réserver une table, contactez-nous directement :</p>
+                <strong>@lang('restoline.content::frontend.booking.closed_title')</strong>
+                <p>@lang('restoline.content::frontend.booking.closed_text')</p>
                 <p><a class="wok-button wok-button-dark" href="tel:+3287220888">087 22 08 88</a></p>
-                <p>Vous avez déjà une réservation ? Vous pouvez toujours la consulter depuis <a href="{{ url('/reservation/gerer') }}">Gérer ma réservation</a>.</p>
+                <p>@lang('restoline.content::frontend.booking.closed_manage')</p>
             </div>
         @elseif($bookingUnavailableMessage)
             <div class="wok-otp-card">
                 <p>{{ $bookingUnavailableMessage }}</p>
-                <p><a class="wok-button wok-button-dark" href="{{ url('/grande-muraille/reservation') }}">Choisir une autre date</a></p>
+                <p><a class="wok-button wok-button-dark" href="{{ url('/grande-muraille/reservation') }}">@lang('restoline.content::frontend.booking.other_date')</a></p>
             </div>
         @else
             <livewire:igniter-orange::booking/>

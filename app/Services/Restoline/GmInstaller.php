@@ -211,7 +211,8 @@ final class GmInstaller
 
         $languageId = null;
         if (\Illuminate\Support\Facades\Schema::hasTable('languages')) {
-            $languageId = \Illuminate\Support\Facades\DB::table('languages')->where('code', 'fr')->value('language_id');
+            $languageId = \Illuminate\Support\Facades\DB::table('languages')->where('code', 'zh_CN')->value('language_id')
+                ?? \Illuminate\Support\Facades\DB::table('languages')->where('code', 'fr')->value('language_id');
         }
 
         $user = new User();

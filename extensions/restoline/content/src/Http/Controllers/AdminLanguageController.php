@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class AdminLanguageController
 {
-    private const ALLOWED_LOCALES = ['fr', 'zh_CN'];
+    private const ALLOWED_LOCALES = ['fr', 'en', 'zh_CN'];
 
     public function update(Request $request, string $locale): RedirectResponse
     {

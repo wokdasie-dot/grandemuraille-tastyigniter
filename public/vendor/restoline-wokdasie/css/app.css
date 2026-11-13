@@ -78,6 +78,10 @@ body.wok-site {
 }
 .wok-nav a:hover::after, .wok-nav a:focus-visible::after { transform: scaleX(1); }
 .wok-header-actions { display: flex; align-items: center; gap: 14px; }
+.wok-lang-switch { display: flex; align-items: center; gap: 6px; font-size: .75rem; font-weight: 700; letter-spacing: .08em; }
+.wok-lang-switch a, .wok-lang-switch span { min-width: 1.6rem; text-align: center; }
+.wok-lang-switch [aria-current="true"] { color: var(--wok-gold); }
+.wok-lang-switch-mobile { display: none; }
 .wok-header-socials { display: flex; align-items: center; gap: 6px; }
 .wok-header-socials a {
   display: block;
@@ -830,6 +834,7 @@ body.wok-site {
     box-shadow: 0 18px 30px rgba(20,40,30,.1);
   }
   .wok-nav.is-open { display: flex; }
+  .wok-nav.is-open .wok-lang-switch-mobile { display: flex; padding-top: 12px; }
   .wok-nav a { padding: 12px 0; }
   .wok-nav a::after { display: none; }
   .wok-feature-grid, .wok-story, .wok-takeaway, .wok-groups-grid, .wok-takeaway-menu-grid { grid-template-columns: 1fr; }

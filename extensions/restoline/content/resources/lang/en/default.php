@@ -5,6 +5,7 @@ declare(strict_types=1);
 return [
     'admin_language' => [
         'switch_to_chinese' => 'Switch dashboard to Chinese',
+        'switch_to_english' => 'Switch dashboard to English',
         'switch_to_french' => 'Switch dashboard to French',
     ],
     'navigation' => [

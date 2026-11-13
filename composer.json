@@ -39,7 +39,8 @@
         "endroid/qr-code": "^6.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "tastyigniter/core": "^4.0"
+        "tastyigniter/core": "^4.0",
+        "tastyigniter/ti-ext-translate": "^4.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

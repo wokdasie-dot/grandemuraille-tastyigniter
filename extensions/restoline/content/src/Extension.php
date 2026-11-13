@@ -63,7 +63,7 @@ class Extension extends BaseExtension
             $router->post('language/{locale}', [
                 \Restoline\Content\Http\Controllers\AdminLanguageController::class,
                 'update',
-            ])->where('locale', 'fr|zh_CN')->name('restoline.admin.language.update');
+            ])->where('locale', 'fr|en|zh_CN')->name('restoline.admin.language.update');
         });
 
         if (app()->runningInConsole()) {
@@ -87,21 +87,20 @@ class Extension extends BaseExtension
     #[Override]
     public function boot(): void
     {
+        $this->app->make('router')->pushMiddlewareToGroup(
+            'igniter',
+            \Restoline\Content\Http\Middleware\RestrictPublicLocale::class,
+        );
+
+        if (class_exists(\Igniter\Translate\Actions\TranslatableModel::class)) {
+            $this->registerTranslatableModels();
+        }
+
         if (Igniter::runningInAdmin()) {
             AdminMenu::registerCallback(function(Navigation $manager): void {
-                $currentLocale = app()->getLocale();
-                $targetLocale = $currentLocale === 'zh_CN' ? 'fr' : 'zh_CN';
-
                 $manager->registerMainItems([
                     MainMenuItem::partial('restoline-language-switcher', 'restoline.content::_partials.admin_language_switcher')
-                        ->priority(25)
-                        ->config([
-                            'targetLocale' => $targetLocale,
-                            'label' => $targetLocale === 'zh_CN' ? '中文' : 'FR',
-                            'title' => $targetLocale === 'zh_CN'
-                                ? lang('restoline.content::default.admin_language.switch_to_chinese')
-                                : lang('restoline.content::default.admin_language.switch_to_french'),
-                        ]),
+                        ->priority(25),
                 ]);
             });
         }
@@ -244,6 +243,11 @@ class Extension extends BaseExtension
         Route::middleware('web')->group(function(): void {
             Route::redirect('wok', config('restoline.restaurant.reservation_path'), 302);
 
+            Route::get('locale/{locale}', [
+                \Restoline\Content\Http\Controllers\PublicLocaleController::class,
+                'update',
+            ])->where('locale', 'fr|en|nl')->name('restoline.locale');
+
             Route::get(config('restoline.restaurant.manage_reservation_path'), [
                 \Restoline\Content\Http\Controllers\ManageReservationController::class,
                 'index',
@@ -366,5 +370,21 @@ class Extension extends BaseExtension
                 'group' => 'La Grande Muraille',
             ],
         ];
+    }
+
+    private function registerTranslatableModels(): void
+    {
+        $fields = [
+            BuffetPricing::class => ['label'],
+            ContentItem::class => ['title', 'summary', 'content'],
+            \Restoline\Content\Models\GalleryItem::class => ['title', 'caption'],
+        ];
+
+        foreach ($fields as $class => $attributes) {
+            $class::extend(function($model) use ($attributes): void {
+                $model->implement[] = \Igniter\Translate\Actions\TranslatableModel::class;
+                $model->addDynamicMethod('translatable', fn(): array => $attributes);
+            });
+        }
     }
 }

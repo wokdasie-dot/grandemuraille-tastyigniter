@@ -118,6 +118,7 @@ return array(
     'Illuminate\\Support\\' => array($vendorDir . '/laravel/framework/src/Illuminate/Macroable', $vendorDir . '/laravel/framework/src/Illuminate/Collections', $vendorDir . '/laravel/framework/src/Illuminate/Conditionable', $vendorDir . '/laravel/framework/src/Illuminate/Reflection'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'Igniter\\User\\' => array($vendorDir . '/tastyigniter/ti-ext-user/src'),
+    'Igniter\\Translate\\' => array($vendorDir . '/tastyigniter/ti-ext-translate/src'),
     'Igniter\\Socialite\\' => array($vendorDir . '/tastyigniter/ti-ext-socialite/src'),
     'Igniter\\Reservation\\' => array($vendorDir . '/tastyigniter/ti-ext-reservation/src'),
     'Igniter\\PayRegister\\' => array($vendorDir . '/tastyigniter/ti-ext-payregister/src'),
