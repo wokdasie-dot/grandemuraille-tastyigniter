@@ -11,7 +11,7 @@
 
 # Laravel runtime data
 /node_modules/
-/storage/
+/storage/gm-data/
 /bootstrap/cache/*
 !/bootstrap/cache/.gitignore
 !/bootstrap/cache/packages.php
