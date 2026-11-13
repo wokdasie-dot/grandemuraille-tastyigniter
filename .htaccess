@@ -1,0 +1,17 @@
+# Defense in depth when the domain is pointed at the repository root.
+# The intended OVH docroot is nouveau/public. These rules still refuse
+# application files and send every other request into public/.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteRule ^public/ - [L]
+
+    RewriteRule "(^|/)\.(?!well-known/)" - [F,L]
+    RewriteRule ^(vendor|app|bootstrap|config|database|extensions|themes|resources|routes|storage|docs|lang|tests|data)(/|$) - [F,L]
+    RewriteRule ^(composer\.(json|lock)|artisan|cron\.php|gm-maintain\.php|package\.json|webpack\.mix\.js|phpunit\.xml)(/|$) - [F,L]
+    RewriteRule \.(env|md|lock|sql|pem|key)$ - [F,L]
+
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+Options -Indexes

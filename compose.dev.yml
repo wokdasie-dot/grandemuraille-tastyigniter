@@ -1,0 +1,52 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - grandemuraille_vendor:/app/vendor
+      - grandemuraille_composer_cache:/tmp/composer-cache
+    ports:
+      - "127.0.0.1:8085:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      COMPOSER_CACHE_DIR: /tmp/composer-cache
+    command: php -d opcache.enable_cli=1 -d opcache.validate_timestamps=1 -d opcache.revalidate_freq=0 artisan serve --host=0.0.0.0 --port=8000
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:?set MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER:?set MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD}
+    volumes:
+      - grandemuraille_mysql:/var/lib/mysql
+    # Reglages alleesges pour un poste 8 Go (dev uniquement)
+    command:
+      - --performance-schema=OFF
+      - --skip-log-bin
+      - --skip-name-resolve
+      - --mysqlx=OFF
+      - --innodb-buffer-pool-size=128M
+      - --innodb-log-buffer-size=8M
+      - --innodb-flush-method=O_DIRECT
+      - --max-connections=40
+      - --table-open-cache=512
+      - --tmp-table-size=16M
+      - --max-heap-table-size=16M
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  grandemuraille_mysql:
+  grandemuraille_vendor:
+  grandemuraille_composer_cache:

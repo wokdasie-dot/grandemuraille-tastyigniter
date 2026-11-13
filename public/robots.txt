@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /_ignition/
+Disallow: /reservation/gerer/acces/
+
+Sitemap: https://nouveau.grandemuraillespa.be/sitemap.xml

@@ -1,0 +1,34 @@
+# Secrets and deployment configuration
+.env
+.env.*
+!.env.example
+!.env.dev.example
+*.pem
+*.key
+*.p12
+*.dpapi
+/.private/
+
+# Laravel runtime data
+/node_modules/
+/storage/
+/bootstrap/cache/*.php
+
+# Uploaded media and the storage symlink are created on the server.
+/public/media/*
+!/public/media/.gitkeep
+/public/storage
+
+# WorkBuddy AI memory (local only)
+/.workbuddy-ai/
+
+# Local tooling and exports
+/.idea/
+/.vscode/
+/.playwright-cli/
+*.log
+*.sql
+*.zip
+*.tar
+*.gz
+

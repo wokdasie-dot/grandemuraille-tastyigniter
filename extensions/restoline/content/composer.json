@@ -1,0 +1,27 @@
+{
+  "name": "restoline/content",
+  "type": "tastyigniter-package",
+  "description": "Gestion unifiée des actualités et menus de fête pour La Grande Muraille de Chine.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Restoline"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Restoline\\Content\\": "src/"
+    }
+  },
+  "extra": {
+    "tastyigniter-extension": {
+      "code": "restoline.content",
+      "name": "Actualités et fêtes",
+      "icon": {
+        "class": "fa fa-newspaper",
+        "backgroundColor": "#065F46",
+        "color": "#FFF"
+      }
+    }
+  }
+}

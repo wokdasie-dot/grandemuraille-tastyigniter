@@ -1,0 +1,131 @@
+[
+  {
+    "name": "Grand buffet à volonté",
+    "price": "31,80",
+    "details": [
+      "",
+      "Tous les vendredis et samedis soir\nainsi que les dimanches midi et soir",
+      "**** Formule boisson non comprise\nAdultes:                               31,80€\nEnfants (4 à 9 ans):                               13.80€ et de (10 à 12 ans):                               21.80€",
+      "Formule boissons comprises **\nAdultes:                               48,80€\nEnfants (4 à 9 ans):                               17,80€ et de (10 à 12 ans):                               29,80€",
+      "9 entrées froides: saumon, crevettes roses...\n2 potages: piquant et non piquant.\n8 entrées chaudes en friture: scampis frits...\n4 entrées à la vapeur : farcis différents\n16 plats: langoustines, boeuf, canard...",
+      "Desserts: tiramisu, fruits frais, glace,beignets, petits choux...",
+      "**Buffet tout compris:(un apéro, pichet 1/2L/pers.\n+ eau, coca,fanta,ice tea,jupiler maxi 5/pers\nCafé, Thé.\n( les autres personnes NE peuvent pas profiter S.V.P )\nLe week-end, réservations souhaitées"
+    ]
+  },
+  {
+    "name": "Lunch rapide",
+    "price": "22,60",
+    "details": [
+      "( Tous les midis sauf le dimanche midi et les jours fériérs )\n(pas à emporter )",
+      "Potage ou entrée au choix :\nCrème de nid d'hirondelle\nPotage piquant\nPotage aux cheveux d'ange\nCroquette de soja et poulet\nSalade de soja au poulet",
+      "Plat au choix :\nPoulet aux champignons chinois\nBoeuf aux légumes piquant\nBeignet de porc à la sauce aigre douce\nRiz sauté au poulet\nNouille sautée au poulet",
+      "Thé ou café"
+    ]
+  },
+  {
+    "name": "Menu de la semaine",
+    "price": "27,60",
+    "details": [
+      "( prix /pers -Min. Deux pers )\n( de lundi jusqu'au vendredi midi sauf jours fériés )",
+      "Potage au choix\nPotage aux bambous et poulet\nCrème de nid d'hirondelle\nPotage piquant\nMimi croquettes (végétarien)",
+      "Plateau de dégustation de 5 délices :\nChop-choy sans viande\nPoulet aux champignons chinois\nBoeuf maison piquant\nBeignet de porc sauce aigre-douce\nBeignet de poisson",
+      "Glace ou fruit chinois"
+    ]
+  },
+  {
+    "name": "Menu Chinois",
+    "price": "30,80",
+    "details": [
+      "Salade spéciale chinoise\nCrème de nid d'hirondelles",
+      "Entrée au choix :\nTriangle au curry\nPanier doré à la vapeur",
+      "Plat au choix :\nFilets de poulet (spécialité maison)\nSpare-ribs à la sauce aigre-douce\nFilet de boeuf sautés aux légumes",
+      "Dessert au choix :\nGlace ou Fruits exotiques"
+    ]
+  },
+  {
+    "name": "Table de riz",
+    "price": "37,60",
+    "details": [
+      "( Min. 2pers. -prix par pers. )",
+      "Potage spécial maison(wan-tan)\nAssiette de Grande Muraille",
+      "Table de riz :\nCanard laqué façon du chef\nLangoustines à l'ail\nPoulet aux ananas frais\nBoeuf sauté aux champignons chinois",
+      "Riz sauté cantonais",
+      "Sorbet au choix"
+    ]
+  },
+  {
+    "name": "Menu dégustation",
+    "price": "41,60",
+    "details": [
+      "( Min. 2pers. -prix par pers. )",
+      "Potage au crabe et asperges\nSalade chinoise\nBrochette de scampis(au lard fumé)",
+      "Plat au choix :\nCanard laqué de pékin\nLangoustine meng xia\nL'agneau Ti-Pan\nPlat de famille heureux",
+      "Beignet de glace flambé"
+    ]
+  },
+  {
+    "name": "Menu gourmet",
+    "price": "43,90",
+    "details": [
+      "( Min. 2pers. -prix par pers. )",
+      "Potage au crabe et asperges\nGambas façon du chef",
+      "Les trois variétés :\nBeignet poulet\nLangoustine sauce tomate\nCanard au four Ti-Pan",
+      "Orange givrée"
+    ]
+  },
+  {
+    "name": "Menu Spécial Ti-Pan",
+    "price": "45,60",
+    "details": [
+      "( Min. 2pers. -prix par pers. )",
+      "Potage spécial « maison »\nHors d'oeuvre varié « quatre couleur »\nTrio de délices « maison » à la vapeur",
+      "Triple spécialité chinoise « façon Ti-Pan » :\némincés de boeuf Ti-Pan\ngambas Ti-Pan sauce à l'ail piquant\ncanard Ti-Pan",
+      "Beignet de glace flambé"
+    ]
+  },
+  {
+    "name": "Fondue chinoise",
+    "price": "45,90",
+    "details": [
+      "( Min. 2pers. -prix par pers. )",
+      "Entrée spéciale froide",
+      "Entrée à la vapeur «quatre variétés»\nHa kao « farcis aux crevettes »\nFen guo « scampis et porc »\nBouchées de porc\nJiao zhi",
+      "Fondue chinoise composée de :\nfilet de poisson, scampis\nfilets de boeuf,\ncalamars\nblanc de poulet\nboulette de scampis\nvermicelles\nchoux chinois",
+      "sorbet à la mangue et fruit chinois"
+    ]
+  },
+  {
+    "name": "Menu special homard",
+    "price": "63,60",
+    "details": [
+      "( Prix par personne - minimum deux personnes )",
+      "Potage homard maison\nBrochette de scampi au lard fumé\nCaille à la façon chinoise",
+      "Sorbet",
+      "Homard façon du chef (500 à 600gr)\nRiz sauté cantonais",
+      "Beignets"
+    ]
+  },
+  {
+    "name": "Menu Special fruit de mer",
+    "price": "57,60",
+    "details": [
+      "( Min. 2pers. -prix par pers. )",
+      "Bisque d'homard\nAssortiment de spécialités à la vapeur",
+      "Entrée croustillante\nPinces de crabe en friture avec beignet de langoustines",
+      "Super plateau « cinq couleur »\n- calamars sautés sauce piquante\n- Scampis aux ananas frais\n- filet de poisson à l'ail\n- coquille Saint-Jacques sauce tomaté\n- vermicelles de riz sautés aux scampis",
+      "Beignet de banane spécial maison"
+    ]
+  },
+  {
+    "name": "Menu gastronomique",
+    "price": "79,90",
+    "details": [
+      "( Min. 2pers. -prix par pers. )",
+      "Potage au fruits de mer\nSalade de soja aux scampis",
+      "Assortiment maison à la vapeur\nHomard façon du chef (500 à 600gr)",
+      "Sorbet",
+      "Canard laqué de pékin\nL'agneau Ti-Pan maison",
+      "Dessert au choix à la carte"
+    ]
+  }
+]

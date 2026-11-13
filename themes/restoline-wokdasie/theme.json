@@ -1,0 +1,19 @@
+{
+  "code": "restoline-wokdasie",
+  "name": "La Grande Muraille de Chine",
+  "description": "Theme de reservation La Grande Muraille de Chine, a Spa.",
+  "parent": "igniter-orange",
+  "source-path": "/views",
+  "meta-path": "/resources/meta",
+  "asset-path": "/assets",
+  "version": "2.0.0",
+  "author": "Restoline",
+  "homepage": "https://nouveau.grandemuraillespa.be",
+  "require": {
+    "igniter.frontend": "*",
+    "igniter.local": "*",
+    "igniter.pages": "*",
+    "igniter.reservation": "*",
+    "igniter.user": "*"
+  }
+}

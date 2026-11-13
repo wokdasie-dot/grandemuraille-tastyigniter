@@ -1,0 +1,10 @@
+{
+  "style": [
+    "$/igniter-orange/css/app.css",
+    "$/restoline-wokdasie/css/app.css"
+  ],
+  "script": [
+    "$/igniter-orange/js/app.js",
+    "$/restoline-wokdasie/js/app.js"
+  ]
+}

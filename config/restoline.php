@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'restaurant' => [
+        'name' => 'La Grande Muraille de Chine',
+        'legal_name' => 'SRL JIN-ZHOU',
+        'vat_number' => 'BE 0812011942',
+        'phone' => '+3287220888',
+        'phone_display' => '087 22 08 88',
+        'notification_email' => env('RESTAURANT_NOTIFICATION_EMAIL', 'jinzhu1031@gmail.com'),
+        'address' => 'Avenue Reine Astrid 98, 4900 Spa',
+        'street' => 'Avenue Reine Astrid 98',
+        'postcode' => '4900',
+        'city' => 'Spa',
+        'country' => 'Belgique',
+        'reservation_path' => 'grande-muraille/reservation',
+        'manage_reservation_path' => 'reservation/gerer',
+        'location_slug' => 'grande-muraille',
+    ],
+    'reservation' => [
+        'phone_confirm_from' => 12,
+        'max_guests' => 20,
+        'min_guests' => 1,
+        'interval_minutes' => 30,
+        'stay_minutes' => 90,
+        'max_advance_days' => 60,
+    ],
+    'features' => [
+        'reservation' => true,
+        'reservation_management' => true,
+        'client_email' => true,
+        'restaurant_email' => true,
+        'sms' => false,
+        'telephony' => false,
+        'table_ordering' => false,
+        'takeaway' => false,
+        'gift_cards' => false,
+        'marketing' => false,
+        'feedback' => false,
+        'service_api' => false,
+    ],
+];
