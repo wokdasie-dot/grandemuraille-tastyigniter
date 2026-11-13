@@ -15,7 +15,7 @@
                 data-max-date="{{ $endDate->format('Y-m-d') }}"
                 data-days-of-week-disabled='@json($this->disabledDaysOfWeek)'
                 data-disable='@json($disabledDates)'
-                data-week-start="{{ $weekStartOn }}"
+                data-week-start="1"
                 data-date-format="Y-m-d"
                 data-locale={{ $calendarLocale }}
             >

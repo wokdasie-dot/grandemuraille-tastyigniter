@@ -10,12 +10,14 @@ bodyClass: page-booking
     $reservation = app(\Restoline\Content\Services\ReservationOtpService::class)->findReservation($hash);
     $confirmationError = null;
 
-    if ($reservation) {
-        try {
-            app(\Restoline\Content\Services\ReservationOtpService::class)->ensureConfirmedWithoutCodeIfAllowed($reservation);
-        } catch (\RuntimeException $exception) {
-            $confirmationError = $exception->getMessage();
-        }
+    if (!$reservation) {
+        abort(404);
+    }
+
+    try {
+        app(\Restoline\Content\Services\ReservationOtpService::class)->ensureConfirmedWithoutCodeIfAllowed($reservation);
+    } catch (\RuntimeException $exception) {
+        $confirmationError = $exception->getMessage();
     }
 @endphp
 
@@ -26,11 +28,7 @@ bodyClass: page-booking
         <h1>{{ ($reservation && (int)$reservation->guest_num >= (int)config('restoline.reservation.phone_confirm_from', 12)) ? lang('restoline.content::frontend.success.received_title') : lang('restoline.content::frontend.success.confirmed_title') }}</h1>
     </div>
 
-    @if(!$reservation)
-        <div class="wok-otp-card">
-            <p>@lang('restoline.content::frontend.success.missing', ['phone' => '087 22 08 88'])</p>
-        </div>
-    @elseif($confirmationError)
+    @if($confirmationError)
         <div class="wok-otp-card">
             <p>{{ $confirmationError }}</p>
             <p>@lang('restoline.content::frontend.success.contact', ['phone' => '087 22 08 88'])</p>

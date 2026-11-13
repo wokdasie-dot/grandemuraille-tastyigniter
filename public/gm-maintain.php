@@ -48,6 +48,7 @@ if (!$installer->isInstalled()) {
 }
 
 try {
+    $installer->publishPublicAssets();
     $installer->boot();
     $up = Illuminate\Support\Facades\Artisan::call('igniter:up', ['--force' => true]);
     Illuminate\Support\Facades\Artisan::call('view:clear');

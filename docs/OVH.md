@@ -41,7 +41,7 @@ If MySQL rejects a non-TLS connection (`require_secure_transport`), migrate retr
 
 ## Maintenance
 
-After a Git deploy that changes PHP or migrations, `POST /gm-maintain.php` with the same `token` over HTTPS. The root `.htaccess` forwards that URL into `public/gm-maintain.php`. It runs `igniter:up --force`, `view:clear` and `cache:clear`.
+After a Git deploy that changes PHP, migrations or published assets, `POST /gm-maintain.php` with the same `token` over HTTPS. The root `.htaccess` forwards that URL into `public/gm-maintain.php`. It copies the admin and theme assets into `public/vendor` with PHP (no shell), deletes `public/_assets`, then runs `igniter:up --force`, `view:clear` and `cache:clear`.
 
 ## Mail
 

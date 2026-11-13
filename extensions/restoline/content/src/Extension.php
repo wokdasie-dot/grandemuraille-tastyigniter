@@ -149,10 +149,52 @@ class Extension extends BaseExtension
                 : null;
         });
 
+        Event::listen('igniter.workingSchedule.timeslotValid', function ($schedule, $timeslot): ?bool {
+            $time = $timeslot->format('H:i');
+            $limits = config('restoline.reservation.last_arrival', []);
+            $lunch = (string)($limits['lunch'] ?? '14:00');
+            $dinner = (string)($limits['dinner'] ?? '22:00');
+            if ($time < '17:00' && $time > $lunch) {
+                return false;
+            }
+            if ($time >= '17:00' && $time > $dinner) {
+                return false;
+            }
+
+            return null;
+        });
+
+        Event::listen('admin.navigation.extendItems', function ($navigation): void {
+            foreach ([
+                'orders',
+            ] as $item) {
+                $navigation->removeNavItem($item);
+            }
+            foreach ([
+                'mealtimes' => 'restaurant',
+                'inventory' => 'restaurant',
+                'coupons' => 'marketing',
+                'reviews' => 'marketing',
+                'sliders' => 'design',
+                'resources' => 'tools',
+                'automation' => 'tools',
+            ] as $item => $parent) {
+                $navigation->removeNavItem($item, $parent);
+            }
+        });
+
         Event::listen('igniter.reservation.beforeSaveReservation', function(
             Reservation $reservation,
             array $data,
         ): void {
+            $phone = trim((string)($data['telephone'] ?? ''));
+            $digits = preg_replace('/\D+/', '', $phone) ?? '';
+            if ($phone === '' || preg_match('/^[0-9\s\-\+\(\)\.]+$/', $phone) !== 1 || strlen($digits) < 8 || strlen($digits) > 15) {
+                throw new \Igniter\Flame\Exception\ApplicationException(
+                    (string)__('validation.phone', ['attribute' => (string)lang('igniter.reservation::default.label_telephone')]),
+                );
+            }
+
             if (!\Restoline\Content\Support\OnlineBooking::isEnabled()) {
                 throw new \Igniter\Flame\Exception\ApplicationException(
                     'Les réservations en ligne sont momentanément désactivées. Merci de nous appeler au '.config('restoline.restaurant.phone_display').'.',

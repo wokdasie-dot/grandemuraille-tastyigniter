@@ -118,7 +118,7 @@ return array (
     'lead' => 'Choisissez votre date et indiquez vos coordonnées.',
     'question' => 'Une question ?',
     'groups' => 'Réservation en ligne jusqu’à 20 personnes. À partir de 12 personnes, nous confirmons en général par téléphone.',
-    'notice' => 'Votre demande sera enregistrée en attente de confirmation. Les horaires de réservation restent à confirmer avec le restaurant.',
+    'notice' => 'Jusqu’à 11 personnes, la table est confirmée tout de suite. À partir de 12 personnes, la demande reste en attente de confirmation.',
     'midi' => 'Midi',
     'soir' => 'Soir',
     'closed' => 'Fermeture',

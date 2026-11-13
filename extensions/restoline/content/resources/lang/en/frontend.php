@@ -118,7 +118,7 @@ return array (
     'lead' => 'Choose a date and leave your details.',
     'question' => 'A question?',
     'groups' => 'Online bookings for up to 20 guests. For parties of 12 or more, we usually confirm by telephone.',
-    'notice' => 'Your request will be recorded and is pending confirmation. Reservation times remain to be confirmed with the restaurant.',
+    'notice' => 'Parties of up to 11 are confirmed immediately. Parties of 12 or more stay pending until the restaurant confirms.',
     'midi' => 'Lunch',
     'soir' => 'Dinner',
     'closed' => 'Closed',

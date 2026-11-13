@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
+    'text_title' => '餐厅地点',
     'text_delivery_only' => '仅提供配送',
     'text_collection_only' => '仅提供自取',
     'text_both_types' => '提供配送和自取',

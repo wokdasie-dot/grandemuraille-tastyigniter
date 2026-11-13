@@ -21,17 +21,16 @@ body.gm-site.page-booking .wok-booking-page {
 body.gm-site .wok-cookie-banner {
     position: fixed;
     z-index: 40;
-    left: 16px;
+    left: auto;
     right: 16px;
     bottom: 16px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px 18px;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 16px 18px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: min(320px, calc(100% - 32px));
+    margin: 0;
+    padding: 14px 16px;
     background: var(--gm-ink);
     color: #f3ebe0;
     border-radius: 18px;

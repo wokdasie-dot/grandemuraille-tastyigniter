@@ -118,7 +118,7 @@ return array (
     'lead' => 'Kies een datum en laat uw gegevens achter.',
     'question' => 'Een vraag?',
     'groups' => 'Online reserveren tot 20 personen. Vanaf 12 personen bevestigen we meestal telefonisch.',
-    'notice' => 'Uw aanvraag wordt geregistreerd en wacht op bevestiging. De reservatietijden blijven te bevestigen met het restaurant.',
+    'notice' => 'Tot en met 11 personen is de tafel meteen bevestigd. Vanaf 12 personen blijft de aanvraag in afwachting van bevestiging.',
     'midi' => 'Lunch',
     'soir' => 'Diner',
     'closed' => 'Gesloten',

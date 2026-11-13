@@ -33,4 +33,8 @@ return [
         'text_tab_collection' => '自取设置',
         'text_tab_desc_collection' => '配置自取订单设置',
     ],
+    'text_side_menu_order' => '订单',
+    'text_side_menu_menu' => '菜单',
+    'text_side_menu_mealtimes' => '用餐时段',
+    'text_side_menu_inventory' => '库存',
 ];

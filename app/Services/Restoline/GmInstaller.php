@@ -307,9 +307,28 @@ final class GmInstaller
 
         Artisan::call('view:clear');
         Artisan::call('cache:clear');
+        $this->publishPublicAssets();
 
         $lock = $this->dataDirectory().'/install.lock';
         $this->writeSecret($lock, 'installed '.gmdate('c')."\n");
+    }
+
+    public function publishPublicAssets(): void
+    {
+        $map = [
+            $this->appRoot.'/vendor/tastyigniter/core/public' => $this->appRoot.'/public/vendor/igniter',
+            $this->appRoot.'/vendor/tastyigniter/ti-theme-orange/public' => $this->appRoot.'/public/vendor/igniter-orange',
+        ];
+        foreach ($map as $from => $to) {
+            if (is_dir($from)) {
+                $this->copyDirectory($from, $to);
+            }
+        }
+
+        $combined = $this->appRoot.'/public/_assets';
+        if (is_dir($combined)) {
+            $this->deleteDirectory($combined);
+        }
     }
 
     public function boot(): void
@@ -323,6 +342,45 @@ final class GmInstaller
         $kernel = $app->make(\Illuminate\Contracts\Console\Kernel::class);
         $kernel->bootstrap();
         $this->booted = true;
+    }
+
+    private function copyDirectory(string $from, string $to): void
+    {
+        if (!is_dir($to) && !mkdir($to, 0755, true) && !is_dir($to)) {
+            throw new RuntimeException('Publication des fichiers publics impossible.');
+        }
+
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($from, \FilesystemIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::SELF_FIRST,
+        );
+        foreach ($iterator as $item) {
+            $target = $to.'/'.$iterator->getSubPathName();
+            if ($item->isDir()) {
+                if (!is_dir($target) && !mkdir($target, 0755, true) && !is_dir($target)) {
+                    throw new RuntimeException('Publication des fichiers publics impossible.');
+                }
+                continue;
+            }
+            if (!copy($item->getPathname(), $target)) {
+                throw new RuntimeException('Publication des fichiers publics impossible.');
+            }
+        }
+    }
+
+    private function deleteDirectory(string $directory): void
+    {
+        if (!is_dir($directory)) {
+            return;
+        }
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($directory, \FilesystemIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::CHILD_FIRST,
+        );
+        foreach ($iterator as $item) {
+            $item->isDir() ? @rmdir($item->getPathname()) : @unlink($item->getPathname());
+        }
+        @rmdir($directory);
     }
 
     private function prepareRuntime(): void
