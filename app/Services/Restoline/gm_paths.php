@@ -35,3 +35,55 @@ function gm_resolve_data_directory(string $appRoot): ?string
 
     return null;
 }
+
+/**
+ * MySQL 8.4 on OVH may require TLS. PHP 8.5 deprecates PDO::MYSQL_ATTR_*,
+ * so the modern Pdo\Mysql constants are used when they exist.
+ */
+function gm_mysql_pdo_constant(string $suffix): ?int
+{
+    $modern = 'Pdo\\Mysql::'.$suffix;
+    if (defined($modern)) {
+        return (int)constant($modern);
+    }
+
+    if (PHP_VERSION_ID < 80500) {
+        $legacy = 'PDO::MYSQL_'.$suffix;
+        if (defined($legacy)) {
+            return (int)constant($legacy);
+        }
+    }
+
+    return null;
+}
+
+/**
+ * @return array<int, mixed>
+ */
+function gm_mysql_pdo_options(): array
+{
+    if (!extension_loaded('pdo_mysql')) {
+        return [];
+    }
+
+    $options = [];
+    $useSsl = function_exists('env') && filter_var((string)env('DB_SSL', ''), FILTER_VALIDATE_BOOL);
+    $sslCa = function_exists('env') ? env('MYSQL_ATTR_SSL_CA') : null;
+    $ca = gm_mysql_pdo_constant('ATTR_SSL_CA');
+    $verify = gm_mysql_pdo_constant('ATTR_SSL_VERIFY_SERVER_CERT');
+
+    if ($useSsl && $verify !== null) {
+        $options[$verify] = false;
+    }
+
+    if (is_string($sslCa) && $sslCa !== '' && $ca !== null) {
+        $options[$ca] = $sslCa;
+    } elseif ($useSsl && $ca !== null) {
+        $bundle = '/etc/ssl/certs/ca-certificates.crt';
+        if (is_file($bundle)) {
+            $options[$ca] = $bundle;
+        }
+    }
+
+    return $options;
+}

@@ -56,7 +56,20 @@ try {
         gm_maintain_reply(500, 'Mise à jour interrompue.');
     }
 } catch (Throwable $exception) {
-    gm_maintain_reply(500, 'Échec de la maintenance.');
+    $file = $exception->getFile();
+    $root = dirname(__DIR__);
+    if (str_starts_with($file, $root)) {
+        $file = ltrim(substr($file, strlen($root)), '/');
+    }
+    $message = $exception::class.': '.$exception->getMessage();
+    foreach ($_POST as $value) {
+        if (is_string($value) && strlen($value) >= 4) {
+            $message = str_replace($value, '[redacted]', $message);
+        }
+    }
+    $message = preg_replace('/base64:[A-Za-z0-9+\/=]+/', 'base64:[redacted]', $message) ?? $message;
+    $message = preg_replace('#/home/[^/\s]+#', '/home/[account]', $message) ?? $message;
+    gm_maintain_reply(500, "Échec de la maintenance.\n".$message."\n".$file.':'.$exception->getLine());
 }
 
 gm_maintain_reply(200, 'OK maintenance');

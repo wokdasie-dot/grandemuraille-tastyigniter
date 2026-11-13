@@ -1,14 +1,21 @@
-# Defense in depth when the domain is pointed at the repository root.
-# The intended OVH docroot is nouveau/public. These rules still refuse
-# application files and send every other request into public/.
+# The domain must point at this clone folder. OVH drops the Git link when
+# the domain path is set to public/. These rules hide the application tree
+# and send every public request into public/.
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # A browser request for /public/... is a second copy of the site.
+    # REDIRECT_STATUS is set after the internal rewrite below, so this does not loop.
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule ^public/?$ / [R=301,L]
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule ^public/(.+)$ /$1 [R=301,L]
     RewriteRule ^public/ - [L]
 
     RewriteRule "(^|/)\.(?!well-known/)" - [F,L]
-    RewriteRule ^(vendor|app|bootstrap|config|database|extensions|themes|resources|routes|storage|docs|lang|tests|data)(/|$) - [F,L]
-    RewriteRule ^(composer\.(json|lock)|artisan|cron\.php|gm-maintain\.php|package\.json|webpack\.mix\.js|phpunit\.xml)(/|$) - [F,L]
+    RewriteCond %{DOCUMENT_ROOT}/public/$1 !-f
+    RewriteRule ^((?:vendor|app|bootstrap|config|database|extensions|themes|resources|routes|storage|docs|lang|tests|data)(?:/.*)?)$ - [F,L]
+    RewriteRule ^(composer\.(json|lock)|artisan|package\.json|webpack\.mix\.js|phpunit\.xml)(/|$) - [F,L]
     RewriteRule \.(env|md|lock|sql|pem|key)$ - [F,L]
 
     RewriteRule ^(.*)$ public/$1 [L]

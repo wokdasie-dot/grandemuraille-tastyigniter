@@ -1,2 +1,5 @@
 *
 !.gitignore
+!packages.php
+!services.php
+!addons.php

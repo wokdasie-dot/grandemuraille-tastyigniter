@@ -12,7 +12,11 @@
 # Laravel runtime data
 /node_modules/
 /storage/
-/bootstrap/cache/*.php
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+!/bootstrap/cache/packages.php
+!/bootstrap/cache/services.php
+!/bootstrap/cache/addons.php
 
 # Uploaded media and the storage symlink are created on the server.
 /public/media/*

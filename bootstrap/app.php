@@ -11,6 +11,10 @@
 |
 */
 
+if (!function_exists('putenv') && class_exists(Illuminate\Support\Env::class)) {
+    Illuminate\Support\Env::disablePutenv();
+}
+
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );

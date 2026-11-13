@@ -35,7 +35,7 @@ final class GmInstaller
     public function requirements(): array
     {
         $missing = [];
-        if (version_compare(PHP_VERSION, '8.4.1', '<')) {
+        if (version_compare(PHP_VERSION, '8.4.1', '<') || version_compare(PHP_VERSION, '8.6.0', '>=')) {
             $missing[] = 'php';
         }
 
@@ -162,6 +162,8 @@ final class GmInstaller
             throw new RuntimeException('Configuration manquante.');
         }
 
+        $this->prepareRuntime();
+        $this->assertDatabaseReachable();
         $this->boot();
 
         DatabaseSeeder::$seedDemo = false;
@@ -171,10 +173,49 @@ final class GmInstaller
         DatabaseSeeder::$siteEmail = (string)env('MAIL_FROM_ADDRESS', 'jinzhu1031@gmail.com');
         DatabaseSeeder::$password = bin2hex(random_bytes(24));
 
-        $code = Artisan::call('igniter:up', ['--force' => true]);
-        if ($code !== 0) {
-            throw new RuntimeException('Migrations interrompues.');
+        $code = Artisan::call('igniter:up', [
+            '--force' => true,
+            '--no-interaction' => true,
+        ]);
+        $output = trim(Artisan::output());
+        $migrations = \Illuminate\Support\Facades\Schema::hasTable('migrations');
+        if ($code !== 0 || !$migrations) {
+            $detail = $output !== '' ? ' '.$output : '';
+            throw new RuntimeException('Migrations interrompues.'.$detail);
         }
+    }
+
+    public function diagnose(): string
+    {
+        $directory = $this->dataDirectory();
+        $parentWritable = is_writable(dirname($directory));
+        $resolved = gm_resolve_data_directory($this->appRoot);
+        $lines = [
+            'php='.PHP_VERSION,
+            'sapi='.PHP_SAPI,
+            'extensions='.implode(',', get_loaded_extensions()),
+            'disable_functions='.(string)ini_get('disable_functions'),
+            'open_basedir='.(string)ini_get('open_basedir'),
+            'memory_limit='.(string)ini_get('memory_limit'),
+            'max_execution_time='.(string)ini_get('max_execution_time'),
+            'data_preferred='.(str_contains($directory, '/storage/gm-data') ? 'storage/gm-data' : '../gm-data'),
+            'data_parent_writable='.($parentWritable ? 'yes' : 'no'),
+            'data_writable='.(is_dir($directory) && is_writable($directory) ? 'yes' : 'no'),
+            'data_resolved='.($resolved === null ? 'none' : (str_contains($resolved, '/storage/gm-data') ? 'storage/gm-data' : '../gm-data')),
+            'env_present='.(is_file($directory.'/.env') ? 'yes' : 'no'),
+            'bootstrap_cache_writable='.(is_writable($this->appRoot.'/bootstrap/cache') ? 'yes' : 'no'),
+            'addons_cache='.(is_file($this->appRoot.'/bootstrap/cache/addons.php') ? 'yes' : 'no'),
+            'symlink='.(function_exists('symlink') ? 'yes' : 'no'),
+            'proc_open='.(function_exists('proc_open') ? 'yes' : 'no'),
+            'exec='.(function_exists('exec') ? 'yes' : 'no'),
+            'putenv='.(function_exists('putenv') ? 'yes' : 'no'),
+        ];
+
+        $lines[] = 'pdo='.$this->pdoProbe();
+        $lines[] = "install.log:\n".$this->tail($directory.'/install.log');
+        $lines[] = "laravel.log:\n".$this->tail($this->newestLog($directory.'/storage/logs'));
+
+        return implode("\n", $lines)."\n";
     }
 
     public function seed(): void
@@ -277,10 +318,191 @@ final class GmInstaller
             return;
         }
 
+        $this->prepareRuntime();
         $app = require $this->appRoot.'/bootstrap/app.php';
         $kernel = $app->make(\Illuminate\Contracts\Console\Kernel::class);
         $kernel->bootstrap();
         $this->booted = true;
+    }
+
+    private function prepareRuntime(): void
+    {
+        @set_time_limit(0);
+        @ini_set('max_execution_time', '0');
+        if (!function_exists('putenv') && class_exists(\Illuminate\Support\Env::class)) {
+            \Illuminate\Support\Env::disablePutenv();
+        }
+
+        $cache = $this->appRoot.'/bootstrap/cache';
+        if (!is_dir($cache)) {
+            @mkdir($cache, 0750, true);
+        }
+    }
+
+    private function assertDatabaseReachable(): void
+    {
+        $probe = $this->pdoProbe();
+        if (!str_starts_with($probe, 'ok')) {
+            throw new RuntimeException('Connexion base refusée. '.$probe);
+        }
+    }
+
+    private function pdoProbe(): string
+    {
+        $env = $this->readEnv($this->dataDirectory().'/.env');
+        if ($env === null) {
+            return 'no-env';
+        }
+
+        foreach (['DB_HOST', 'DB_DATABASE', 'DB_USERNAME'] as $key) {
+            if (($env[$key] ?? '') === '') {
+                return 'missing-'.$key;
+            }
+        }
+
+        $plain = $this->pdoConnect($env, false);
+        if ($plain === 'ok') {
+            return 'ok';
+        }
+
+        if ($this->needsTls($plain)) {
+            $secure = $this->pdoConnect($env, true);
+            if ($secure === 'ok') {
+                $this->enableDatabaseTls();
+
+                return 'ok-tls';
+            }
+
+            return $secure;
+        }
+
+        return $plain;
+    }
+
+    /**
+     * @param array<string, string> $env
+     */
+    private function pdoConnect(array $env, bool $tls): string
+    {
+        if (!extension_loaded('pdo_mysql')) {
+            return 'missing-pdo_mysql';
+        }
+
+        $dsn = sprintf(
+            'mysql:host=%s;port=%s;dbname=%s;charset=utf8mb4',
+            $env['DB_HOST'],
+            $env['DB_PORT'] !== '' ? $env['DB_PORT'] : '3306',
+            $env['DB_DATABASE'],
+        );
+        $options = [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        ];
+        if ($tls) {
+            $verify = gm_mysql_pdo_constant('ATTR_SSL_VERIFY_SERVER_CERT');
+            $ca = gm_mysql_pdo_constant('ATTR_SSL_CA');
+            if ($verify !== null) {
+                $options[$verify] = false;
+            }
+            if ($ca !== null) {
+                $bundle = '/etc/ssl/certs/ca-certificates.crt';
+                if (is_file($bundle)) {
+                    $options[$ca] = $bundle;
+                }
+            }
+        }
+
+        try {
+            $pdo = new \PDO($dsn, $env['DB_USERNAME'], $env['DB_PASSWORD'] ?? '', $options);
+            $pdo->query('SELECT 1');
+
+            return 'ok';
+        } catch (\PDOException $exception) {
+            return $this->publicDatabaseMessage($exception);
+        }
+    }
+
+    private function needsTls(string $message): bool
+    {
+        return (bool)preg_match('/secure transport|require_secure_transport|SSL connection|TLS/i', $message);
+    }
+
+    private function enableDatabaseTls(): void
+    {
+        $path = $this->dataDirectory().'/.env';
+        $contents = (string)file_get_contents($path);
+        if (preg_match('/^DB_SSL=/m', $contents) === 1) {
+            $contents = preg_replace('/^DB_SSL=.*$/m', 'DB_SSL="true"', $contents) ?? $contents;
+        } else {
+            $contents = rtrim($contents)."\n".$this->envLine('DB_SSL', 'true')."\n";
+        }
+        $this->writeSecret($path, $contents);
+    }
+
+    private function publicDatabaseMessage(\PDOException $exception): string
+    {
+        $message = preg_replace('/using password:?\s*\S+/i', 'using password: [redacted]', $exception->getMessage()) ?? $exception->getMessage();
+
+        return $exception::class.': '.$message;
+    }
+
+    /**
+     * @return array<string, string>|null
+     */
+    private function readEnv(string $path): ?array
+    {
+        if (!is_file($path)) {
+            return null;
+        }
+
+        $values = [];
+        foreach (file($path, FILE_IGNORE_NEW_LINES) ?: [] as $line) {
+            $line = trim($line);
+            if ($line === '' || str_starts_with($line, '#') || !str_contains($line, '=')) {
+                continue;
+            }
+            [$key, $value] = explode('=', $line, 2);
+            $value = trim($value);
+            if (str_starts_with($value, '"') && str_ends_with($value, '"')) {
+                $value = stripcslashes(substr($value, 1, -1));
+            } else {
+                $value = trim($value, " \t\"'");
+            }
+            $values[trim($key)] = $value;
+        }
+
+        return $values;
+    }
+
+    private function tail(string $path): string
+    {
+        if (!is_file($path) || !is_readable($path)) {
+            return '(absent)';
+        }
+
+        $size = filesize($path);
+        $handle = fopen($path, 'rb');
+        if ($handle === false) {
+            return '(illisible)';
+        }
+        if (is_int($size) && $size > 12000) {
+            fseek($handle, -12000, SEEK_END);
+            fgets($handle);
+        }
+        $text = stream_get_contents($handle);
+        fclose($handle);
+
+        return $text === false || $text === '' ? '(vide)' : $text;
+    }
+
+    private function newestLog(string $directory): string
+    {
+        $paths = glob($directory.'/laravel*.log') ?: [];
+        if ($paths === []) {
+            return $directory.'/laravel.log';
+        }
+        usort($paths, static fn(string $left, string $right): int => filemtime($right) <=> filemtime($left));
+
+        return $paths[0];
     }
 
     private function makeDataTree(string $directory): void

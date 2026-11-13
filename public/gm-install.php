@@ -48,7 +48,7 @@ function gm_install_rate_limit(): void
     }
     $hits[] = $now;
     file_put_contents($bucket, json_encode($hits), LOCK_EX);
-    if (count($hits) > 12) {
+    if (count($hits) > 40) {
         gm_install_reply(429, 'Trop de tentatives.');
     }
 }
@@ -61,7 +61,34 @@ function gm_install_sanitize(string $message): string
         }
     }
 
-    return preg_replace('/(password|token|key)=([^\s]+)/i', '$1=[redacted]', $message) ?? $message;
+    $message = str_replace($appRoot = dirname(__DIR__), '[app]', $message);
+    $message = preg_replace('#/home/[^/\s]+#', '/home/[account]', $message) ?? $message;
+    $message = preg_replace('/base64:[A-Za-z0-9+\/=]+/', 'base64:[redacted]', $message) ?? $message;
+    $message = preg_replace('#mysql://[^\s]+#i', 'mysql://[redacted]', $message) ?? $message;
+    $message = preg_replace('/\bmysql:[^\s]*/i', 'mysql:[redacted-dsn]', $message) ?? $message;
+    $message = preg_replace('/((?:APP_KEY|DB_PASSWORD|MAIL_PASSWORD|RESEND_API_KEY|token|password|secret)\s*[=:]\s*)("[^"]*"|\'[^\']*\'|\S+)/i', '$1[redacted]', $message) ?? $message;
+
+    return $message;
+}
+
+function gm_install_failure(Throwable $exception): string
+{
+    $lines = [];
+    $current = $exception;
+    $depth = 0;
+    while ($current instanceof Throwable && $depth < 3) {
+        $file = $current->getFile();
+        $root = dirname(__DIR__);
+        if (str_starts_with($file, $root)) {
+            $file = ltrim(substr($file, strlen($root)), '/');
+        }
+        $lines[] = $current::class.': '.gm_install_sanitize($current->getMessage());
+        $lines[] = gm_install_sanitize($file).':'.$current->getLine();
+        $current = $current->getPrevious();
+        $depth++;
+    }
+
+    return implode("\n", $lines);
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -89,12 +116,16 @@ if ($installer->isInstalled()) {
 }
 
 $step = (string)($_POST['step'] ?? '');
-$allowed = ['requirements', 'configure', 'migrate', 'seed', 'admin', 'finish'];
+$allowed = ['requirements', 'configure', 'migrate', 'seed', 'admin', 'finish', 'diagnose'];
 if (!in_array($step, $allowed, true)) {
     gm_install_reply(422, 'Étape inconnue.');
 }
 
 try {
+    if ($step === 'diagnose') {
+        gm_install_reply(200, gm_install_sanitize($installer->diagnose()));
+    }
+
     match ($step) {
         'requirements' => $installer->requirements(),
         'configure' => $installer->configure($_POST),
@@ -102,9 +133,10 @@ try {
         'seed' => $installer->seed(),
         'admin' => $installer->createAdmin($_POST),
         'finish' => $installer->finish(),
+        default => null,
     };
 } catch (RuntimeException $exception) {
-    gm_install_reply(422, $exception->getMessage());
+    gm_install_reply(422, gm_install_failure($exception));
 } catch (Throwable $exception) {
     $log = $installer->dataDirectory().'/install.log';
     @file_put_contents(
@@ -112,7 +144,7 @@ try {
         gmdate('c').' '.$step.' '.gm_install_sanitize($exception::class.': '.$exception->getMessage())."\n",
         FILE_APPEND | LOCK_EX,
     );
-    gm_install_reply(500, 'Échec de l\'installation.');
+    gm_install_reply(500, "Échec de l'installation.\n".gm_install_failure($exception));
 }
 
 gm_install_reply(200, 'OK '.$step);
