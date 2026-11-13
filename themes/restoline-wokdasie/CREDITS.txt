@@ -1,0 +1,19 @@
+Crédits et licences — site La Grande Muraille de Chine (Spa)
+
+Photos d'illustration (bandeau d'accueil) — Licence Pexels (usage gratuit, commercial autorisé, attribution non obligatoire) : https://www.pexels.com/license/
+- images/hero-dimsum.jpg, images/hero-dimsum-m.jpg (+ versions .webp)
+  « Dumplings in a Steamer Basket » — Huzaifa Bukhari
+  https://www.pexels.com/photo/dumplings-in-a-steamer-basket-16845585/
+  Retouche (v5) : le torchon gris sous les paniers en bambou a été retiré
+  (fond noir d’origine conservé). Licence Pexels inchangée.
+- images/canard-laque.webp (assiette détourée en cercle)
+  « Savory Peking Duck Dish on an Earthenware » — Polina Tankilevitch
+  https://www.pexels.com/photo/savory-peking-duck-dish-on-an-earthenware-5848599/
+
+Photos du restaurant (salle, façade, plats) : photos de l'établissement (fiche Google Maps) et de l'ancien site grandemuraillespa.be.
+- images/dim-sum.jpg et images/lampions.jpg proviennent de l'ancien site (origine probable : banque d'images) — à confirmer avec l'exploitant.
+
+Bibliothèques (vendor/) — Licence MIT :
+- Embla Carousel 8.6.0 et embla-carousel-auto-scroll 8.6.0 — © David Jerleke — https://github.com/davidjerleke/embla-carousel (voir vendor/LICENSE-embla-carousel.txt)
+
+Polices : Cormorant Garamond et Inter via Google Fonts — SIL Open Font License 1.1.

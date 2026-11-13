@@ -1,0 +1,162 @@
+/* TastyIgniter public shell sitting under design v5. */
+
+body.gm-site {
+    background: var(--gm-cream);
+    color: var(--gm-text);
+}
+
+body.gm-site .wok-main {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+}
+
+body.gm-site.page-privacy .wok-legal,
+body.gm-site.page-booking .wok-booking-page {
+    width: min(760px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 140px 0 90px;
+}
+
+body.gm-site .wok-cookie-banner {
+    position: fixed;
+    z-index: 40;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px 18px;
+    background: var(--gm-ink);
+    color: #f3ebe0;
+    border-radius: 18px;
+    box-shadow: var(--gm-shadow);
+}
+
+body.gm-site .wok-cookie-banner a { color: var(--gm-gold-soft); }
+body.gm-site .wok-cookie-button {
+    border: 0;
+    border-radius: 999px;
+    background: var(--gm-gold);
+    color: #2a1408;
+    font-weight: 600;
+    padding: .7em 1.2em;
+    cursor: pointer;
+}
+
+/* Real booking widget, dressed as the v5 cream form. */
+.gm-booking.gm-form { display: block; }
+.gm-booking .card {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    color: inherit;
+    margin: 0 0 8px;
+}
+.gm-booking .card-body { padding: 0; }
+.gm-booking .card:first-child {
+    font-size: .92rem;
+    color: var(--gm-muted);
+}
+.gm-booking .card:first-child a { color: var(--gm-red); }
+.gm-booking h1,
+.gm-booking .h3 {
+    font-family: var(--gm-serif);
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: var(--gm-text);
+    margin: 0 0 .6em;
+}
+.gm-booking .btn,
+.gm-booking button[type="submit"] {
+    --sc: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 54px;
+    padding: 1em 1.4em;
+    border: 0;
+    border-radius: 999px;
+    background: var(--gm-red);
+    color: #fff;
+    font: 600 .95rem/1 var(--gm-sans);
+    letter-spacing: .04em;
+    text-transform: none;
+    transform: scale(var(--sc));
+    transition: transform .35s var(--gm-ease), background .25s;
+}
+.gm-booking .btn:hover,
+.gm-booking button[type="submit"]:hover { background: var(--gm-red-deep); --sc: 1.04; }
+.gm-booking .form-control,
+.gm-booking .form-select,
+.gm-booking select,
+.gm-booking input,
+.gm-booking textarea {
+    border-radius: 12px;
+    border-color: var(--gm-line);
+    background: #fff;
+    color: var(--gm-text);
+    box-shadow: none;
+}
+.gm-booking .form-floating > label {
+    display: block;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+    color: var(--gm-muted);
+}
+.gm-booking .flatpickr-input { background: #fff; }
+.gm-booking .progress-indicator-container .btn { width: 100%; }
+.gm-booking .progress-indicator-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+}
+.gm-booking .progress-indicator-container > [class*="col-"] {
+    width: 100%;
+    max-width: 100%;
+    flex: none;
+    padding: 0;
+    margin: 0;
+}
+.gm-booking .flatpickr-calendar.inline,
+.gm-booking .flatpickr-calendar.static {
+    margin: 0 auto;
+    box-shadow: none;
+}
+.gm-booking #ti-datepicker-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 14px;
+    align-items: end;
+}
+.gm-booking #ti-datepicker-options > .form-group:last-child { grid-column: 1 / -1; }
+.gm-booking .form-select,
+.gm-booking select { min-height: 58px; }
+
+/* Interior pages have no dark hero under the bar. */
+body.gm-site:not(.page-home) .gm-nav {
+    --gm-nav-h: 64px;
+    background: rgba(17, 16, 16, .94);
+    box-shadow: 0 10px 30px -20px rgba(0, 0, 0, .8);
+}
+
+.gm-booking .list-group-item,
+.gm-booking .timeslot button,
+.gm-booking [data-control="booking"] .btn-light,
+.gm-booking .btn-outline-primary {
+    border-radius: 12px;
+}
+
+.gm-manage {
+    margin-top: 18px;
+    font-size: .95rem;
+}
+.gm-manage a { color: var(--gm-gold-soft); }

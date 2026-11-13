@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ App::getLocale() }}" class="h-100">
+<html lang="{{ App::getLocale() }}" class="h-100" data-motion="on">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,8 @@
     @php
         $canonicalUrl = url()->current();
         $requestPath = trim(request()->path(), '/');
-        $pageTitle = lang('restoline.content::frontend.home.meta_title');
-        $pageDescription = lang('restoline.content::frontend.home.meta_description');
+        $pageTitle = lang('restoline.content::frontend.meta.title');
+        $pageDescription = lang('restoline.content::frontend.meta.description');
         if (str_contains($requestPath, 'reservation/success')) {
             $pageTitle = lang('restoline.content::frontend.success.meta_title');
             $pageDescription = lang('restoline.content::frontend.success.meta_description');
@@ -41,7 +41,7 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon-precomposed.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
     @php
         $turnstileSiteKey = app(\Restoline\Content\Services\TurnstileService::class)->siteKey();
         $restaurantSchema = [
@@ -53,12 +53,12 @@
             'image' => url('/'),
             'logo' => url('/'),
             'telephone' => '+3287220888',
-            'servesCuisine' => ['Cuisine asiatique', 'Cuisine chinoise', 'Cuisine japonaise', 'Buffet', 'Wok', 'Teppanyaki'],
+            'servesCuisine' => ['Cuisine chinoise', 'Buffet'],
             'priceRange' => '€€',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Avenue Reine Astrid 98',
-                'postalCode' => '4040',
+                'postalCode' => '4900',
                 'addressLocality' => 'Spa',
                 'addressRegion' => 'Liege',
                 'addressCountry' => 'BE',
@@ -83,7 +83,7 @@
     @if($turnstileSiteKey)
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     @endif
-    @if (request()->is('*/reservation'))
+    @if (request()->is('*/reservation') || str_contains((string)($this->page->bodyClass ?? ''), 'page-home'))
         @php
             // Le composant Livewire ajoute ces styles pendant le rendu de la page,
             // apres @themeStyles. Les enregistrer ici garantit que le calendrier
@@ -94,9 +94,15 @@
         @endphp
     @endif
     @themeStyles
+    @if (str_contains((string)($this->page->bodyClass ?? ''), 'page-home'))
+        <link rel="preload" as="image" href="{{ asset('vendor/restoline-wokdasie/images/gm/hero-dimsum-m.webp') }}" type="image/webp" media="(max-width: 760px)" fetchpriority="high">
+        <link rel="preload" as="image" href="{{ asset('vendor/restoline-wokdasie/images/gm/hero-dimsum.webp') }}" type="image/webp" media="(min-width: 761px)" fetchpriority="high">
+    @endif
+    <link rel="stylesheet" href="{{ asset('vendor/restoline-wokdasie/css/gm.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/restoline-wokdasie/css/gm-ti.css') }}">
     @livewireStyles
 </head>
-<body class="wok-site {{ $this->page->bodyClass ?? '' }}">
+<body class="gm-site {{ $this->page->bodyClass ?? '' }}">
     @themePartial('site.header')
 
     <main id="contenu" class="wok-main">
@@ -325,6 +331,12 @@
         })();
 
 
+        window.GM = @json(['t' => \Restoline\Content\Support\PublicCopy::script()]);
+    </script>
+    <script src="{{ asset('vendor/restoline-wokdasie/js/embla-carousel.umd.js') }}" defer></script>
+    <script src="{{ asset('vendor/restoline-wokdasie/js/embla-carousel-auto-scroll.umd.js') }}" defer></script>
+    <script src="{{ asset('vendor/restoline-wokdasie/js/gm.js') }}" defer></script>
+    <script>
         (() => {
             const popup = document.querySelector('[data-home-popup]');
             if (!popup) return;
