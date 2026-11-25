@@ -510,30 +510,61 @@ html[data-motion="on"] .gm-arrow[data-reveal="pop"].is-in{transform:none}
 
 /* 15. Carte à la carte & réservation par téléphone ------------------------- */
 .gm-menus__carte{margin-top:36px}
-.gm-alacarte{padding-top:calc(var(--gm-nav-h) + 36px)}
-.gm-alacarte h1{font-size:clamp(2.4rem,5vw,3.8rem);margin:0 0 .4em}
-.gm-alacarte__promo{max-width:720px;padding:16px 20px;border:1px solid var(--gm-line);border-radius:var(--gm-radius-sm);background:#fff;color:var(--gm-text);font-size:.98rem;white-space:pre-line}
-.gm-alacarte__toc{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 48px;position:sticky;top:var(--gm-nav-h);z-index:5;padding:10px 0;background:linear-gradient(var(--gm-cream) 70%,transparent)}
-.gm-alacarte__toc a{display:inline-flex;align-items:center;padding:.45em .9em;border:1px solid var(--gm-line);border-radius:999px;background:#fff;font:600 .78rem/1.2 var(--gm-sans);letter-spacing:.04em;text-decoration:none;color:var(--gm-text);transition:background .3s,border-color .3s,color .3s,transform .35s var(--gm-ease)}
+.gm-carte-hero{position:relative;display:flex;align-items:flex-end;min-height:min(78vh,720px);padding:calc(var(--gm-nav-h) + 48px) 0 72px;background:var(--gm-ink);color:#f3ebe0;overflow:hidden;isolation:isolate}
+.gm-carte-hero__media{position:absolute;inset:0;z-index:-1}
+.gm-carte-hero__bg{width:100%;height:100%;object-fit:cover;object-position:68% 42%;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 86%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 16%,#000 78%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 86%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 16%,#000 78%,transparent 100%);mask-composite:intersect}
+.gm-carte-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 62% 80% at 18% 58%,rgba(17,16,16,.94),rgba(17,16,16,.42) 58%,transparent 82%);pointer-events:none}
+.gm-carte-hero__grid{position:relative;z-index:1}
+.gm-carte-hero__title{font-size:clamp(3rem,7vw,5.4rem);line-height:.95;margin:0 0 .3em}
+.gm-carte-hero__title em{color:var(--gm-gold-soft)}
+.gm-carte-hero__lead{max-width:34em;color:#d9cfc3;font-size:1.05rem}
+.gm-carte-hero__promo{max-width:38em;margin:18px 0 0;padding:14px 16px;border:1px solid rgba(230,210,160,.35);border-radius:var(--gm-radius-sm);background:rgba(17,16,16,.45);color:#f3ebe0;white-space:pre-line;backdrop-filter:blur(6px)}
+.gm-carte-hero__plate{position:absolute;width:min(260px,28vw);right:7%;bottom:12%;margin:0;filter:drop-shadow(0 28px 36px rgba(0,0,0,.65))}
+.gm-carte-hero__plate img{width:100%;border-radius:50%}
+html[data-motion="on"] .gm-carte-hero__plate img{animation:gm-spin 90s linear infinite}
+.gm-strip--carte{padding-top:48px}
+.gm-alacarte{padding-top:36px;padding-bottom:80px}
+.gm-alacarte__toc{position:sticky;top:var(--gm-nav-h);z-index:24;display:flex;flex-wrap:nowrap;gap:8px;margin:0 -8px 28px;padding:12px min(280px,34vw) 16px 8px;overflow-x:auto;scrollbar-width:none;background:linear-gradient(var(--gm-cream) 72%,transparent);-webkit-overflow-scrolling:touch}
+.gm-alacarte__toc::-webkit-scrollbar{display:none}
+.gm-alacarte__toc a{flex:0 0 auto;display:inline-flex;align-items:center;padding:.5em 1em;border:1px solid var(--gm-line);border-radius:999px;background:#fff;font:600 .76rem/1.2 var(--gm-sans);letter-spacing:.03em;text-decoration:none;color:var(--gm-text);transition:background .3s,border-color .3s,color .3s,transform .35s var(--gm-ease)}
 .gm-alacarte__toc a:hover{border-color:var(--gm-gold);color:var(--gm-red);transform:translateY(-1px)}
-.gm-alacarte__section{margin-bottom:48px;scroll-margin-top:calc(var(--gm-nav-h) + 64px)}
-.gm-alacarte__section h2{font-size:clamp(1.8rem,3vw,2.4rem);color:var(--gm-red);margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--gm-line)}
+.gm-alacarte__toc a.is-current{background:var(--gm-ink);border-color:var(--gm-ink);color:var(--gm-gold-soft)}
+.gm-carte-block{scroll-margin-top:calc(var(--gm-nav-h) + 78px);display:grid;gap:22px;margin-bottom:22px;padding:26px 26px 8px;background:#fffdf8;border:1px solid var(--gm-line);border-radius:var(--gm-radius);box-shadow:var(--gm-shadow)}
+.gm-carte-block--photo{grid-template-columns:168px minmax(0,1fr);align-items:start}
+.gm-carte-block__photo{margin:0;aspect-ratio:4/5}
+.gm-carte-block h2{font-size:clamp(1.8rem,3vw,2.5rem);color:var(--gm-red);margin:0 0 8px}
+.gm-carte-block--empty{padding-bottom:22px}
+.gm-carte-block--empty h2{margin:0}
 .gm-alacarte__list{list-style:none;margin:0;padding:0}
-.gm-alacarte__list li{display:grid;grid-template-columns:3.2rem minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px dotted #cdb88f}
-.gm-alacarte__num{font:600 .85rem/1.2 var(--gm-sans);color:var(--gm-gold);letter-spacing:.04em}
-.gm-alacarte__name{font:500 1.15rem/1.35 var(--gm-serif)}
-.gm-alacarte__price{font:600 1.15rem/1 var(--gm-serif);color:var(--gm-red);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
-.gm-alacarte__cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:12px;padding-top:8px}
+.gm-alacarte__list li{display:grid;grid-template-columns:3rem minmax(0,1fr) auto;gap:10px 12px;align-items:baseline;padding:11px 0;border-bottom:1px dotted #cdb88f}
+.gm-alacarte__num{font:600 .78rem/1.2 var(--gm-sans);color:var(--gm-gold);letter-spacing:.04em}
+.gm-alacarte__name{font:500 1.12rem/1.35 var(--gm-serif)}
+.gm-alacarte__price{font:600 1.12rem/1 var(--gm-serif);color:var(--gm-red);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.gm-alacarte__cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:18px;padding:28px 8px 8px}
 .gm-booking--phone{display:flex;flex-direction:column;justify-content:center;gap:18px;min-height:200px}
 .gm-booking__phone-lead{margin:0;color:#efe5d8}
 .gm-btn--phone{text-align:center;white-space:normal;max-width:100%}
 .gm-nav__end .gm-btn--sm{white-space:nowrap}
-@media (max-width: 980px){
-  .gm-alacarte__toc{position:static;background:none;padding:0 0 28px}
+@media (min-width:900px){
+  .gm-alacarte__list{column-count:2;column-gap:36px}
+  .gm-alacarte__list li{break-inside:avoid}
+}
+@media (max-width:980px){
   .gm-nav__end .gm-btn--sm{white-space:normal;text-align:center;line-height:1.2;max-width:11.5rem}
 }
-@media (max-width: 640px){
-  .gm-alacarte__list li{grid-template-columns:2.4rem minmax(0,1fr);gap:6px 10px}
-  .gm-alacarte__price{grid-column:2;justify-self:start;margin-top:-4px}
-  .gm-alacarte__name{font-size:1.08rem}
+@media (max-width:760px){
+  .gm-carte-hero{min-height:0;align-items:stretch;padding:calc(var(--gm-nav-h) + 28px) 0 36px}
+  .gm-carte-hero__media{position:relative;inset:auto;order:2;height:240px;margin-top:18px}
+  .gm-carte-hero__bg{-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent)}
+  .gm-carte-hero::after{display:none}
+  .gm-carte-hero__plate{width:118px;right:12px;bottom:10px}
+  .gm-carte-block,.gm-carte-block--photo{grid-template-columns:1fr;padding:18px 16px 6px}
+  .gm-carte-block__photo{aspect-ratio:16/9;max-height:180px}
+  .gm-alacarte__toc{padding-right:8px}
+  .gm-alacarte__list{column-count:1}
+  .gm-alacarte__list li{grid-template-columns:2.2rem minmax(0,1fr);gap:4px 10px}
+  .gm-alacarte__price{grid-column:2;justify-self:start}
+  .gm-alacarte__name{font-size:1.05rem}
 }

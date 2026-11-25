@@ -10,7 +10,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let motionPaused = false;
 try { motionPaused = localStorage.getItem('muraille-motion') === 'off'; } catch (error) {}
 const motionOn = () => root.dataset.motion === 'on';
-let strip = null;
+const strips = [];
 
 function syncMotion() {
     const off = motionPaused || reducedMotion.matches;
@@ -25,10 +25,11 @@ function syncMotion() {
                 ? t('motion.play', 'Activer les animations')
                 : t('motion.pause', 'Mettre les animations en pause');
     }
-    const auto = strip && strip.plugins().autoScroll;
-    if (auto) {
+    strips.forEach((instance) => {
+        const auto = instance.plugins().autoScroll;
+        if (!auto) return;
         off ? auto.stop() : auto.play();
-    }
+    });
     if (off) {
         document.querySelectorAll('[data-speed],[data-scrollscale]').forEach((el) => {
             el.style.transform = '';
@@ -107,9 +108,8 @@ scalers.forEach((el) => {
     el.addEventListener('mouseleave', requestTick);
 });
 
-function initStrip() {
-    const viewport = document.querySelector('#strip');
-    if (!viewport || typeof EmblaCarousel !== 'function') return;
+function initStrip(viewport, prev, next) {
+    if (!viewport || typeof EmblaCarousel !== 'function' || viewport.dataset.stripReady === 'true') return;
     const plugins = typeof EmblaCarouselAutoScroll === 'function'
         ? [EmblaCarouselAutoScroll({
             speed: 0.7,
@@ -119,20 +119,22 @@ function initStrip() {
             playOnInit: motionOn(),
         })]
         : [];
-    strip = EmblaCarousel(viewport, { loop: true, dragFree: true, align: 'start', containScroll: false }, plugins);
+    const instance = EmblaCarousel(viewport, { loop: true, dragFree: true, align: 'start', containScroll: false }, plugins);
+    strips.push(instance);
+    viewport.dataset.stripReady = 'true';
     viewport.classList.add('embla-on');
-    strip.on('pointerDown', () => viewport.classList.add('is-dragging'));
-    strip.on('pointerUp', () => viewport.classList.remove('is-dragging'));
-    const auto = strip.plugins().autoScroll;
+    instance.on('pointerDown', () => viewport.classList.add('is-dragging'));
+    instance.on('pointerUp', () => viewport.classList.remove('is-dragging'));
+    const auto = instance.plugins().autoScroll;
     const step = (dir) => {
         if (auto) auto.stop();
-        dir < 0 ? strip.scrollPrev() : strip.scrollNext();
+        dir < 0 ? instance.scrollPrev() : instance.scrollNext();
         if (auto && motionOn()) {
             setTimeout(() => { if (!viewport.matches(':hover')) auto.play(); }, 2500);
         }
     };
-    document.querySelector('#gal-prev')?.addEventListener('click', () => step(-1));
-    document.querySelector('#gal-next')?.addEventListener('click', () => step(1));
+    prev?.addEventListener('click', () => step(-1));
+    next?.addEventListener('click', () => step(1));
     viewport.addEventListener('focusin', () => { if (auto) auto.stop(); });
     viewport.addEventListener('focusout', () => { if (auto && motionOn()) auto.play(); });
     viewport.addEventListener('keydown', (event) => {
@@ -140,6 +142,52 @@ function initStrip() {
         if (event.key === 'ArrowRight') step(1);
     });
     viewport.tabIndex = 0;
+}
+
+function initStrips() {
+    const home = document.querySelector('#strip');
+    if (home) initStrip(home, document.querySelector('#gal-prev'), document.querySelector('#gal-next'));
+    document.querySelectorAll('[data-gm-strip]').forEach((viewport) => {
+        initStrip(
+            viewport,
+            document.querySelector(viewport.dataset.prev || ''),
+            document.querySelector(viewport.dataset.next || ''),
+        );
+    });
+}
+
+function initCarteChips() {
+    const nav = document.querySelector('.gm-alacarte__toc');
+    if (!nav) return;
+    const links = [...nav.querySelectorAll('a[href^="#"]')];
+    const sections = links
+        .map((link) => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+    const pin = (link) => {
+        const left = link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2;
+        nav.scrollTo({ left: Math.max(0, left), behavior: motionOn() ? 'smooth' : 'auto' });
+    };
+    const setCurrent = (id) => {
+        links.forEach((link) => {
+            const on = link.getAttribute('href') === `#${id}`;
+            link.classList.toggle('is-current', on);
+            if (on) {
+                link.setAttribute('aria-current', 'true');
+                pin(link);
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    };
+    if (!sections.length || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((entries) => {
+        const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setCurrent(visible.target.id);
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: [0.15, 0.4] });
+    sections.forEach((section) => io.observe(section));
+    setCurrent(sections[0].id);
 }
 
 const toggle = document.querySelector('#nav-toggle');
@@ -172,5 +220,6 @@ document.querySelectorAll('.gm-langs a').forEach((link) => {
 });
 
 syncMotion();
-initStrip();
+initStrips();
+initCarteChips();
 requestTick();
