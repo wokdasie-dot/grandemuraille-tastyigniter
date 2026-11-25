@@ -122,10 +122,13 @@ class GrandeMurailleSeeder extends Seeder
     private function seedOpeningHours(Location $location): void
     {
         $flexible = [];
+        // Service is 12:00–14:00 and 18:00–22:00. TastyIgniter builds slots with
+        // an end-exclusive DatePeriod, so the stored close is one interval later
+        // and last_arrival (14:00 / 22:00) drops anything after that.
         for ($day = 0; $day <= 6; $day++) {
             $flexible[$day] = [
                 'day' => $day,
-                'hours' => '12:00-14:00,18:00-22:00',
+                'hours' => '12:00-14:30,18:00-22:30',
                 'status' => $day === 1 ? 0 : 1,
             ];
         }

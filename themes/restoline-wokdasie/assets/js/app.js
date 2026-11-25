@@ -30,24 +30,33 @@ window.initWokDasieTheme = () => {
     lightbox.setAttribute('role', 'dialog');
     lightbox.setAttribute('aria-modal', 'true');
     lightbox.setAttribute('aria-label', 'Image agrandie');
-    lightbox.innerHTML = '<button type="button" aria-label="Fermer">x</button><img alt="">';
-    document.body.appendChild(lightbox);
+    lightbox.innerHTML = '<button type="button" aria-label="Fermer">x</button>';
 
-    const image = lightbox.querySelector('img');
     const closeButton = lightbox.querySelector('button');
     let lastFocus = null;
+    let image = null;
 
     const open = (src, alt, trigger) => {
+      if (!src) return;
       lastFocus = trigger;
+      if (!image) {
+        image = document.createElement('img');
+        lightbox.appendChild(image);
+      }
       image.src = src;
       image.alt = alt || 'Image agrandie';
+      if (!lightbox.isConnected) document.body.appendChild(lightbox);
       lightbox.classList.add('is-open');
       closeButton.focus();
     };
 
     const close = () => {
       lightbox.classList.remove('is-open');
-      image.removeAttribute('src');
+      if (image) {
+        image.remove();
+        image = null;
+      }
+      if (lightbox.isConnected) lightbox.remove();
       lastFocus?.focus?.();
     };
 

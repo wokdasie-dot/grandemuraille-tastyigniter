@@ -18,23 +18,45 @@ body.gm-site.page-booking .wok-booking-page {
     padding: 140px 0 90px;
 }
 
-body.gm-site .wok-cookie-banner {
+body.gm-site #euCookieBanner {
     position: fixed;
-    z-index: 40;
-    left: auto;
+    z-index: 25;
+    top: calc(var(--gm-nav-h, 76px) + 12px);
     right: 16px;
-    bottom: 16px;
+    bottom: auto;
+    left: auto;
+    width: min(240px, calc(100vw - 32px));
+    max-width: 240px;
+    margin: 0;
+}
+body.gm-site #euCookieBanner .wok-cookie-banner {
+    position: static;
+    inset: auto;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
-    width: min(320px, calc(100% - 32px));
+    gap: 8px;
+    width: auto;
+    max-width: none;
     margin: 0;
-    padding: 14px 16px;
+    padding: 10px 12px;
     background: var(--gm-ink);
     color: #f3ebe0;
-    border-radius: 18px;
+    border-radius: 14px;
     box-shadow: var(--gm-shadow);
+    font-size: .82rem;
+    line-height: 1.35;
+}
+@media (max-width: 760px) {
+    body.gm-site #euCookieBanner {
+        top: 168px;
+        right: 8px;
+        width: min(190px, calc(100vw - 16px));
+    }
+    body.gm-site #euCookieBanner .wok-cookie-banner {
+        padding: 8px 10px;
+        font-size: .75rem;
+    }
 }
 
 body.gm-site .wok-cookie-banner a { color: var(--gm-gold-soft); }

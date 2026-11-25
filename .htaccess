@@ -4,6 +4,15 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # First visit over plain HTTP. OVH may terminate TLS and report HTTPS as
+    # off while X-Forwarded-Proto or ENV:HTTPS is already https. Redirect only
+    # when every one of those says the request is not secure, so the rule
+    # cannot loop.
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+    RewriteCond %{ENV:HTTPS} !on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
     # A browser request for /public/... is a second copy of the site.
     # REDIRECT_STATUS is set after the internal rewrite below, so this does not loop.
     RewriteCond %{ENV:REDIRECT_STATUS} ^$
@@ -27,7 +36,7 @@
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self'; frame-src 'self' https://challenges.cloudflare.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://www.gravatar.com https://secure.gravatar.com; connect-src 'self'; frame-src 'self' https://challenges.cloudflare.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
 </IfModule>
 
 Options -Indexes
