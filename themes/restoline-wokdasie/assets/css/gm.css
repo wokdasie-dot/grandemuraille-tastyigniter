@@ -507,3 +507,33 @@ html[data-motion="on"] .gm-arrow[data-reveal="pop"].is-in{transform:none}
   .gm-hero__facts{flex-wrap:nowrap;gap:14px 28px}
 }
 .gm-duck__tag{z-index:2}
+
+/* 15. Carte à la carte & réservation par téléphone ------------------------- */
+.gm-menus__carte{margin-top:36px}
+.gm-alacarte{padding-top:calc(var(--gm-nav-h) + 36px)}
+.gm-alacarte h1{font-size:clamp(2.4rem,5vw,3.8rem);margin:0 0 .4em}
+.gm-alacarte__promo{max-width:720px;padding:16px 20px;border:1px solid var(--gm-line);border-radius:var(--gm-radius-sm);background:#fff;color:var(--gm-text);font-size:.98rem}
+.gm-alacarte__toc{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 48px;position:sticky;top:var(--gm-nav-h);z-index:5;padding:10px 0;background:linear-gradient(var(--gm-cream) 70%,transparent)}
+.gm-alacarte__toc a{display:inline-flex;align-items:center;padding:.45em .9em;border:1px solid var(--gm-line);border-radius:999px;background:#fff;font:600 .78rem/1.2 var(--gm-sans);letter-spacing:.04em;text-decoration:none;color:var(--gm-text);transition:background .3s,border-color .3s,color .3s,transform .35s var(--gm-ease)}
+.gm-alacarte__toc a:hover{border-color:var(--gm-gold);color:var(--gm-red);transform:translateY(-1px)}
+.gm-alacarte__section{margin-bottom:48px;scroll-margin-top:calc(var(--gm-nav-h) + 64px)}
+.gm-alacarte__section h2{font-size:clamp(1.8rem,3vw,2.4rem);color:var(--gm-red);margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--gm-line)}
+.gm-alacarte__list{list-style:none;margin:0;padding:0}
+.gm-alacarte__list li{display:grid;grid-template-columns:3.2rem minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px dotted #cdb88f}
+.gm-alacarte__num{font:600 .85rem/1.2 var(--gm-sans);color:var(--gm-gold);letter-spacing:.04em}
+.gm-alacarte__name{font:500 1.15rem/1.35 var(--gm-serif)}
+.gm-alacarte__price{font:600 1.15rem/1 var(--gm-serif);color:var(--gm-red);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.gm-alacarte__cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:12px;padding-top:8px}
+.gm-booking--phone{display:flex;flex-direction:column;justify-content:center;gap:18px;min-height:200px}
+.gm-booking__phone-lead{margin:0;color:#efe5d8}
+.gm-btn--phone{text-align:center;white-space:normal;max-width:100%}
+.gm-nav__end .gm-btn--sm{white-space:nowrap}
+@media (max-width: 980px){
+  .gm-alacarte__toc{position:static;background:none;padding:0 0 28px}
+  .gm-nav__end .gm-btn--sm{white-space:normal;text-align:center;line-height:1.2;max-width:11.5rem}
+}
+@media (max-width: 640px){
+  .gm-alacarte__list li{grid-template-columns:2.4rem minmax(0,1fr);gap:6px 10px}
+  .gm-alacarte__price{grid-column:2;justify-self:start;margin-top:-4px}
+  .gm-alacarte__name{font-size:1.08rem}
+}

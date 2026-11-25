@@ -283,48 +283,29 @@ class Extension extends BaseExtension
         });
 
         Route::middleware('web')->group(function(): void {
-            Route::redirect('wok', config('restoline.restaurant.reservation_path'), 302);
+            $redirectToPhone = static fn () => redirect()->to(url('/').'#reservation', 301);
+
+            Route::get('wok', $redirectToPhone);
 
             Route::get('locale/{locale}', [
                 \Restoline\Content\Http\Controllers\PublicLocaleController::class,
                 'update',
             ])->where('locale', 'fr|en|nl')->name('restoline.locale');
 
-            Route::get(config('restoline.restaurant.manage_reservation_path'), [
-                \Restoline\Content\Http\Controllers\ManageReservationController::class,
-                'index',
-            ])->name('restoline.manage.index');
+            // Online booking is paused: public booking and "manage my booking"
+            // URLs go to the telephone reservation section. POST handlers are
+            // not registered, so nothing is created, changed or emailed.
+            Route::get(config('restoline.restaurant.reservation_path').'/{any?}', $redirectToPhone)
+                ->where('any', '.*')
+                ->name('restoline.booking.redirect');
 
-            Route::get(config('restoline.restaurant.manage_reservation_path').'/acces/{hash}', [
-                \Restoline\Content\Http\Controllers\ManageReservationController::class,
-                'directAccess',
-            ])->middleware('signed')->name('restoline.manage.direct');
+            Route::get(config('restoline.restaurant.manage_reservation_path').'/{any?}', $redirectToPhone)
+                ->where('any', '.*')
+                ->name('restoline.manage.index');
 
-            Route::get('r/{token}', [
-                \Restoline\Content\Http\Controllers\ManageReservationController::class,
-                'reminderAccess',
-            ])->where('token', '[A-Za-z0-9]{12}')->name('restoline.manage.reminder');
-
-            Route::post(config('restoline.restaurant.manage_reservation_path').'/code', [
-                \Restoline\Content\Http\Controllers\ManageReservationController::class,
-                'sendCode',
-            ])->name('restoline.manage.send-code');
-
-            Route::post(config('restoline.restaurant.manage_reservation_path').'/verifier', [
-                \Restoline\Content\Http\Controllers\ManageReservationController::class,
-                'verify',
-            ])->name('restoline.manage.verify');
-
-            Route::post(config('restoline.restaurant.manage_reservation_path').'/modifier', [
-                \Restoline\Content\Http\Controllers\ManageReservationController::class,
-                'update',
-            ])->name('restoline.manage.update');
-
-            Route::post(config('restoline.restaurant.manage_reservation_path').'/annuler', [
-                \Restoline\Content\Http\Controllers\ManageReservationController::class,
-                'cancel',
-            ])->name('restoline.manage.cancel');
-
+            Route::get('r/{token}', $redirectToPhone)
+                ->where('token', '[A-Za-z0-9]{12}')
+                ->name('restoline.manage.reminder');
         });
 
     }

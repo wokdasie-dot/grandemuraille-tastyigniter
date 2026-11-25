@@ -10,6 +10,7 @@
         </div>
         <nav class="gm-footer__nav" aria-label="{{ $gm::line('nav.main') }}">
             <a href="{{ $home }}#carte">{{ $gm::line('nav.menus') }}</a>
+            <a href="{{ url('/carte') }}">{{ $gm::line('nav.carte') }}</a>
             <a href="{{ $home }}#buffet">{{ $gm::line('nav.buffet') }}</a>
             <a href="{{ $home }}#infos">{{ $gm::line('footer.access') }}</a>
             <div class="gm-langs gm-langs--footer" role="navigation" aria-label="{{ $gm::line('lang.label') }}">
@@ -21,7 +22,7 @@
                     @endif
                 @endforeach
             </div>
-            <a class="gm-btn gm-btn--gold gm-btn--sm" href="{{ $home }}#reservation" data-scrollscale data-reveal="pop">{{ $gm::line('nav.reserver') }}</a>
+            <a class="gm-btn gm-btn--gold gm-btn--sm" href="tel:+3287220888" data-scrollscale data-reveal="pop">{{ $gm::line('nav.reserver') }}</a>
         </nav>
     </div>
     <div class="gm-wrap gm-footer__grid">

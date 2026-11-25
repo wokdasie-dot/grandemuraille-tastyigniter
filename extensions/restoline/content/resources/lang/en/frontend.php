@@ -6,7 +6,7 @@ return array (
   'meta' => 
   array (
     'title' => 'La Grande Muraille de Chine · Chinese restaurant in Spa',
-    'description' => 'Chinese restaurant in Spa: house menus, chef’s specialties and a weekend all-you-can-eat buffet. Book a table online.',
+    'description' => 'Chinese restaurant in Spa: à la carte menu, house menus, chef’s specialties and a weekend all-you-can-eat buffet. Book by phone: 087 22 08 88.',
   ),
   'skip' => 'Skip to reservation',
   'brand' => 
@@ -167,8 +167,8 @@ return array (
     array (
       'kicker' => 'Opening hours',
       'title' => 'Open 6 days a week',
-      'p1' => 'Lunch 12:00 – 14:30
-Dinner 18:00 – 22:30',
+      'p1' => 'Lunch 12:00 – 14:00
+Dinner 18:00 – 22:00',
       'p2' => 'Closed on Tuesdays, except public holidays.',
     ),
     'contact' => 

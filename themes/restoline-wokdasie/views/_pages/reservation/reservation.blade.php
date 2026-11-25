@@ -1,10 +1,9 @@
 ---
-title: "Réserver une table | La Grande Muraille de Chine"
-description: "Réservez votre table à La Grande Muraille de Chine, à Spa."
+title: "Réservation | La Grande Muraille de Chine"
 layout: default
 permalink: ':location/reservation'
-bodyClass: page-booking
-
-'[igniter-orange::booking]': []
+bodyClass: page-booking-redirect
 ---
-@themePartial('site.reservation')
+@php
+    abort(redirect()->to(url('/').'#reservation', 301));
+@endphp

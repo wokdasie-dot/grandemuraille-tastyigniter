@@ -125,7 +125,7 @@ class GrandeMurailleSeeder extends Seeder
         for ($day = 0; $day <= 6; $day++) {
             $flexible[$day] = [
                 'day' => $day,
-                'hours' => '12:00-14:30,18:00-22:30',
+                'hours' => '12:00-14:00,18:00-22:00',
                 'status' => $day === 1 ? 0 : 1,
             ];
         }

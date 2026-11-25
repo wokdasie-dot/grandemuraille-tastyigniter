@@ -18,6 +18,9 @@
         } elseif (str_contains($requestPath, 'confidentialite')) {
             $pageTitle = lang('restoline.content::frontend.privacy.meta_title');
             $pageDescription = lang('restoline.content::frontend.privacy.meta_description');
+        } elseif ($requestPath === 'carte' || str_ends_with($requestPath, '/carte')) {
+            $pageTitle = \Restoline\Content\Support\PublicCopy::line('carte.meta.title') ?: 'Carte | La Grande Muraille de Chine';
+            $pageDescription = \Restoline\Content\Support\PublicCopy::line('carte.meta.description');
         }
         $shareImage = null;
     @endphp
@@ -68,13 +71,13 @@
                     '@type' => 'OpeningHoursSpecification',
                     'dayOfWeek' => ['Monday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                     'opens' => '12:00',
-                    'closes' => '14:30',
+                    'closes' => '14:00',
                 ],
                 [
                     '@type' => 'OpeningHoursSpecification',
                     'dayOfWeek' => ['Monday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                     'opens' => '18:00',
-                    'closes' => '22:30',
+                    'closes' => '22:00',
                 ],
             ],
         ];
@@ -83,7 +86,7 @@
     @if($turnstileSiteKey)
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     @endif
-    @if (request()->is('*/reservation') || str_contains((string)($this->page->bodyClass ?? ''), 'page-home'))
+    @if (request()->is('*/reservation'))
         @php
             // Le composant Livewire ajoute ces styles pendant le rendu de la page,
             // apres @themeStyles. Les enregistrer ici garantit que le calendrier

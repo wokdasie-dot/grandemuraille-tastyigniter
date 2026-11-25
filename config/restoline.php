@@ -22,7 +22,7 @@ return [
         'max_guests' => 20,
         'min_guests' => 1,
         'interval_minutes' => 30,
-        // Last bookable arrival in each service. Closing time stays 14:30 / 22:30.
+        // Last bookable arrival in each service (opening hours: lunch 12:00–14:00, dinner 18:00–22:00).
         // Change these two values together when the restaurant confirms a new cutoff.
         'last_arrival' => [
             'lunch' => '14:00',

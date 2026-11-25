@@ -13,6 +13,7 @@
         <a href="{{ $home }}#galerie">{{ $gm::line('nav.galerie') }}</a>
         <a href="{{ $home }}#buffet">{{ $gm::line('nav.buffet') }}</a>
         <a href="{{ $home }}#carte">{{ $gm::line('nav.menus') }}</a>
+        <a href="{{ url('/carte') }}">{{ $gm::line('nav.carte') }}</a>
         <a href="{{ $home }}#infos">{{ $gm::line('nav.infos') }}</a>
     </nav>
     <div class="gm-nav__end">
@@ -25,7 +26,7 @@
                 @endif
             @endforeach
         </nav>
-        <a class="gm-btn gm-btn--gold gm-btn--sm" href="{{ $home }}#reservation" data-scrollscale data-reveal="pop">{{ $gm::line('nav.reserver') }}</a>
+        <a class="gm-btn gm-btn--gold gm-btn--sm" href="tel:+3287220888" data-scrollscale data-reveal="pop">{{ $gm::line('nav.reserver') }}</a>
         <button type="button" class="gm-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="{{ $gm::line('menu.open') }}">
             <span></span><span></span><span></span>
         </button>
@@ -37,8 +38,9 @@
         <a href="{{ $home }}#galerie">{{ $gm::line('nav.galerie') }}</a>
         <a href="{{ $home }}#buffet">{{ $gm::line('nav.buffet') }}</a>
         <a href="{{ $home }}#carte">{{ $gm::line('nav.menus') }}</a>
+        <a href="{{ url('/carte') }}">{{ $gm::line('nav.carte') }}</a>
         <a href="{{ $home }}#infos">{{ $gm::line('nav.infos') }}</a>
-        <a class="gm-btn gm-btn--gold" href="{{ $home }}#reservation">{{ $gm::line('nav.reserver') }}</a>
+        <a class="gm-btn gm-btn--gold" href="tel:+3287220888">{{ $gm::line('nav.reserver') }}</a>
     </nav>
     <nav class="gm-langs gm-langs--drawer" aria-label="{{ $gm::line('lang.label') }}">
         @foreach (['fr' => 'FR', 'en' => 'EN', 'nl' => 'NL'] as $code => $label)

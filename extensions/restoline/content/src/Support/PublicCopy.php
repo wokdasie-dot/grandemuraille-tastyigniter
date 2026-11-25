@@ -92,4 +92,84 @@ final class PublicCopy
 
         return $cache[$locale] = is_array($pack) ? $pack : [];
     }
+
+    /**
+     * À la carte copied from the official www carte (FR names and prices
+     * unchanged). Titles and dish names follow the session locale.
+     *
+     * @return list<array{id:string,title:string,items:list<array{num:string,name:string,price:string,price_label:string}>}>
+     */
+    public static function carte(): array
+    {
+        $locale = app()->getLocale();
+        if (!in_array($locale, ['fr', 'en', 'nl'], true)) {
+            $locale = 'fr';
+        }
+
+        $categories = [];
+        foreach (self::cartePack()['categories'] ?? [] as $category) {
+            if (!is_array($category)) {
+                continue;
+            }
+            $id = (string)($category['id'] ?? '');
+            $title = $category['title'][$locale] ?? $category['title']['fr'] ?? '';
+            $items = [];
+            foreach ($category['items'] ?? [] as $item) {
+                if (!is_array($item)) {
+                    continue;
+                }
+                $price = (string)($item['price'] ?? '');
+                $items[] = [
+                    'num' => (string)($item['num'] ?? ''),
+                    'name' => (string)($item['name'][$locale] ?? $item['name']['fr'] ?? ''),
+                    'price' => $price,
+                    'price_label' => self::price($price),
+                ];
+            }
+            $categories[] = [
+                'id' => $id,
+                'title' => (string)$title,
+                'items' => $items,
+            ];
+        }
+
+        return $categories;
+    }
+
+    public static function cartePromo(): string
+    {
+        $locale = app()->getLocale();
+        $promo = self::cartePack()['promo'] ?? [];
+        if (!is_array($promo)) {
+            return '';
+        }
+
+        return (string)($promo[$locale] ?? $promo['fr'] ?? '');
+    }
+
+    public static function price(string $amount): string
+    {
+        if ($amount === '') {
+            return '';
+        }
+
+        return str_replace('.', ',', $amount).' €';
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function cartePack(): array
+    {
+        static $pack = null;
+        if (is_array($pack)) {
+            return $pack;
+        }
+
+        $path = base_path('data/alacarte.json');
+        $all = is_file($path) ? json_decode((string)file_get_contents($path), true) : [];
+
+        return $pack = is_array($all) ? $all : [];
+    }
+
 }

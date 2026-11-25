@@ -30,7 +30,7 @@ try {
         'start_date' => '2026-06-15',
         'end_date' => '2026-06-15',
         'opening_start' => '12:00',
-        'opening_end' => '14:30',
+        'opening_end' => '14:00',
         'evening_start' => '18:00',
         'evening_end' => '22:00',
         'status' => true,

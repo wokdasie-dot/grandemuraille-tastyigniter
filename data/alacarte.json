@@ -1,0 +1,1089 @@
+{
+  "source": "https://www.grandemuraillespa.be/carte.php",
+  "scraped_at": "2026-11-25",
+  "note": "French names and prices are copied exactly from the official carte, including typographical quirks. The empty « Plats Europeen » section on the source page is omitted. Translations are provided for EN/NL; Chinese dish names (Jiao zi, Ha Kao, Shao mai, Fen guo, Ti-Pan, Babiangam, wan-tan) are kept.",
+  "promo": {
+    "fr": "Si votre commande est supérieure à : 30 € une bière chinoise offerte · 45 € une boîte de fruits lychee offerte · 60 € une bouteille de vin lychee offerte.",
+    "en": "If your order is over: €30 a complimentary Chinese beer · €45 a complimentary box of lychee fruit · €60 a complimentary bottle of lychee wine.",
+    "nl": "Bij een bestelling van meer dan: 30 € een Chinees bier cadeau · 45 € een doos lycheevruchten cadeau · 60 € een fles lycheewijn cadeau."
+  },
+  "categories": [
+    {
+      "id": "potages",
+      "title": {
+        "fr": "Potages",
+        "en": "Soups",
+        "nl": "Soepen"
+      },
+      "items": [
+        {
+          "num": "01",
+          "price": "4.80",
+          "name": {
+            "fr": "Potage aux bambous et poulet",
+            "en": "Bamboo and chicken soup",
+            "nl": "Bamboe- en kipsoep"
+          }
+        },
+        {
+          "num": "02",
+          "price": "6.00",
+          "name": {
+            "fr": "Soupe wan-tan (raviolis)",
+            "en": "Wan-tan soup (dumplings)",
+            "nl": "Wan-tan soep (ravioli)"
+          }
+        },
+        {
+          "num": "03",
+          "price": "5.10",
+          "name": {
+            "fr": "Crème de nids d’hirondelles",
+            "en": "Cream of bird’s nest soup",
+            "nl": "Roomsoep van zwaluwnestjes"
+          }
+        },
+        {
+          "num": "04",
+          "price": "4.80",
+          "name": {
+            "fr": "Potage tomate",
+            "en": "Tomato soup",
+            "nl": "Tomatensoep"
+          }
+        },
+        {
+          "num": "05",
+          "price": "5.70",
+          "name": {
+            "fr": "Potage piquant",
+            "en": "Spicy soup",
+            "nl": "Pittige soep"
+          }
+        },
+        {
+          "num": "07",
+          "price": "6.70",
+          "name": {
+            "fr": "Potage aux asperges et crabe",
+            "en": "Asparagus and crab soup",
+            "nl": "Asperge- en krabsoep"
+          }
+        },
+        {
+          "num": "08",
+          "price": "8.10",
+          "name": {
+            "fr": "Bisque de homard",
+            "en": "Lobster bisque",
+            "nl": "Kreeftenbisque"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entree-froide",
+      "title": {
+        "fr": "Entrée froide",
+        "en": "Cold starters",
+        "nl": "Koude voorgerechten"
+      },
+      "items": [
+        {
+          "num": "09",
+          "price": "8.50",
+          "name": {
+            "fr": "Salade de soja au pouet",
+            "en": "Soy salad with chicken",
+            "nl": "Sojasalade met kip"
+          }
+        },
+        {
+          "num": "10",
+          "price": "9.70",
+          "name": {
+            "fr": "Salade de soja au crabe (surimi)",
+            "en": "Soy salad with crab (surimi)",
+            "nl": "Sojasalade met krab (surimi)"
+          }
+        },
+        {
+          "num": "11",
+          "price": "10.50",
+          "name": {
+            "fr": "Salade de soja aux langoustines",
+            "en": "Soy salad with langoustines",
+            "nl": "Sojasalade met langoustines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entree-chaude",
+      "title": {
+        "fr": "Entrée chaude",
+        "en": "Hot starters",
+        "nl": "Warme voorgerechten"
+      },
+      "items": [
+        {
+          "num": "12",
+          "price": "14.00",
+          "name": {
+            "fr": "Brochettes de scampis au lard fume",
+            "en": "Scampi skewers with smoked bacon",
+            "nl": "Scampispiezen met gerookt spek"
+          }
+        },
+        {
+          "num": "13",
+          "price": "7.20",
+          "name": {
+            "fr": "Brochettes de porc (sate)",
+            "en": "Pork skewers (satay)",
+            "nl": "Varkensspiesjes (sate)"
+          }
+        },
+        {
+          "num": "14",
+          "price": "7.90",
+          "name": {
+            "fr": "Rouleaux de printemps (nems)",
+            "en": "Spring rolls (nems)",
+            "nl": "Loempia’s (nems)"
+          }
+        },
+        {
+          "num": "15",
+          "price": "10.90",
+          "name": {
+            "fr": "Pinces de crabe",
+            "en": "Crab claws",
+            "nl": "Krabscharen"
+          }
+        },
+        {
+          "num": "16",
+          "price": "6.90",
+          "name": {
+            "fr": "Mini-croquettes (végétarien)",
+            "en": "Mini croquettes (vegetarian)",
+            "nl": "Mini-kroketten (vegetarisch)"
+          }
+        },
+        {
+          "num": "17",
+          "price": "10.90",
+          "name": {
+            "fr": "Boulettes de Scampis",
+            "en": "Scampi balls",
+            "nl": "Scampiballetjes"
+          }
+        },
+        {
+          "num": "18",
+          "price": "11.60",
+          "name": {
+            "fr": "Caille a la facon chinoise",
+            "en": "Quail, Chinese style",
+            "nl": "Kwartel op Chinese wijze"
+          }
+        },
+        {
+          "num": "19",
+          "price": "11.20",
+          "name": {
+            "fr": "Beignets de langoustines",
+            "en": "Langoustine fritters",
+            "nl": "Langoustinebeignets"
+          }
+        },
+        {
+          "num": "21",
+          "price": "13.00",
+          "name": {
+            "fr": "Beignets en folie (assortiment frits)",
+            "en": "Mixed fritters",
+            "nl": "Beignets in overvloed (gemengde gebakken hapjes)"
+          }
+        },
+        {
+          "num": "22",
+          "price": "13.50",
+          "name": {
+            "fr": "Cuisses de grenouilles grillées à l'ail",
+            "en": "Garlic-grilled frogs’ legs",
+            "nl": "Kikkerbilletjes gegrild met look"
+          }
+        },
+        {
+          "num": "23",
+          "price": "13.50",
+          "name": {
+            "fr": "Cuisses de grenouilles piquantes",
+            "en": "Spicy frogs’ legs",
+            "nl": "Pittige kikkerbilletjes"
+          }
+        },
+        {
+          "num": "24",
+          "price": "17.90",
+          "name": {
+            "fr": "Gambas grillés à l’ail",
+            "en": "Garlic-grilled prawns",
+            "nl": "Gamba’s gegrild met look"
+          }
+        },
+        {
+          "num": "25",
+          "price": "19.00",
+          "name": {
+            "fr": "Coquille St-Jacque grillés à l’ail",
+            "en": "Garlic-grilled scallops",
+            "nl": "Sint-Jakobsschelpen gegrild met look"
+          }
+        },
+        {
+          "num": "26",
+          "price": "32.80",
+          "name": {
+            "fr": "Homard grillé à l’ail (mini.2pers prix /per)",
+            "en": "Garlic-grilled lobster (min. 2 people, price per person)",
+            "nl": "Kreeft gegrild met look (min. 2 pers., prijs per persoon)"
+          }
+        },
+        {
+          "num": "27",
+          "price": "9.60",
+          "name": {
+            "fr": "Beignets de poisson",
+            "en": "Fish fritters",
+            "nl": "Visbeignets"
+          }
+        },
+        {
+          "num": "28",
+          "price": "8.10",
+          "name": {
+            "fr": "Raviolis en friture",
+            "en": "Fried dumplings",
+            "nl": "Gefrituurde ravioli"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entree-vapeur",
+      "title": {
+        "fr": "Entrée vapeur",
+        "en": "Steamed starters",
+        "nl": "Voorgerechten van de stoommand"
+      },
+      "items": [
+        {
+          "num": "29",
+          "price": "8.10",
+          "name": {
+            "fr": "Jiao zi (raviolis au porc et legumes)",
+            "en": "Jiao zi (pork and vegetable dumplings)",
+            "nl": "Jiao zi (ravioli met varkensvlees en groenten)"
+          }
+        },
+        {
+          "num": "30",
+          "price": "11.00",
+          "name": {
+            "fr": "La cour de delices (assortiment)",
+            "en": "Court of delicacies (assortment)",
+            "nl": "Het hof van lekkernijen (assortiment)"
+          }
+        },
+        {
+          "num": "31",
+          "price": "8.60",
+          "name": {
+            "fr": "Ha Kao (farcie de langoustines)",
+            "en": "Ha Kao (langoustine dumplings)",
+            "nl": "Ha Kao (gevuld met langoustines)"
+          }
+        },
+        {
+          "num": "32",
+          "price": "8.10",
+          "name": {
+            "fr": "Shao mai (farcie de porc)",
+            "en": "Shao mai (pork dumplings)",
+            "nl": "Shao mai (gevuld met varkensvlees)"
+          }
+        },
+        {
+          "num": "34",
+          "price": "8.10",
+          "name": {
+            "fr": "Fen guo (farcie de porc et scampis)",
+            "en": "Fen guo (pork and scampi dumplings)",
+            "nl": "Fen guo (gevuld met varkensvlees en scampis)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "poulet",
+      "title": {
+        "fr": "Poulet",
+        "en": "Chicken",
+        "nl": "Kip"
+      },
+      "items": [
+        {
+          "num": "35",
+          "price": "14.00",
+          "name": {
+            "fr": "Filet de poulet saute sauce au curry",
+            "en": "Sautéed chicken fillet in curry sauce",
+            "nl": "Gesauteerd kipfilet in currysaus"
+          }
+        },
+        {
+          "num": "36",
+          "price": "14.30",
+          "name": {
+            "fr": "Filet de poulet saute aux champignons chinois",
+            "en": "Sautéed chicken fillet with Chinese mushrooms",
+            "nl": "Gesauteerd kipfilet met Chinese champignons"
+          }
+        },
+        {
+          "num": "37",
+          "price": "14.80",
+          "name": {
+            "fr": "Filet de poulet saute aux ananas frais",
+            "en": "Sautéed chicken fillet with fresh pineapple",
+            "nl": "Gesauteerd kipfilet met verse ananas"
+          }
+        },
+        {
+          "num": "38",
+          "price": "14.00",
+          "name": {
+            "fr": "Filet de poulet saute sauce tomate piquante",
+            "en": "Sautéed chicken fillet in spicy tomato sauce",
+            "nl": "Gesauteerd kipfilet in pittige tomatensaus"
+          }
+        },
+        {
+          "num": "39",
+          "price": "14.00",
+          "name": {
+            "fr": "Filet de poulet saute aux germes de soja",
+            "en": "Sautéed chicken fillet with bean sprouts",
+            "nl": "Gesauteerd kipfilet met sojascheuten"
+          }
+        },
+        {
+          "num": "40",
+          "price": "15.10",
+          "name": {
+            "fr": "Filet de poulet saute aux noix de cajoux",
+            "en": "Sautéed chicken fillet with cashew nuts",
+            "nl": "Gesauteerd kipfilet met cashewnoten"
+          }
+        },
+        {
+          "num": "41",
+          "price": "14.10",
+          "name": {
+            "fr": "Beignet de poulet a la sauce aigre-douce",
+            "en": "Chicken fritters in sweet-and-sour sauce",
+            "nl": "Kipbeignet in zoetzure saus"
+          }
+        },
+        {
+          "num": "41a",
+          "price": "14.10",
+          "name": {
+            "fr": "Cuisse de poulet croquant",
+            "en": "Crispy chicken drumstick",
+            "nl": "Krokante kippenbout"
+          }
+        }
+      ]
+    },
+    {
+      "id": "canard",
+      "title": {
+        "fr": "Canard",
+        "en": "Duck",
+        "nl": "Eend"
+      },
+      "items": [
+        {
+          "num": "43",
+          "price": "20.80",
+          "name": {
+            "fr": "Canard laque de Pekin",
+            "en": "Peking lacquered duck",
+            "nl": "Gelakte Peking-eend"
+          }
+        },
+        {
+          "num": "44",
+          "price": "18.90",
+          "name": {
+            "fr": "Canard au four sauce à l’orange",
+            "en": "Roast duck with orange sauce",
+            "nl": "Ofeneend met sinaasappelsaus"
+          }
+        },
+        {
+          "num": "45",
+          "price": "18.90",
+          "name": {
+            "fr": "Canard au four sauce aux champignons chinois",
+            "en": "Roast duck with Chinese mushroom sauce",
+            "nl": "Ofeneend met saus van Chinese champignons"
+          }
+        },
+        {
+          "num": "46",
+          "price": "20.00",
+          "name": {
+            "fr": "Canard aux ananas frais",
+            "en": "Duck with fresh pineapple",
+            "nl": "Eend met verse ananas"
+          }
+        },
+        {
+          "num": "47",
+          "price": "18.90",
+          "name": {
+            "fr": "Canard au four sauce aigre-douce et piquante",
+            "en": "Roast duck in sweet-and-sour spicy sauce",
+            "nl": "Ofeneend in zoetzure pittige saus"
+          }
+        }
+      ]
+    },
+    {
+      "id": "boeuf",
+      "title": {
+        "fr": "Bœuf",
+        "en": "Beef",
+        "nl": "Rund"
+      },
+      "items": [
+        {
+          "num": "49",
+          "price": "15.60",
+          "name": {
+            "fr": "Bœuf sauce au curry",
+            "en": "Beef in curry sauce",
+            "nl": "Rund in currysaus"
+          }
+        },
+        {
+          "num": "50",
+          "price": "15.90",
+          "name": {
+            "fr": "Bœuf aux champignons chinois",
+            "en": "Beef with Chinese mushrooms",
+            "nl": "Rund met Chinese champignons"
+          }
+        },
+        {
+          "num": "51",
+          "price": "15.90",
+          "name": {
+            "fr": "Bœuf sauté aux oignons",
+            "en": "Sautéed beef with onions",
+            "nl": "Gesauteerd rund met uien"
+          }
+        },
+        {
+          "num": "52",
+          "price": "15.90",
+          "name": {
+            "fr": "Bœuf sauté aux poivrons",
+            "en": "Sautéed beef with peppers",
+            "nl": "Gesauteerd rund met paprika"
+          }
+        },
+        {
+          "num": "53",
+          "price": "15.60",
+          "name": {
+            "fr": "Bœuf sauté aux germes de sojas",
+            "en": "Sautéed beef with bean sprouts",
+            "nl": "Gesauteerd rund met sojascheuten"
+          }
+        },
+        {
+          "num": "54",
+          "price": "17.20",
+          "name": {
+            "fr": "Bœuf sauté aux ananas frais",
+            "en": "Sautéed beef with fresh pineapple",
+            "nl": "Gesauteerd rund met verse ananas"
+          }
+        },
+        {
+          "num": "55",
+          "price": "15.90",
+          "name": {
+            "fr": "Bœuf à la mode sechuan (piquant)",
+            "en": "Sichuan-style beef (spicy)",
+            "nl": "Rund op Sichuan-wijze (pittig)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "agneau",
+      "title": {
+        "fr": "Agneau",
+        "en": "Lamb",
+        "nl": "Lam"
+      },
+      "items": [
+        {
+          "num": "56",
+          "price": "18.80",
+          "name": {
+            "fr": "L’agneau sautés sauce au curry",
+            "en": "Sautéed lamb in curry sauce",
+            "nl": "Gesauteerd lam in currysaus"
+          }
+        },
+        {
+          "num": "57",
+          "price": "19.80",
+          "name": {
+            "fr": "L’agneau Ti-Pan (sur vermicelles frits)",
+            "en": "Lamb Ti-Pan (on fried vermicelli)",
+            "nl": "Lam Ti-Pan (op gefrituurde vermicelli)"
+          }
+        },
+        {
+          "num": "58",
+          "price": "19.00",
+          "name": {
+            "fr": "L’agneau aux légumes Ti-Pan",
+            "en": "Lamb with vegetables Ti-Pan",
+            "nl": "Lam met groenten Ti-Pan"
+          }
+        }
+      ]
+    },
+    {
+      "id": "porc",
+      "title": {
+        "fr": "Porc",
+        "en": "Pork",
+        "nl": "Varken"
+      },
+      "items": [
+        {
+          "num": "59",
+          "price": "14.10",
+          "name": {
+            "fr": "Filet de porc saute sauce curry",
+            "en": "Sautéed pork fillet in curry sauce",
+            "nl": "Gesauteerd varkensfilet in currysaus"
+          }
+        },
+        {
+          "num": "60",
+          "price": "14.10",
+          "name": {
+            "fr": "Filet de porc saute sauce piquante",
+            "en": "Sautéed pork fillet in spicy sauce",
+            "nl": "Gesauteerd varkensfilet in pittige saus"
+          }
+        },
+        {
+          "num": "60a",
+          "price": "15.00",
+          "name": {
+            "fr": "Babiangam (roti de porc sauce aigre-douce et piquante)",
+            "en": "Babiangam (roast pork in sweet-and-sour spicy sauce)",
+            "nl": "Babiangam (gebraad varkensvlees in zoetzure pittige saus)"
+          }
+        },
+        {
+          "num": "61",
+          "price": "14.10",
+          "name": {
+            "fr": "Filet de porc saute aux champignons chinois",
+            "en": "Sautéed pork fillet with Chinese mushrooms",
+            "nl": "Gesauteerd varkensfilet met Chinese champignons"
+          }
+        },
+        {
+          "num": "62",
+          "price": "14.00",
+          "name": {
+            "fr": "Beignet de porc sauce aigre-douce",
+            "en": "Pork fritters in sweet-and-sour sauce",
+            "nl": "Varkensbeignet in zoetzure saus"
+          }
+        },
+        {
+          "num": "62a",
+          "price": "15.00",
+          "name": {
+            "fr": "Porc laque au miel",
+            "en": "Honey lacquered pork",
+            "nl": "Gelakt varkensvlees met honing"
+          }
+        },
+        {
+          "num": "63",
+          "price": "15.90",
+          "name": {
+            "fr": "Spare-ribs aux vinaigre sucre et sesame",
+            "en": "Spare ribs with sweet vinegar and sesame",
+            "nl": "Spare-ribs met zoete azijn en sesam"
+          }
+        }
+      ]
+    },
+    {
+      "id": "poisson",
+      "title": {
+        "fr": "Poisson et fruits de mer",
+        "en": "Fish and seafood",
+        "nl": "Vis en schaal- en schelpdieren"
+      },
+      "items": [
+        {
+          "num": "64",
+          "price": "18.60",
+          "name": {
+            "fr": "Scampis sauce curry",
+            "en": "Scampi in curry sauce",
+            "nl": "Scampis in currysaus"
+          }
+        },
+        {
+          "num": "65",
+          "price": "20.30",
+          "name": {
+            "fr": "Langoustines sautées sauce tomatées piquantes",
+            "en": "Sautéed langoustines in spicy tomato sauce",
+            "nl": "Gesauteerde langoustines in pittige tomatensaus"
+          }
+        },
+        {
+          "num": "66",
+          "price": "20.30",
+          "name": {
+            "fr": "Scampis sautées aux ananas frais",
+            "en": "Sautéed scampi with fresh pineapple",
+            "nl": "Gesauteerde scampis met verse ananas"
+          }
+        },
+        {
+          "num": "68",
+          "price": "20.30",
+          "name": {
+            "fr": "Scampis sautées (spéciales maison)",
+            "en": "Sautéed scampi (house special)",
+            "nl": "Gesauteerde scampis (huisspecialiteit)"
+          }
+        },
+        {
+          "num": "70",
+          "price": "18.80",
+          "name": {
+            "fr": "Beignet de langoustines sauce aigre-douce",
+            "en": "Langoustine fritters in sweet-and-sour sauce",
+            "nl": "Langoustinebeignet in zoetzure saus"
+          }
+        },
+        {
+          "num": "71",
+          "price": "17.60",
+          "name": {
+            "fr": "Boulettes de Scampis sauce aigre-douce ( ou piquante )",
+            "en": "Scampi balls in sweet-and-sour sauce (or spicy)",
+            "nl": "Scampiballetjes in zoetzure saus (of pittig)"
+          }
+        },
+        {
+          "num": "72",
+          "price": "20.60",
+          "name": {
+            "fr": "Langoustines grillées à l’ail",
+            "en": "Garlic-grilled langoustines",
+            "nl": "Langoustines gegrild met look"
+          }
+        },
+        {
+          "num": "73",
+          "price": "16.90",
+          "name": {
+            "fr": "Calamars sautés sauce piquante",
+            "en": "Sautéed squid in spicy sauce",
+            "nl": "Gesauteerde kalmar in pittige saus"
+          }
+        },
+        {
+          "num": "74",
+          "price": "16.90",
+          "name": {
+            "fr": "Calamars sautés aux champignons chinois",
+            "en": "Sautéed squid with Chinese mushrooms",
+            "nl": "Gesauteerde kalmar met Chinese champignons"
+          }
+        },
+        {
+          "num": "76",
+          "price": "14.10",
+          "name": {
+            "fr": "Beignet de poissons sauce aigre-douce",
+            "en": "Fish fritters in sweet-and-sour sauce",
+            "nl": "Visbeignet in zoetzure saus"
+          }
+        },
+        {
+          "num": "77",
+          "price": "25.00",
+          "name": {
+            "fr": "Coquilles Saint-Jacques sauce tomatée piquante",
+            "en": "Scallops in spicy tomato sauce",
+            "nl": "Sint-Jakobsschelpen in pittige tomatensaus"
+          }
+        },
+        {
+          "num": "78",
+          "price": "33.60",
+          "name": {
+            "fr": "Sole grillé sauce aigre-douce (+-400gr)",
+            "en": "Grilled sole in sweet-and-sour sauce (approx. 400 g)",
+            "nl": "Gegrilde tong in zoetzure saus (ca. 400 g)"
+          }
+        },
+        {
+          "num": "78b",
+          "price": "33.60",
+          "name": {
+            "fr": "Sole grillé sauce champignons chinois",
+            "en": "Grilled sole with Chinese mushroom sauce",
+            "nl": "Gegrilde tong met saus van Chinese champignons"
+          }
+        }
+      ]
+    },
+    {
+      "id": "specialites",
+      "title": {
+        "fr": "Spécialités maison",
+        "en": "House specialties",
+        "nl": "Huisspecialiteiten"
+      },
+      "items": [
+        {
+          "num": "79",
+          "price": "56.90",
+          "name": {
+            "fr": "Homard grillé façon chef",
+            "en": "Chef-style grilled lobster",
+            "nl": "Gegrilde kreeft volgens het recept van de chef"
+          }
+        },
+        {
+          "num": "80",
+          "price": "13.90",
+          "name": {
+            "fr": "Marmite de To fou aux légumes (végétarien)",
+            "en": "Tofu hotpot with vegetables (vegetarian)",
+            "nl": "To-foustoofpot met groenten (vegetarisch)"
+          }
+        },
+        {
+          "num": "80a",
+          "price": "20.60",
+          "name": {
+            "fr": "Marmite maison (mixte de viande et fruit de mer sauté aux légumes)",
+            "en": "House hotpot (mixed meat and seafood sautéed with vegetables)",
+            "nl": "Huisstoofpot (mix van vlees en schaal- en schelpdieren gesauteerd met groenten)"
+          }
+        },
+        {
+          "num": "81",
+          "price": "20.90",
+          "name": {
+            "fr": "Canard aux huit délices",
+            "en": "Duck with eight delicacies",
+            "nl": "Eend met acht lekkernijen"
+          }
+        },
+        {
+          "num": "82",
+          "price": "19.80",
+          "name": {
+            "fr": "Plat de famille chinoise",
+            "en": "Chinese family platter",
+            "nl": "Chinees familierecht"
+          }
+        },
+        {
+          "num": "83",
+          "price": "17.90",
+          "name": {
+            "fr": "Spare -ribs aux cinq parfums",
+            "en": "Five-spice spare ribs",
+            "nl": "Spare-ribs met vijf geuren"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ti-pan",
+      "title": {
+        "fr": "Ti-Pan",
+        "en": "Ti-Pan",
+        "nl": "Ti-Pan"
+      },
+      "items": [
+        {
+          "num": "84",
+          "price": "18.80",
+          "name": {
+            "fr": "Spare-ribs Ti-Pan à l’ail",
+            "en": "Garlic spare ribs Ti-Pan",
+            "nl": "Spare-ribs Ti-Pan met look"
+          }
+        },
+        {
+          "num": "85",
+          "price": "22.60",
+          "name": {
+            "fr": "Scampis (Ti-pan) sur leur lit de vermicelles",
+            "en": "Scampi (Ti-Pan) on a bed of vermicelli",
+            "nl": "Scampis (Ti-Pan) op een bedje van vermicelli"
+          }
+        },
+        {
+          "num": "86",
+          "price": "22.80",
+          "name": {
+            "fr": "Gambas grillées à l’ail Ti-Pan",
+            "en": "Garlic-grilled prawns Ti-Pan",
+            "nl": "Gamba’s gegrild met look Ti-Pan"
+          }
+        },
+        {
+          "num": "88",
+          "price": "27.50",
+          "name": {
+            "fr": "Coquilles Saint-Jacques (Ti-pan) à lail",
+            "en": "Scallops (Ti-Pan) with garlic",
+            "nl": "Sint-Jakobsschelpen (Ti-Pan) met look"
+          }
+        },
+        {
+          "num": "89",
+          "price": "22.30",
+          "name": {
+            "fr": "Assortiment de fruits de mer (Ti-pan)",
+            "en": "Seafood assortment (Ti-Pan)",
+            "nl": "Assortiment van schaal- en schelpdieren (Ti-Pan)"
+          }
+        },
+        {
+          "num": "90",
+          "price": "19.90",
+          "name": {
+            "fr": "Cuisses de grenouilles sautés à l’ail Ti-Pan",
+            "en": "Garlic sautéed frogs’ legs Ti-Pan",
+            "nl": "Kikkerbilletjes gesauteerd met look Ti-Pan"
+          }
+        },
+        {
+          "num": "91",
+          "price": "18.10",
+          "name": {
+            "fr": "Bœuf sauté aux légumes Ti-Pan",
+            "en": "Sautéed beef with vegetables Ti-Pan",
+            "nl": "Gesauteerd rund met groenten Ti-Pan"
+          }
+        },
+        {
+          "num": "92",
+          "price": "17.60",
+          "name": {
+            "fr": "Blanc de poulet aux légumes Ti-Pan",
+            "en": "Chicken breast with vegetables Ti-Pan",
+            "nl": "Kippenborst met groenten Ti-Pan"
+          }
+        },
+        {
+          "num": "93",
+          "price": "20.90",
+          "name": {
+            "fr": "Canard au four sauce soja et légumes (Ti-pan)",
+            "en": "Roast duck with soy sauce and vegetables (Ti-Pan)",
+            "nl": "Ofeneend met sojasaus en groenten (Ti-Pan)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "riz-nouilles",
+      "title": {
+        "fr": "Riz - Nouilles",
+        "en": "Rice and noodles",
+        "nl": "Rijst en noedels"
+      },
+      "items": [
+        {
+          "num": "100",
+          "price": "14.60",
+          "name": {
+            "fr": "Riz / Nouilles sautées au poulet",
+            "en": "Fried rice / noodles with chicken",
+            "nl": "Gebakken rijst / noedels met kip"
+          }
+        },
+        {
+          "num": "101",
+          "price": "14.60",
+          "name": {
+            "fr": "Riz / Nouilles sautées au porc",
+            "en": "Fried rice / noodles with pork",
+            "nl": "Gebakken rijst / noedels met varkensvlees"
+          }
+        },
+        {
+          "num": "102",
+          "price": "14.80",
+          "name": {
+            "fr": "Riz / Nouilles sautées au boeuf",
+            "en": "Fried rice / noodles with beef",
+            "nl": "Gebakken rijst / noedels met rund"
+          }
+        },
+        {
+          "num": "103",
+          "price": "15.80",
+          "name": {
+            "fr": "Riz / Nouilles sautés aux scampis",
+            "en": "Fried rice / noodles with scampi",
+            "nl": "Gebakken rijst / noedels met scampis"
+          }
+        },
+        {
+          "num": "104",
+          "price": "15.80",
+          "name": {
+            "fr": "Riz / Noulles sautées (spécialitée chinoise)",
+            "en": "Fried rice / noodles (Chinese specialty)",
+            "nl": "Gebakken rijst / noedels (Chinese specialiteit)"
+          }
+        },
+        {
+          "num": "105",
+          "price": "15.80",
+          "name": {
+            "fr": "Riz à la mode de Singapour (curry)",
+            "en": "Singapore-style rice (curry)",
+            "nl": "Rijst op Singapore-wijze (curry)"
+          }
+        },
+        {
+          "num": "110",
+          "price": "9.90",
+          "name": {
+            "fr": "Riz contonais",
+            "en": "Cantonese rice",
+            "nl": "Kantonese rijst"
+          }
+        },
+        {
+          "num": "111",
+          "price": "9.90",
+          "name": {
+            "fr": "Nouilles sautées sans viande",
+            "en": "Fried noodles without meat",
+            "nl": "Gebakken noedels zonder vlees"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vermicelles",
+      "title": {
+        "fr": "Vermicelles",
+        "en": "Vermicelli",
+        "nl": "Vermicelli"
+      },
+      "items": [
+        {
+          "num": "107",
+          "price": "16.80",
+          "name": {
+            "fr": "Vermicelles sautées maison",
+            "en": "House-style sautéed vermicelli",
+            "nl": "Gesauteerde vermicelli van het huis"
+          }
+        },
+        {
+          "num": "108",
+          "price": "16.80",
+          "name": {
+            "fr": "Vermicelles sautées aux langoustines",
+            "en": "Sautéed vermicelli with langoustines",
+            "nl": "Gesauteerde vermicelli met langoustines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "accompagnements",
+      "title": {
+        "fr": "Nos accompagnements",
+        "en": "Side dishes",
+        "nl": "Bijgerechten"
+      },
+      "items": [
+        {
+          "num": "00",
+          "price": "0.00",
+          "name": {
+            "fr": "Riz blanc (accompagner automatiquement pour chaque plat)",
+            "en": "White rice (served automatically with each main course)",
+            "nl": "Witte rijst (wordt automatisch bij elk gerecht geserveerd)"
+          }
+        },
+        {
+          "num": "N",
+          "price": "4.00",
+          "name": {
+            "fr": "Nouilles sautées (à la place du riz blanc)",
+            "en": "Fried noodles (instead of white rice)",
+            "nl": "Gebakken noedels (in de plaats van witte rijst)"
+          }
+        },
+        {
+          "num": "R",
+          "price": "3.50",
+          "name": {
+            "fr": "Riz contonais (à la place du riz blanc)",
+            "en": "Cantonese rice (instead of white rice)",
+            "nl": "Kantonese rijst (in de plaats van witte rijst)"
+          }
+        },
+        {
+          "num": "V",
+          "price": "4.00",
+          "name": {
+            "fr": "Vermicelles sautées (à la place du riz blanc)",
+            "en": "Sautéed vermicelli (instead of white rice)",
+            "nl": "Gesauteerde vermicelli (in de plaats van witte rijst)"
+          }
+        }
+      ]
+    }
+  ]
+}

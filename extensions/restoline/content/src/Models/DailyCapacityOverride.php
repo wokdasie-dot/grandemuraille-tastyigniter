@@ -61,8 +61,8 @@ class DailyCapacityOverride extends Model
         $locationId ??= 1;
         $hour = (int)$dateTime->format('H');
 
-        // Midi : 12h00 - 14h30
-        // Soir : 18h00 - 22h30
+        // Midi : 12h00 - 14h00
+        // Soir : 18h00 - 22h00
         $isLunch = $hour >= 10 && $hour < 16;
         $isDinner = $hour >= 16 || $hour < 4;
 

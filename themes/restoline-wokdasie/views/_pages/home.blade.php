@@ -1,11 +1,9 @@
 ---
 title: "La Grande Muraille de Chine · Restaurant chinois à Spa"
-description: "Restaurant chinois à Spa : menus de la maison, spécialités du chef et grand buffet à volonté le week-end. Réservation en ligne."
+description: "Restaurant chinois à Spa : carte à la carte, menus de la maison, spécialités du chef et grand buffet à volonté le week-end. Réservation par téléphone : 087 22 08 88."
 layout: default
 permalink: /
 bodyClass: page-home
-
-'[igniter-orange::booking]': []
 ---
 @php
     $gm = \Restoline\Content\Support\PublicCopy::class;
@@ -75,7 +73,7 @@ bodyClass: page-home
             </h1>
             <p class="gm-hero__lead gm-load" style="--i:4">{{ $gm::line('hero.lead') }}</p>
             <div class="gm-actions gm-load" style="--i:5">
-                <a class="gm-btn gm-btn--gold" href="#reservation" data-scrollscale data-reveal="pop">{{ $gm::line('hero.cta.book') }}</a>
+                <a class="gm-btn gm-btn--gold" href="tel:+3287220888" data-scrollscale data-reveal="pop">{{ $gm::line('hero.cta.book') }}</a>
                 <a class="gm-btn gm-btn--ghost" href="#carte" data-scrollscale data-reveal="pop">{{ $gm::line('hero.cta.menus') }}</a>
             </div>
             <ul class="gm-hero__facts gm-load" style="--i:6" aria-label="{{ $gm::line('nav.infos') }}">
@@ -180,6 +178,9 @@ bodyClass: page-home
                 </details>
             @endforeach
         </div>
+        <p class="gm-menus__carte" data-reveal="up">
+            <a class="gm-btn gm-btn--gold" href="{{ url('/carte') }}" data-scrollscale data-reveal="pop">{{ $gm::line('menus.carte_link') }}</a>
+        </p>
     </div>
 </section>
 
@@ -203,7 +204,7 @@ bodyClass: page-home
             <p class="gm-kicker">{{ $gm::line('infos.contact.kicker') }}</p>
             <h3><a href="tel:+3287220888">087 22 08 88</a></h3>
             <p>{{ $gm::line('infos.contact.p') }}</p>
-            <a class="gm-link" href="#reservation">{{ $gm::line('infos.contact.link') }}</a>
+            <a class="gm-link" href="tel:+3287220888">{{ $gm::line('infos.contact.link') }}</a>
         </div>
     </div>
 </section>
