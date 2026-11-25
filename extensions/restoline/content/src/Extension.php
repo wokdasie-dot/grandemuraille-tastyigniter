@@ -92,6 +92,34 @@ class Extension extends BaseExtension
             \Restoline\Content\Http\Middleware\RestrictPublicLocale::class,
         );
 
+        \Illuminate\Support\Facades\Event::listen('exception.beforeRender', function ($exception, $httpCode, $request) {
+            if ((int)$httpCode !== 404 || Igniter::runningInAdmin() || $request->expectsJson()) {
+                return null;
+            }
+
+            $locale = 'fr';
+            $raw = $request->cookies->get(\Restoline\Content\Http\Controllers\PublicLocaleController::COOKIE);
+            if (is_string($raw) && $raw !== '') {
+                try {
+                    $decoded = \Illuminate\Cookie\CookieValuePrefix::remove(app('encrypter')->decrypt($raw, false));
+                } catch (\Throwable) {
+                    $decoded = $raw;
+                }
+                if (in_array($decoded, ['fr', 'en', 'nl'], true)) {
+                    $locale = $decoded;
+                }
+            }
+            $copy = [
+                'fr' => ['Cette page n’existe pas.', 'Retour à l’accueil'],
+                'en' => ['This page does not exist.', 'Back to the homepage'],
+                'nl' => ['Deze pagina bestaat niet.', 'Terug naar de startpagina'],
+            ][$locale];
+            $home = e(url('/'));
+            $phone = e((string)config('restoline.restaurant.phone_display'));
+
+            return '<!doctype html><html lang="'.e($locale).'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>404 | La Grande Muraille de Chine</title></head><body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#111010;color:#f3ebe0;font:16px/1.5 Inter,sans-serif"><main style="text-align:center;padding:32px"><p style="letter-spacing:.2em;text-transform:uppercase;color:#c9a45c">404</p><h1 style="font-weight:500">'.e($copy[0]).'</h1><p><a href="'.$home.'" style="color:#e6d2a0">'.e($copy[1]).'</a></p><p><a href="tel:+3287220888" style="color:#f3ebe0">'.$phone.'</a></p></main></body></html>';
+        });
+
         if (class_exists(\Igniter\Translate\Actions\TranslatableModel::class)) {
             $this->registerTranslatableModels();
         }
@@ -196,9 +224,13 @@ class Extension extends BaseExtension
             }
 
             if (!\Restoline\Content\Support\OnlineBooking::isEnabled()) {
-                throw new \Igniter\Flame\Exception\ApplicationException(
-                    'Les réservations en ligne sont momentanément désactivées. Merci de nous appeler au '.config('restoline.restaurant.phone_display').'.',
-                );
+                $phone = (string)config('restoline.restaurant.phone_display');
+                $message = match (app()->getLocale()) {
+                    'en' => 'Tables are reserved by phone only. Please call '.$phone.'.',
+                    'nl' => 'Tafels reserveert u alleen telefonisch. Bel '.$phone.'.',
+                    default => 'Les tables se réservent uniquement par téléphone. Appelez le '.$phone.'.',
+                };
+                throw new \Igniter\Flame\Exception\ApplicationException($message);
             }
 
             $dateTime = \Carbon\Carbon::parse((string)($data['sdateTime'] ?? ''));

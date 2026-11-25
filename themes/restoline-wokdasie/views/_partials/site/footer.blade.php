@@ -27,7 +27,7 @@
     </div>
     <div class="gm-wrap gm-footer__grid">
         <span>Avenue Reine Astrid 98 · 4900 Spa · <a href="tel:+3287220888">087 22 08 88</a></span>
-        <span>SRL JIN-ZHOU · TVA BE 0812011942</span>
+        <span>SRL JIN-ZHOU · {{ app()->getLocale() === 'en' ? 'VAT' : (app()->getLocale() === 'nl' ? 'btw' : 'TVA') }} BE 0812011942</span>
         <span><a href="{{ url('/confidentialite') }}">@lang('restoline.content::frontend.footer.privacy')</a></span>
         <button type="button" id="motion-toggle" aria-pressed="false" hidden>{{ $gm::line('motion.pause') }}</button>
     </div>

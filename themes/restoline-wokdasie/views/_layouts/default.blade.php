@@ -7,8 +7,10 @@
     @php
         $canonicalUrl = url()->current();
         $requestPath = trim(request()->path(), '/');
-        $pageTitle = lang('restoline.content::frontend.meta.title');
-        $pageDescription = lang('restoline.content::frontend.meta.description');
+        $pageTitle = \Restoline\Content\Support\PublicCopy::line('meta.title')
+            ?: lang('restoline.content::frontend.meta.title');
+        $pageDescription = \Restoline\Content\Support\PublicCopy::line('meta.description')
+            ?: lang('restoline.content::frontend.meta.description');
         if (str_contains($requestPath, 'reservation/success')) {
             $pageTitle = lang('restoline.content::frontend.success.meta_title');
             $pageDescription = lang('restoline.content::frontend.success.meta_description');
@@ -53,17 +55,17 @@
             '@id' => url('/').'#restaurant',
             'name' => 'La Grande Muraille de Chine',
             'url' => url('/'),
-            'image' => url('/'),
-            'logo' => url('/'),
+            'image' => asset('vendor/restoline-wokdasie/images/gm/hero-dimsum.jpg'),
+            'logo' => asset('vendor/restoline-wokdasie/images/gm/hero-dimsum.jpg'),
             'telephone' => '+3287220888',
-            'servesCuisine' => ['Cuisine chinoise', 'Buffet'],
+            'servesCuisine' => ['Chinese', 'Buffet'],
             'priceRange' => '€€',
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Avenue Reine Astrid 98',
                 'postalCode' => '4900',
                 'addressLocality' => 'Spa',
-                'addressRegion' => 'Liege',
+                'addressRegion' => 'Liège',
                 'addressCountry' => 'BE',
             ],
             'openingHoursSpecification' => [
