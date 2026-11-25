@@ -312,7 +312,7 @@ class GrandeMurailleSeeder extends Seeder
         } else {
             $categoryId = (int)DB::table('categories')->insertGetId([
                 'name' => 'Menus',
-                'description' => 'Menus de la carte, à consulter sur place. La réservation en ligne ne prend pas de commande.',
+                'description' => 'Menus de la carte, à consulter sur place.',
                 'parent_id' => null,
                 'priority' => 1,
                 'status' => true,
@@ -328,11 +328,11 @@ class GrandeMurailleSeeder extends Seeder
                 $this->translateAttributes($categoryModel, [
                     'en' => [
                         'name' => 'Menus',
-                        'description' => 'Menus to read in the restaurant. Online booking does not take an order.',
+                        'description' => 'Menus to read in the restaurant.',
                     ],
                     'nl' => [
                         'name' => 'Menu’s',
-                        'description' => 'Menu’s om ter plaatse te lezen. Online reserveren neemt geen bestelling op.',
+                        'description' => 'Menu’s om ter plaatse te lezen.',
                     ],
                 ]);
             }

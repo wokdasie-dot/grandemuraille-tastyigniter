@@ -512,7 +512,7 @@ html[data-motion="on"] .gm-arrow[data-reveal="pop"].is-in{transform:none}
 .gm-menus__carte{margin-top:36px}
 .gm-alacarte{padding-top:calc(var(--gm-nav-h) + 36px)}
 .gm-alacarte h1{font-size:clamp(2.4rem,5vw,3.8rem);margin:0 0 .4em}
-.gm-alacarte__promo{max-width:720px;padding:16px 20px;border:1px solid var(--gm-line);border-radius:var(--gm-radius-sm);background:#fff;color:var(--gm-text);font-size:.98rem}
+.gm-alacarte__promo{max-width:720px;padding:16px 20px;border:1px solid var(--gm-line);border-radius:var(--gm-radius-sm);background:#fff;color:var(--gm-text);font-size:.98rem;white-space:pre-line}
 .gm-alacarte__toc{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 48px;position:sticky;top:var(--gm-nav-h);z-index:5;padding:10px 0;background:linear-gradient(var(--gm-cream) 70%,transparent)}
 .gm-alacarte__toc a{display:inline-flex;align-items:center;padding:.45em .9em;border:1px solid var(--gm-line);border-radius:999px;background:#fff;font:600 .78rem/1.2 var(--gm-sans);letter-spacing:.04em;text-decoration:none;color:var(--gm-text);transition:background .3s,border-color .3s,color .3s,transform .35s var(--gm-ease)}
 .gm-alacarte__toc a:hover{border-color:var(--gm-gold);color:var(--gm-red);transform:translateY(-1px)}

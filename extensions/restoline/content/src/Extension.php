@@ -292,9 +292,8 @@ class Extension extends BaseExtension
                 'update',
             ])->where('locale', 'fr|en|nl')->name('restoline.locale');
 
-            // Online booking is paused: public booking and "manage my booking"
-            // URLs go to the telephone reservation section. POST handlers are
-            // not registered, so nothing is created, changed or emailed.
+            // The restaurant does not take bookings online. Old booking and
+            // "manage my booking" URLs go to the telephone section.
             Route::get(config('restoline.restaurant.reservation_path').'/{any?}', $redirectToPhone)
                 ->where('any', '.*')
                 ->name('restoline.booking.redirect');
@@ -302,6 +301,11 @@ class Extension extends BaseExtension
             Route::get(config('restoline.restaurant.manage_reservation_path').'/{any?}', $redirectToPhone)
                 ->where('any', '.*')
                 ->name('restoline.manage.index');
+
+            Route::get('account/reservation/{any?}', $redirectToPhone)
+                ->where('any', '.*');
+            Route::get('account/reservations/{any?}', $redirectToPhone)
+                ->where('any', '.*');
 
             Route::get('r/{token}', $redirectToPhone)
                 ->where('token', '[A-Za-z0-9]{12}')

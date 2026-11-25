@@ -1,9 +1,9 @@
 {
   "source": "https://www.grandemuraillespa.be/carte.php",
   "scraped_at": "2026-11-25",
-  "note": "French names and prices are copied exactly from the official carte, including typographical quirks. The empty « Plats Europeen » section on the source page is omitted. Translations are provided for EN/NL; Chinese dish names (Jiao zi, Ha Kao, Shao mai, Fen guo, Ti-Pan, Babiangam, wan-tan) are kept.",
+  "note": "French section titles, dish names and prices are copied from https://www.grandemuraillespa.be/carte.php, including the source spelling. The empty Plats Europeen heading is kept. EN/NL dish names are translations.",
   "promo": {
-    "fr": "Si votre commande est supérieure à : 30 € une bière chinoise offerte · 45 € une boîte de fruits lychee offerte · 60 € une bouteille de vin lychee offerte.",
+    "fr": "Si votre commande est superieur à :\n30€ une bière chinoise offerte\n45€ une boite de fruits lychee offerte\n60€ une bouteille vin lychee offerte",
     "en": "If your order is over: €30 a complimentary Chinese beer · €45 a complimentary box of lychee fruit · €60 a complimentary bottle of lychee wine.",
     "nl": "Bij een bestelling van meer dan: 30 € een Chinees bier cadeau · 45 € een doos lycheevruchten cadeau · 60 € een fles lycheewijn cadeau."
   },
@@ -84,7 +84,7 @@
     {
       "id": "entree-froide",
       "title": {
-        "fr": "Entrée froide",
+        "fr": "Entree froide",
         "en": "Cold starters",
         "nl": "Koude voorgerechten"
       },
@@ -121,7 +121,7 @@
     {
       "id": "entree-chaude",
       "title": {
-        "fr": "Entrée chaude",
+        "fr": "Entree chaude",
         "en": "Hot starters",
         "nl": "Warme voorgerechten"
       },
@@ -275,7 +275,7 @@
     {
       "id": "entree-vapeur",
       "title": {
-        "fr": "Entrée vapeur",
+        "fr": "Entree vapeur",
         "en": "Steamed starters",
         "nl": "Voorgerechten van de stoommand"
       },
@@ -467,7 +467,7 @@
     {
       "id": "boeuf",
       "title": {
-        "fr": "Bœuf",
+        "fr": "Boeuf",
         "en": "Beef",
         "nl": "Rund"
       },
@@ -777,7 +777,7 @@
     {
       "id": "specialites",
       "title": {
-        "fr": "Spécialités maison",
+        "fr": "Specialites maison",
         "en": "House specialties",
         "nl": "Huisspecialiteiten"
       },
@@ -1038,6 +1038,15 @@
           }
         }
       ]
+    },
+    {
+      "id": "plats-europeen",
+      "title": {
+        "fr": "Plats Europeen",
+        "en": "European dishes",
+        "nl": "Europese gerechten"
+      },
+      "items": []
     },
     {
       "id": "accompagnements",
