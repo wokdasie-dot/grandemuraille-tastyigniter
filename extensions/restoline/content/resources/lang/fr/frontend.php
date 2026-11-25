@@ -248,7 +248,7 @@ Soir 18h00 – 22h00',
   ),
   'cookie' => 
   array (
-    'message' => 'Ce site utilise uniquement des cookies nécessaires à son bon fonctionnement.',
-    'accept' => 'Accepter',
+    'message' => 'Uniquement des cookies techniques.',
+    'accept' => 'OK',
   ),
 );

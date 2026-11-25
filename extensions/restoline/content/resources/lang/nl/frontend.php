@@ -42,7 +42,7 @@ return array (
     'title1' => 'La Grande',
     'title2' => 'Muraille',
     'title3' => 'de Chine',
-    'lead' => 'Pekingeend, dim sum en de specialiteiten van de chef: een uitnodiging om de smaken van de Chinese keuken te ontdekken, in het hart van Spa.',
+    'lead' => 'Pekingeend, dim sum en de specialiteiten van de chef: een uitnodiging om de Chinese keuken te ontdekken in het hart van Spa.',
     'cta' => 
     array (
       'book' => 'Een tafel reserveren',
@@ -157,7 +157,7 @@ return array (
   array (
     'find' => 
     array (
-      'kicker' => 'Ons vinden',
+      'kicker' => 'Zo vindt u ons',
       'title' => 'In het hart',
       'addr' => 'Avenue Reine Astrid 98
 4900 Spa',
@@ -166,7 +166,7 @@ return array (
     'hours' => 
     array (
       'kicker' => 'Openingsuren',
-      'title' => '6 dagen op 7 open',
+      'title' => 'Zes dagen per week open',
       'p1' => 'Lunch 12.00 – 14.00
 Diner 18.00 – 22.00',
       'p2' => 'Gesloten op dinsdag, behalve op feestdagen.',
@@ -248,7 +248,7 @@ Diner 18.00 – 22.00',
   ),
   'cookie' => 
   array (
-    'message' => 'Deze site gebruikt alleen cookies die nodig zijn om te werken.',
-    'accept' => 'Aanvaarden',
+    'message' => 'Alleen technische cookies.',
+    'accept' => 'OK',
   ),
 );

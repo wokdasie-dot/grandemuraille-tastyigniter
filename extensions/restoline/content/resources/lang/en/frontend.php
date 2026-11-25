@@ -42,7 +42,7 @@ return array (
     'title1' => 'La Grande',
     'title2' => 'Muraille',
     'title3' => 'de Chine',
-    'lead' => 'Peking duck, dim sum and the chef’s specialties: an invitation to discover the flavours of Chinese cuisine, in the heart of Spa.',
+    'lead' => 'Peking duck, dim sum and the chef’s specialities: an invitation to discover Chinese cuisine in the heart of Spa.',
     'cta' => 
     array (
       'book' => 'Book a table',
@@ -174,7 +174,7 @@ Dinner 18:00 – 22:00',
     'contact' => 
     array (
       'kicker' => 'Contact',
-      'p' => 'Reservations and groups, by phone.',
+      'p' => 'Reservations and groups, by telephone.',
       'link' => 'Reserve',
     ),
   ),
@@ -248,7 +248,7 @@ Dinner 18:00 – 22:00',
   ),
   'cookie' => 
   array (
-    'message' => 'This site uses only the cookies required for it to work.',
-    'accept' => 'Accept',
+    'message' => 'Essential cookies only.',
+    'accept' => 'OK',
   ),
 );

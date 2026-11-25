@@ -8,7 +8,10 @@ bodyClass: page-carte
 @php
     $gm = \Restoline\Content\Support\PublicCopy::class;
     $img = asset('vendor/restoline-wokdasie/images/gm');
-    $categories = $gm::carte();
+    $categories = array_values(array_filter(
+        $gm::carte(),
+        static fn (array $category): bool => $category['items'] !== [],
+    ));
     $promo = $gm::cartePromo();
     $photos = [
         'potages' => ['potage.jpg', 'gal.potages', 675, 900],
