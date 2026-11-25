@@ -20,9 +20,9 @@
         <nav class="gm-langs gm-langs--header" aria-label="{{ $gm::line('lang.label') }}">
             @foreach (['fr' => 'FR', 'en' => 'EN', 'nl' => 'NL'] as $code => $label)
                 @if (app()->getLocale() === $code)
-                    <a href="{{ url('/locale/'.$code) }}" aria-current="true" lang="{{ $code }}">{{ $label }}</a>
+                    <a href="{{ \Restoline\Content\Http\Controllers\PublicLocaleController::switchUrl($code) }}" aria-current="true" lang="{{ $code }}">{{ $label }}</a>
                 @else
-                    <a href="{{ url('/locale/'.$code) }}" lang="{{ $code }}">{{ $label }}</a>
+                    <a href="{{ \Restoline\Content\Http\Controllers\PublicLocaleController::switchUrl($code) }}" lang="{{ $code }}">{{ $label }}</a>
                 @endif
             @endforeach
         </nav>
@@ -45,9 +45,9 @@
     <nav class="gm-langs gm-langs--drawer" aria-label="{{ $gm::line('lang.label') }}">
         @foreach (['fr' => 'FR', 'en' => 'EN', 'nl' => 'NL'] as $code => $label)
             @if (app()->getLocale() === $code)
-                <a href="{{ url('/locale/'.$code) }}" aria-current="true" lang="{{ $code }}">{{ $label }}</a>
+                <a href="{{ \Restoline\Content\Http\Controllers\PublicLocaleController::switchUrl($code) }}" aria-current="true" lang="{{ $code }}">{{ $label }}</a>
             @else
-                <a href="{{ url('/locale/'.$code) }}" lang="{{ $code }}">{{ $label }}</a>
+                <a href="{{ \Restoline\Content\Http\Controllers\PublicLocaleController::switchUrl($code) }}" lang="{{ $code }}">{{ $label }}</a>
             @endif
         @endforeach
     </nav>

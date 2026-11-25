@@ -51,6 +51,18 @@ final class PublicCopy
     }
 
     /**
+     * Menu heading for the session locale. The lookup key stays the French
+     * name stored on the menu, so English and Dutch do not show that French title.
+     */
+    public static function menuTitle(string $frenchName): string
+    {
+        $titles = self::pack()['menu_titles'] ?? [];
+        $title = is_array($titles) ? ($titles[$frenchName] ?? '') : '';
+
+        return is_string($title) && $title !== '' ? $title : $frenchName;
+    }
+
+    /**
      * Strings the front-end script needs (motion toggle, mobile menu).
      *
      * @return array<string, string>
@@ -112,7 +124,7 @@ final class PublicCopy
                 continue;
             }
             $id = (string)($category['id'] ?? '');
-            $title = $category['title'][$locale] ?? $category['title']['fr'] ?? '';
+            $title = $category['title'][$locale] ?? ($locale === 'fr' ? ($category['title']['fr'] ?? '') : '');
             $items = [];
             foreach ($category['items'] ?? [] as $item) {
                 if (!is_array($item)) {
@@ -121,7 +133,7 @@ final class PublicCopy
                 $price = (string)($item['price'] ?? '');
                 $items[] = [
                     'num' => (string)($item['num'] ?? ''),
-                    'name' => (string)($item['name'][$locale] ?? $item['name']['fr'] ?? ''),
+                    'name' => (string)($item['name'][$locale] ?? ($locale === 'fr' ? ($item['name']['fr'] ?? '') : '')),
                     'price' => $price,
                     'price_label' => self::price($price),
                 ];

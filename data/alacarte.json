@@ -4,8 +4,8 @@
   "note": "French section titles, dish names and prices are copied from https://www.grandemuraillespa.be/carte.php, including the source spelling. The empty Plats Europeen heading is kept. EN/NL dish names are translations.",
   "promo": {
     "fr": "Si votre commande est superieur à :\n30€ une bière chinoise offerte\n45€ une boite de fruits lychee offerte\n60€ une bouteille vin lychee offerte",
-    "en": "If your order is over: €30 a complimentary Chinese beer · €45 a complimentary box of lychee fruit · €60 a complimentary bottle of lychee wine.",
-    "nl": "Bij een bestelling van meer dan: 30 € een Chinees bier cadeau · 45 € een doos lycheevruchten cadeau · 60 € een fles lycheewijn cadeau."
+    "en": "If your order is over:\n€30 a complimentary Chinese beer\n€45 a complimentary box of lychee fruit\n€60 a complimentary bottle of lychee wine",
+    "nl": "Bij een bestelling van meer dan:\n30 € een Chinees bier cadeau\n45 € een doos lycheevruchten cadeau\n60 € een fles lycheewijn cadeau"
   },
   "categories": [
     {

@@ -364,30 +364,30 @@
         "**** Formula, drinks not included\nAdults:                               31,80€\nChildren (ages 4 to 9):                               13.80€ and (ages 10 to 12):                               21.80€",
         "Formula, drinks included **\nAdults:                               48,80€\nChildren (ages 4 to 9):                               17,80€ and (ages 10 to 12):                               29,80€",
         "9 cold starters: salmon, pink prawns...\n2 soups: spicy and mild.\n8 hot fried starters: fried scampi...\n4 steamed starters: various fillings\n16 main dishes: langoustines, beef, duck...",
-        "Desserts: tiramisu, fresh fruit, ice cream, beignets, choux pastries...",
+        "Desserts: tiramisu, fresh fruit, ice cream, fritters, choux pastries...",
         "**All-inclusive buffet: (an aperitif, ½ L jug per person\n+ water, cola, Fanta, iced tea, Jupiler, max. 5 per person\nCoffee, tea.\n(other guests may NOT share, please)\nWeekend bookings are recommended"
       ],
       "Lunch rapide": [
         "(Every lunchtime except Sunday lunch and public holidays)\n(not for takeaway)",
-        "Soup or starter of your choice:\nCrème de nid d'hirondelle\nHot and sour soup\nAngel-hair soup\nSoya and chicken croquette\nSoya salad with chicken",
-        "Main course of your choice:\nChicken with Chinese mushrooms\nSpicy beef with vegetables\nPork beignet in sweet-and-sour sauce\nFried rice with chicken\nFried noodles with chicken",
+        "Soup or starter of your choice:\nBird's nest cream soup\nHot and sour soup\nAngel-hair soup\nSoya and chicken croquette\nSoya salad with chicken",
+        "Main course of your choice:\nChicken with Chinese mushrooms\nSpicy beef with vegetables\nPork fritter in sweet-and-sour sauce\nFried rice with chicken\nFried noodles with chicken",
         "Tea or coffee"
       ],
       "Menu de la semaine": [
         "(price per person — min. two people)\n(Monday to Friday lunch, except public holidays)",
-        "Soup of your choice\nBamboo and chicken soup\nCrème de nid d'hirondelle\nHot and sour soup\nMini croquettes (vegetarian)",
-        "Tasting platter of 5 delicacies:\nChop-choy without meat\nChicken with Chinese mushrooms\nHouse spicy beef\nPork beignet in sweet-and-sour sauce\nFish beignet",
+        "Soup of your choice\nBamboo and chicken soup\nBird's nest cream soup\nHot and sour soup\nMini croquettes (vegetarian)",
+        "Tasting platter of 5 delicacies:\nChop-choy without meat\nChicken with Chinese mushrooms\nHouse spicy beef\nPork fritter in sweet-and-sour sauce\nFish fritter",
         "Ice cream or Chinese fruit"
       ],
       "Menu Chinois": [
-        "Special Chinese salad\nCrème de nid d'hirondelles",
+        "Special Chinese salad\nBird's nest cream soup",
         "Starter of your choice:\nCurry triangle\nGolden steamed basket",
         "Main course of your choice:\nChicken fillets (house specialty)\nSpare ribs in sweet-and-sour sauce\nSautéed beef fillet with vegetables",
         "Dessert of your choice:\nIce cream or exotic fruit"
       ],
       "Table de riz": [
         "(Min. 2 people — price per person)",
-        "House special soup (wan-tan)\nAssiette de Grande Muraille",
+        "House special soup (wan-tan)\nGrande Muraille platter",
         "Rice table:\nChef-style Peking duck\nLangoustines with garlic\nChicken with fresh pineapple\nSautéed beef with Chinese mushrooms",
         "Cantonese fried rice",
         "Sorbet of your choice"
@@ -396,24 +396,24 @@
         "(Min. 2 people — price per person)",
         "Crab and asparagus soup\nChinese salad\nScampi skewer (with smoked bacon)",
         "Main course of your choice:\nPeking duck\nLangoustine meng xia\nLamb Ti-Pan\nHappy family dish",
-        "Flambéed ice-cream beignet"
+        "Flambéed ice-cream fritter"
       ],
       "Menu gourmet": [
         "(Min. 2 people — price per person)",
         "Crab and asparagus soup\nChef-style prawns",
-        "The three varieties:\nChicken beignet\nLangoustine in tomato sauce\nRoast duck Ti-Pan",
+        "The three varieties:\nChicken fritter\nLangoustine in tomato sauce\nRoast duck Ti-Pan",
         "Frosted orange"
       ],
       "Menu Spécial Ti-Pan": [
         "(Min. 2 people — price per person)",
-        "House special soup\nMixed hors d'oeuvre “quatre couleurs”\nTrio of house steamed delicacies",
-        "Triple Chinese specialty “façon Ti-Pan”:\nTi-Pan sliced beef\nTi-Pan prawns in spicy garlic sauce\nTi-Pan duck",
-        "Flambéed ice-cream beignet"
+        "House special soup\nMixed starter “four colours”\nTrio of house steamed delicacies",
+        "Triple Chinese specialty “Ti-Pan style”:\nTi-Pan sliced beef\nTi-Pan prawns in spicy garlic sauce\nTi-Pan duck",
+        "Flambéed ice-cream fritter"
       ],
       "Fondue chinoise": [
         "(Min. 2 people — price per person)",
         "Special cold starter",
-        "Steamed starter “quatre variétés”\nHa kao “filled with prawns”\nFen guo “scampi and pork”\nPork dumplings\nJiao zhi",
+        "Steamed starter “four kinds”\nHa kao “filled with prawns”\nFen guo “scampi and pork”\nPork dumplings\nJiao zhi",
         "Chinese fondue of:\nfish fillet, scampi\nbeef fillets,\nsquid\nchicken breast\nscampi balls\nvermicelli\nChinese cabbage",
         "mango sorbet and Chinese fruit"
       ],
@@ -422,14 +422,14 @@
         "House lobster soup\nScampi skewer with smoked bacon\nQuail in the Chinese style",
         "Sorbet",
         "Chef-style lobster (500 to 600g)\nCantonese fried rice",
-        "Beignets"
+        "Fritters"
       ],
       "Menu Special fruit de mer": [
         "(Min. 2 people — price per person)",
         "Lobster bisque\nAssortment of steamed specialties",
-        "Crispy starter\nFried crab claws with langoustine beignet",
-        "Grand “cinq couleurs” platter\n- sautéed squid in a spicy sauce\n- Scampi with fresh pineapple\n- fish fillet with garlic\n- scallops in tomato sauce\n- rice vermicelli sautéed with scampi",
-        "House special banana beignet"
+        "Crispy starter\nFried crab claws with langoustine fritter",
+        "Grand “five colours” platter\n- sautéed squid in a spicy sauce\n- Scampi with fresh pineapple\n- fish fillet with garlic\n- scallops in tomato sauce\n- rice vermicelli sautéed with scampi",
+        "House special banana fritter"
       ],
       "Menu gastronomique": [
         "(Min. 2 people — price per person)",
@@ -439,6 +439,20 @@
         "Peking duck\nHouse lamb Ti-Pan",
         "Dessert of your choice from the à la carte menu"
       ]
+    },
+    "menu_titles": {
+      "Grand buffet à volonté": "All-you-can-eat buffet",
+      "Lunch rapide": "Quick lunch",
+      "Menu de la semaine": "Menu of the week",
+      "Menu Chinois": "Chinese menu",
+      "Table de riz": "Rice table",
+      "Menu dégustation": "Tasting menu",
+      "Menu gourmet": "Gourmet menu",
+      "Menu Spécial Ti-Pan": "Ti-Pan special",
+      "Fondue chinoise": "Chinese fondue",
+      "Menu special homard": "Lobster menu",
+      "Menu Special fruit de mer": "Seafood menu",
+      "Menu gastronomique": "Gastronomic menu"
     }
   },
   "nl": {
@@ -471,7 +485,7 @@
       "hero.fact.address": "Adres",
       "hero.fact.address.value": "Av. Reine Astrid 98, Spa",
       "hero.fact.service": "Service",
-      "hero.fact.service.value": "12.00–14.00 · 18.00–22.00",
+      "hero.fact.service.value": "12:00–14:00 · 18:00–22:00",
       "hero.fact.phone": "Telefoon",
       "hero.scroll": "Scroll naar de galerij",
       "hero.duck": "Pekingeend · pannenkoekjes",
@@ -521,9 +535,9 @@
       "resa.groups": "Tafels reserveert u alleen telefonisch, op 087 22 08 88.",
       "resa.notice": "",
       "resa.midi": "Lunch",
-      "resa.midi.val": "12.00 – 14.00",
+      "resa.midi.val": "12:00 – 14:00",
       "resa.soir": "Diner",
-      "resa.soir.val": "18.00 – 22.00",
+      "resa.soir.val": "18:00 – 22:00",
       "resa.closed": "Gesloten",
       "resa.closed.val": "Op dinsdag, behalve op feestdagen",
       "form.date": "Datum",
@@ -557,7 +571,7 @@
       "infos.maps": "Route via Google Maps →",
       "infos.hours.kicker": "Openingsuren",
       "infos.hours.title": "Zes dagen per week open",
-      "infos.hours.p1": "Lunch 12.00 – 14.00\nDiner 18.00 – 22.00",
+      "infos.hours.p1": "Lunch 12:00 – 14:00\nDiner 18:00 – 22:00",
       "infos.hours.p2": "Gesloten op dinsdag, behalve op feestdagen.",
       "infos.contact.kicker": "Contact",
       "infos.contact.p": "Reservaties en groepen, telefonisch.",
@@ -585,30 +599,30 @@
         "**** Formule, dranken niet inbegrepen\nVolwassenen:                               31,80€\nKinderen (4 tot 9 jaar):                               13.80€ en (10 tot 12 jaar):                               21.80€",
         "Formule, dranken inbegrepen **\nVolwassenen:                               48,80€\nKinderen (4 tot 9 jaar):                               17,80€ en (10 tot 12 jaar):                               29,80€",
         "9 koude voorgerechten: zalm, roze garnalen...\n2 soepen: pittig en mild.\n8 warme voorgerechten uit de frituur: gebakken scampi’s...\n4 voorgerechten uit de stoommand: verschillende vullingen\n16 hoofdgerechten: langoestines, rundvlees, eend...",
-        "Desserten: tiramisu, vers fruit, ijs, beignets, soesjes...",
+        "Desserten: tiramisu, vers fruit, ijs, frituurhapjes, soesjes...",
         "**All-in buffet: (een aperitief, kan ½ L per persoon\n+ water, cola, Fanta, ice tea, Jupiler, max. 5 per persoon\nKoffie, thee.\n(andere gasten mogen hier NIET van meegenieten, a.u.b.)\nReservatie in het weekend is wenselijk"
       ],
       "Lunch rapide": [
         "(Elke middag behalve de zondagse lunch en feestdagen)\n(niet om mee te nemen)",
-        "Soep of voorgerecht naar keuze:\nCrème de nid d'hirondelle\nPittige soep\nSoep met engelenhaar\nKroket van soja en kip\nSojasalade met kip",
-        "Hoofdgerecht naar keuze:\nKip met Chinese champignons\nPittig rundvlees met groenten\nBeignet van varken in zoetzure saus\nGebakken rijst met kip\nGebakken noedels met kip",
+        "Soep of voorgerecht naar keuze:\nRoomsoep van zwaluwnestjes\nPittige soep\nSoep met engelenhaar\nKroket van soja en kip\nSojasalade met kip",
+        "Hoofdgerecht naar keuze:\nKip met Chinese champignons\nPittig rundvlees met groenten\nFrituurhapje van varken in zoetzure saus\nGebakken rijst met kip\nGebakken noedels met kip",
         "Thee of koffie"
       ],
       "Menu de la semaine": [
         "(prijs per persoon — min. twee personen)\n(maandag tot vrijdag lunch, behalve feestdagen)",
-        "Soep naar keuze\nSoep van bamboe en kip\nCrème de nid d'hirondelle\nPittige soep\nMini-kroketten (vegetarisch)",
-        "Degustatieschotel van 5 lekkernijen:\nChop-choy zonder vlees\nKip met Chinese champignons\nPittig rundvlees van het huis\nBeignet van varken in zoetzure saus\nBeignet van vis",
+        "Soep naar keuze\nSoep van bamboe en kip\nRoomsoep van zwaluwnestjes\nPittige soep\nMini-kroketten (vegetarisch)",
+        "Degustatieschotel van 5 lekkernijen:\nChop-choy zonder vlees\nKip met Chinese champignons\nPittig rundvlees van het huis\nFrituurhapje van varken in zoetzure saus\nFrituurhapje van vis",
         "Ijs of Chinees fruit"
       ],
       "Menu Chinois": [
-        "Speciale Chinese salade\nCrème de nid d'hirondelles",
+        "Speciale Chinese salade\nRoomsoep van zwaluwnestjes",
         "Voorgerecht naar keuze:\nDriehoekje met curry\nGouden mandje van de stoom",
         "Hoofdgerecht naar keuze:\nKipfilets (specialiteit van het huis)\nSpare-ribs in zoetzure saus\nRundfilet gebakken met groenten",
         "Dessert naar keuze:\nIjs of exotisch fruit"
       ],
       "Table de riz": [
         "(Min. 2 personen — prijs per persoon)",
-        "Speciale soep van het huis (wan-tan)\nAssiette de Grande Muraille",
+        "Speciale soep van het huis (wan-tan)\nSchotel Grande Muraille",
         "Rijsttafel:\nPekingeend naar wijze van de chef\nLangoestines met look\nKip met verse ananas\nGebakken rundvlees met Chinese champignons",
         "Kantonese gebakken rijst",
         "Sorbet naar keuze"
@@ -617,24 +631,24 @@
         "(Min. 2 personen — prijs per persoon)",
         "Soep van krab en asperges\nChinese salade\nSpies van scampi’s (met gerookt spek)",
         "Hoofdgerecht naar keuze:\nPekingeend\nLangoestine meng xia\nLamsvlees Ti-Pan\nPlat van de gelukkige familie",
-        "Beignet van ijs, geflambeerd"
+        "Gefrituurd ijs, geflambeerd"
       ],
       "Menu gourmet": [
         "(Min. 2 personen — prijs per persoon)",
         "Soep van krab en asperges\nGamba’s naar wijze van de chef",
-        "De drie variëteiten:\nBeignet van kip\nLangoestine in tomatensaus\nEend uit de oven Ti-Pan",
+        "De drie variëteiten:\nFrituurhapje van kip\nLangoestine in tomatensaus\nEend uit de oven Ti-Pan",
         "Bevroren sinaasappel"
       ],
       "Menu Spécial Ti-Pan": [
         "(Min. 2 personen — prijs per persoon)",
-        "Speciale soep « van het huis »\nGemengd voorgerecht « quatre couleurs »\nTrio van lekkernijen « van het huis » uit de stoommand",
-        "Drievoudige Chinese specialiteit « façon Ti-Pan »:\ngesneden rundvlees Ti-Pan\ngamba’s Ti-Pan in pittige looksaus\neend Ti-Pan",
-        "Beignet van ijs, geflambeerd"
+        "Speciale soep « van het huis »\nGemengd voorgerecht « vier kleuren »\nTrio van lekkernijen « van het huis » uit de stoommand",
+        "Drievoudige Chinese specialiteit « Ti-Pan-stijl »:\ngesneden rundvlees Ti-Pan\ngamba’s Ti-Pan in pittige looksaus\neend Ti-Pan",
+        "Gefrituurd ijs, geflambeerd"
       ],
       "Fondue chinoise": [
         "(Min. 2 personen — prijs per persoon)",
         "Speciaal koud voorgerecht",
-        "Voorgerecht uit de stoommand « quatre variétés »\nHa kao « gevuld met garnalen »\nFen Guo « scampi’s en varken »\nHapjes van varken\nJiao zhi",
+        "Voorgerecht uit de stoommand « vier soorten »\nHa kao « gevuld met garnalen »\nFen Guo « scampi’s en varken »\nHapjes van varken\nJiao zhi",
         "Chinese fondue samengesteld uit:\nvisfilet, scampi’s\nrundfilets,\nkalamar\nkippenborst\nballetjes van scampi’s\nvermicelli\nChinese kool",
         "mangosorbet en Chinees fruit"
       ],
@@ -643,14 +657,14 @@
         "Kreeftensoep van het huis\nSpies van scampi met gerookt spek\nKwartel op Chinese wijze",
         "Sorbet",
         "Kreeft naar wijze van de chef (500 tot 600g)\nKantonese gebakken rijst",
-        "Beignets"
+        "Frituurhapjes"
       ],
       "Menu Special fruit de mer": [
         "(Min. 2 personen — prijs per persoon)",
         "Bisque van kreeft\nAssortiment specialiteiten uit de stoommand",
-        "Krokant voorgerecht\nGefrituurde krabscharen met beignet van langoestine",
-        "Groot plateau « cinq couleurs »\n- gebakken kalamar in pittige saus\n- Scampi’s met verse ananas\n- visfilet met look\n- Sint-Jakobsschelpen in tomatensaus\n- rijstvermicelli gebakken met scampi’s",
-        "Speciale bananenbeignet van het huis"
+        "Krokant voorgerecht\nGefrituurde krabscharen met frituurhapje van langoustine",
+        "Groot plateau « vijf kleuren »\n- gebakken kalamar in pittige saus\n- Scampi’s met verse ananas\n- visfilet met look\n- Sint-Jakobsschelpen in tomatensaus\n- rijstvermicelli gebakken met scampi’s",
+        "Speciale gefrituurde banaan van het huis"
       ],
       "Menu gastronomique": [
         "(Min. 2 personen — prijs per persoon)",
@@ -660,6 +674,20 @@
         "Pekingeend\nLamsvlees Ti-Pan van het huis",
         "Dessert naar keuze van de à-la-cartekaart"
       ]
+    },
+    "menu_titles": {
+      "Grand buffet à volonté": "Onbeperkt buffet",
+      "Lunch rapide": "Snelle lunch",
+      "Menu de la semaine": "Menu van de week",
+      "Menu Chinois": "Chinees menu",
+      "Table de riz": "Rijsttafel",
+      "Menu dégustation": "Proefmenu",
+      "Menu gourmet": "Gourmetmenu",
+      "Menu Spécial Ti-Pan": "Ti-Pan-special",
+      "Fondue chinoise": "Chinese fondue",
+      "Menu special homard": "Kreeftenmenu",
+      "Menu Special fruit de mer": "Zeevruchtenmenu",
+      "Menu gastronomique": "Gastronomisch menu"
     }
   }
 }

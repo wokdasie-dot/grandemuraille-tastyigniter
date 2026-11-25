@@ -169,7 +169,7 @@ bodyClass: page-home
                 @endphp
                 <details class="menu-item" data-reveal="up" style="--stagger: {{ ($loop->index % 6) * 70 }}ms">
                     <summary>
-                        <b>{{ $rawName }}</b>
+                        <b>{{ $gm::menuTitle($rawName) }}</b>
                         <span>{{ number_format((float)$menu->menu_price, 2, ',', '') }} €</span>
                     </summary>
                     @foreach($lines as $line)
