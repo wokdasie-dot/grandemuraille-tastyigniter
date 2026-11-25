@@ -36,30 +36,61 @@ body.gm-site #euCookieBanner .wok-cookie-banner {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 12px 18px;
+    gap: 10px 16px;
     width: min(1180px, 100%);
     max-width: none;
+    height: 43px;
     margin: 0 auto;
-    padding: 8px 16px;
+    padding: 0 14px;
     background: var(--gm-ink);
     color: #f3ebe0;
     border-radius: 0;
     box-shadow: 0 -8px 24px -18px rgba(0, 0, 0, .7);
-    font-size: .82rem;
-    line-height: 1.3;
+    font-size: .78rem;
+    line-height: 1;
+    white-space: nowrap;
 }
-body.gm-site #euCookieBanner .wok-cookie-banner p { margin: 0; }
-body.gm-site:has(#euCookieBanner[style*="display: block"]) {
-    padding-bottom: 48px;
+body.gm-site #euCookieBanner .wok-cookie-banner p {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-body.gm-site:has(#euCookieBanner[style*="display: block"]) .gm-scrollcue {
-    bottom: 62px;
+body.gm-site:has(#euCookieBanner:not([style*="display:none"]):not([style*="display: none"])) {
+    --gm-cookie-h: 43px;
+    padding-bottom: var(--gm-cookie-h);
+}
+body.gm-site:has(#euCookieBanner:not([style*="display:none"]):not([style*="display: none"])) .gm-scrollcue {
+    bottom: calc(var(--gm-cookie-h) + 16px);
+}
+body.gm-site:has(#euCookieBanner:not([style*="display:none"]):not([style*="display: none"])) .gm-hero {
+    padding-bottom: calc(56px + var(--gm-cookie-h));
+}
+body.gm-site:has(#euCookieBanner:not([style*="display:none"]):not([style*="display: none"])) .gm-carte-hero {
+    min-height: min(calc(78vh - var(--gm-cookie-h)), 720px);
+    padding-bottom: calc(72px + var(--gm-cookie-h));
+}
+body.gm-site:has(#euCookieBanner:not([style*="display:none"]):not([style*="display: none"])) .gm-strip {
+    padding-bottom: calc(28px + var(--gm-cookie-h));
 }
 @media (max-width: 760px) {
     body.gm-site #euCookieBanner .wok-cookie-banner {
-        padding: 8px 12px;
+        padding: 0 12px;
         font-size: .75rem;
         gap: 8px;
+    }
+    body.gm-site:has(#euCookieBanner:not([style*="display:none"]):not([style*="display: none"])) .gm-hero__media {
+        height: calc(min(92vw, 420px) - 130px);
+    }
+    body.gm-site:has(#euCookieBanner:not([style*="display:none"]):not([style*="display: none"])) .gm-carte-hero {
+        padding-top: calc(var(--gm-nav-h) + 12px);
+        padding-bottom: calc(16px + var(--gm-cookie-h));
+    }
+    body.gm-site:has(#euCookieBanner:not([style*="display:none"]):not([style*="display: none"])) .gm-carte-hero__title {
+        font-size: clamp(2.15rem, 8vw, 2.8rem);
+    }
+    body.gm-site:has(#euCookieBanner:not([style*="display:none"]):not([style*="display: none"])) .gm-actions {
+        margin-bottom: 4px;
     }
 }
 
@@ -76,98 +107,6 @@ body.gm-site .wok-cookie-button {
     cursor: pointer;
 }
 
-/* Real booking widget, dressed as the v5 cream form. */
-.gm-booking.gm-form { display: block; }
-.gm-booking .card {
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    color: inherit;
-    margin: 0 0 8px;
-}
-.gm-booking .card-body { padding: 0; }
-.gm-booking .card:first-child {
-    font-size: .92rem;
-    color: var(--gm-muted);
-}
-.gm-booking .card:first-child a { color: var(--gm-red); }
-.gm-booking h1,
-.gm-booking .h3 {
-    font-family: var(--gm-serif);
-    font-weight: 500;
-    font-size: 1.8rem;
-    color: var(--gm-text);
-    margin: 0 0 .6em;
-}
-.gm-booking .btn,
-.gm-booking button[type="submit"] {
-    --sc: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 54px;
-    padding: 1em 1.4em;
-    border: 0;
-    border-radius: 999px;
-    background: var(--gm-red);
-    color: #fff;
-    font: 600 .95rem/1 var(--gm-sans);
-    letter-spacing: .04em;
-    text-transform: none;
-    transform: scale(var(--sc));
-    transition: transform .35s var(--gm-ease), background .25s;
-}
-.gm-booking .btn:hover,
-.gm-booking button[type="submit"]:hover { background: var(--gm-red-deep); --sc: 1.04; }
-.gm-booking .form-control,
-.gm-booking .form-select,
-.gm-booking select,
-.gm-booking input,
-.gm-booking textarea {
-    border-radius: 12px;
-    border-color: var(--gm-line);
-    background: #fff;
-    color: var(--gm-text);
-    box-shadow: none;
-}
-.gm-booking .form-floating > label {
-    display: block;
-    text-transform: none;
-    letter-spacing: 0;
-    font-weight: 500;
-    color: var(--gm-muted);
-}
-.gm-booking .flatpickr-input { background: #fff; }
-.gm-booking .progress-indicator-container .btn { width: 100%; }
-.gm-booking .progress-indicator-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: stretch;
-}
-.gm-booking .progress-indicator-container > [class*="col-"] {
-    width: 100%;
-    max-width: 100%;
-    flex: none;
-    padding: 0;
-    margin: 0;
-}
-.gm-booking .flatpickr-calendar.inline,
-.gm-booking .flatpickr-calendar.static {
-    margin: 0 auto;
-    box-shadow: none;
-}
-.gm-booking #ti-datepicker-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 14px;
-    align-items: end;
-}
-.gm-booking #ti-datepicker-options > .form-group:last-child { grid-column: 1 / -1; }
-.gm-booking .form-select,
-.gm-booking select { min-height: 58px; }
-
 /* Interior pages have no dark hero under the bar. */
 body.gm-site:not(.page-home) .gm-nav {
     --gm-nav-h: 64px;
@@ -175,15 +114,3 @@ body.gm-site:not(.page-home) .gm-nav {
     box-shadow: 0 10px 30px -20px rgba(0, 0, 0, .8);
 }
 
-.gm-booking .list-group-item,
-.gm-booking .timeslot button,
-.gm-booking [data-control="booking"] .btn-light,
-.gm-booking .btn-outline-primary {
-    border-radius: 12px;
-}
-
-.gm-manage {
-    margin-top: 18px;
-    font-size: .95rem;
-}
-.gm-manage a { color: var(--gm-gold-soft); }

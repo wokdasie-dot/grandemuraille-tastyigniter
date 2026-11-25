@@ -117,7 +117,13 @@ class Extension extends BaseExtension
             $home = e(url('/'));
             $phone = e((string)config('restoline.restaurant.phone_display'));
 
-            return '<!doctype html><html lang="'.e($locale).'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>404 | La Grande Muraille de Chine</title></head><body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#111010;color:#f3ebe0;font:16px/1.5 Inter,sans-serif"><main style="text-align:center;padding:32px"><p style="letter-spacing:.2em;text-transform:uppercase;color:#c9a45c">404</p><h1 style="font-weight:500">'.e($copy[0]).'</h1><p><a href="'.$home.'" style="color:#e6d2a0">'.e($copy[1]).'</a></p><p><a href="tel:+3287220888" style="color:#f3ebe0">'.$phone.'</a></p></main></body></html>';
+            $title = [
+                'fr' => 'Page introuvable',
+                'en' => 'Page not found',
+                'nl' => 'Pagina niet gevonden',
+            ][$locale];
+
+            return '<!doctype html><html lang="'.e($locale).'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'.e($title).' | La Grande Muraille de Chine</title></head><body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#111010;color:#f3ebe0;font:16px/1.5 Inter,sans-serif"><main style="text-align:center;padding:32px"><p style="letter-spacing:.2em;text-transform:uppercase;color:#c9a45c">404</p><h1 style="font-weight:500">'.e($copy[0]).'</h1><p><a href="'.$home.'" style="color:#e6d2a0">'.e($copy[1]).'</a></p><p><a href="tel:+3287220888" style="color:#f3ebe0">'.$phone.'</a></p></main></body></html>';
         });
 
         if (class_exists(\Igniter\Translate\Actions\TranslatableModel::class)) {

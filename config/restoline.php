@@ -13,6 +13,8 @@ return [
         'postcode' => '4900',
         'city' => 'Spa',
         'country' => 'Belgique',
+        'country_iso' => 'BE',
+        'currency_code' => 'EUR',
         'reservation_path' => 'grande-muraille/reservation',
         'manage_reservation_path' => 'reservation/gerer',
         'location_slug' => 'grande-muraille',

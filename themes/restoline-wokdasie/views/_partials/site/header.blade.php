@@ -2,7 +2,7 @@
     $gm = \Restoline\Content\Support\PublicCopy::class;
     $home = url('/');
 @endphp
-<a class="gm-skip" href="{{ $home }}#reservation">{{ $gm::line('skip') }}</a>
+<a class="gm-skip" href="#contenu">{{ $gm::line('skip') }}</a>
 <header class="gm-nav" id="nav">
     <a class="gm-brand" href="{{ $home }}#accueil" aria-label="{{ $gm::line('brand.aria') }}">
         <span class="gm-seal" lang="zh" aria-hidden="true">长城</span>

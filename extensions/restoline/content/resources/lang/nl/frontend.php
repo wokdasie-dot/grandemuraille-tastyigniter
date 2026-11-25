@@ -8,7 +8,7 @@ return array (
     'title' => 'La Grande Muraille de Chine · Chinees restaurant in Spa',
     'description' => 'Chinees restaurant in Spa: kaart, menu’s van het huis, specialiteiten van de chef en een onbeperkt weekendbuffet. Telefonisch reserveren: 087 22 08 88. Open 12:00–14:00 en 18:00–22:00, dinsdag gesloten behalve op feestdagen.',
   ),
-  'skip' => 'Ga naar de reservatie',
+  'skip' => 'Naar de inhoud',
   'brand' => 
   array (
     'aria' => 'La Grande Muraille de Chine, startpagina',

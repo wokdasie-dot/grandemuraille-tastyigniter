@@ -8,7 +8,7 @@ return array (
     'title' => 'La Grande Muraille de Chine · Restaurant chinois à Spa',
     'description' => 'Restaurant chinois à Spa : carte à la carte, menus de la maison, spécialités du chef et grand buffet à volonté le week-end. Réservation par téléphone : 087 22 08 88. Ouvert 12h00–14h00 et 18h00–22h00, fermé le mardi sauf jours fériés.',
   ),
-  'skip' => 'Aller à la réservation',
+  'skip' => 'Aller au contenu',
   'brand' => 
   array (
     'aria' => 'La Grande Muraille de Chine, accueil',
@@ -248,7 +248,7 @@ Soir 18h00 – 22h00',
   ),
   'cookie' => 
   array (
-    'message' => 'Uniquement des cookies techniques.',
+    'message' => 'Cookies techniques.',
     'accept' => 'OK',
   ),
 );

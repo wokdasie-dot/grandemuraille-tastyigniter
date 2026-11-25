@@ -3,7 +3,7 @@
     "ui": {
       "meta.title": "La Grande Muraille de Chine · Restaurant chinois à Spa",
       "meta.description": "Restaurant chinois à Spa : carte à la carte, menus de la maison, spécialités du chef et grand buffet à volonté le week-end. Réservation par téléphone : 087 22 08 88. Ouvert 12h00–14h00 et 18h00–22h00, fermé le mardi sauf jours fériés.",
-      "skip": "Aller à la réservation",
+      "skip": "Aller au contenu",
       "brand.aria": "La Grande Muraille de Chine, accueil",
       "nav.main": "Navigation principale",
       "nav.maison": "La maison",
@@ -224,7 +224,7 @@
     "ui": {
       "meta.title": "La Grande Muraille de Chine · Chinese restaurant in Spa",
       "meta.description": "Chinese restaurant in Spa: à la carte menu, house menus, the chef’s specialities and a weekend all-you-can-eat buffet. Reserve by phone: 087 22 08 88. Open 12:00–14:00 and 18:00–22:00, closed Tuesday except public holidays.",
-      "skip": "Skip to reservations",
+      "skip": "Skip to content",
       "brand.aria": "La Grande Muraille de Chine, home",
       "nav.main": "Main navigation",
       "nav.maison": "The house",
@@ -351,8 +351,8 @@
       "carte.meta.title": "À la carte menu | La Grande Muraille de Chine",
       "carte.meta.description": "The à la carte menu at La Grande Muraille de Chine in Spa: soups, starters, meat, fish, house specialties and sides.",
       "carte.kicker": "À la carte",
-      "carte.title": "The menu",
-      "carte.title.em": "à la carte.",
+      "carte.title": "Our à la carte menu",
+      "carte.title.em": "",
       "carte.lead": "Every dish served à la carte, as it appears on the restaurant’s menu.",
       "carte.toc": "Menu sections",
       "carte.back": "Back to the homepage"
@@ -459,7 +459,7 @@
     "ui": {
       "meta.title": "La Grande Muraille de Chine · Chinees restaurant in Spa",
       "meta.description": "Chinees restaurant in Spa: kaart, menu’s van het huis, specialiteiten van de chef en een onbeperkt weekendbuffet. Telefonisch reserveren: 087 22 08 88. Open 12:00–14:00 en 18:00–22:00, dinsdag gesloten behalve op feestdagen.",
-      "skip": "Ga naar reserveren",
+      "skip": "Naar de inhoud",
       "brand.aria": "La Grande Muraille de Chine, startpagina",
       "nav.main": "Hoofdnavigatie",
       "nav.maison": "Het huis",
@@ -586,9 +586,9 @@
       "carte.meta.title": "De kaart | La Grande Muraille de Chine",
       "carte.meta.description": "De kaart van La Grande Muraille de Chine in Spa: soepen, voorgerechten, vlees, vis, huisspecialiteiten en bijgerechten.",
       "carte.kicker": "À la carte",
-      "carte.title": "De kaart",
-      "carte.title.em": "à la carte.",
-      "carte.lead": "Alle gerechten van de à-lacartekaart, zoals op de kaart van het restaurant.",
+      "carte.title": "Onze à-la-cartekaart",
+      "carte.title.em": "",
+      "carte.lead": "Alle gerechten van de à-la-cartekaart, zoals op de kaart van het restaurant.",
       "carte.toc": "Rubrieken van de kaart",
       "carte.back": "Terug naar de startpagina"
     },

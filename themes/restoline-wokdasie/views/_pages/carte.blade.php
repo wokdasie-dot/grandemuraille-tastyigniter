@@ -46,7 +46,9 @@ bodyClass: page-carte
             <p class="gm-kicker gm-kicker--light gm-load" style="--i:0">{{ $gm::line('carte.kicker') }}</p>
             <h1 class="gm-carte-hero__title">
                 <span class="gm-line"><span class="gm-load" style="--i:1">{{ $gm::line('carte.title') }}</span></span>
-                <span class="gm-line"><em class="gm-load" style="--i:2">{{ $gm::line('carte.title.em') }}</em></span>
+                @if($gm::line('carte.title.em') !== '')
+                    <span class="gm-line"><em class="gm-load" style="--i:2">{{ $gm::line('carte.title.em') }}</em></span>
+                @endif
             </h1>
             <p class="gm-carte-hero__lead gm-load" style="--i:3">{{ $gm::line('carte.lead') }}</p>
             @if($promo !== '')
