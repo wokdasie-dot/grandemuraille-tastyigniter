@@ -44,7 +44,7 @@ final class AlacarteImporter
             'À la carte',
             (string)($pack['promo']['fr'] ?? ''),
             null,
-            0,
+            1,
             [
                 'en' => ['name' => 'À la carte', 'description' => (string)($pack['promo']['en'] ?? '')],
                 'nl' => ['name' => 'À-la-cartekaart', 'description' => (string)($pack['promo']['nl'] ?? '')],
@@ -52,7 +52,7 @@ final class AlacarteImporter
         );
 
         $locationId = $this->locationId();
-        $order = 0;
+        $order = 1;
         foreach ($pack['categories'] ?? [] as $category) {
             if (!is_array($category)) {
                 continue;
@@ -112,6 +112,74 @@ final class AlacarteImporter
     }
 
     /**
+     * The first import stored Potages as priority 0. Sortable treats 0 as empty
+     * and replaced it with max+1, which was 3 on the installed site. Later
+     * sections kept the 0-based index. Rewrite those rows to 1..n only when
+     * every section still has that exact priority.
+     */
+    public function correctBuggySectionPriorities(): void
+    {
+        if (!Schema::hasTable('categories')) {
+            return;
+        }
+
+        $ids = $this->sectionIds();
+        if ($ids === []) {
+            return;
+        }
+
+        $rootId = DB::table('categories')->where('permalink_slug', self::ROOT_SLUG)->value('category_id');
+        if (!$rootId) {
+            return;
+        }
+
+        $children = DB::table('categories')
+            ->where('parent_id', (int)$rootId)
+            ->get(['permalink_slug', 'priority']);
+        if ($children->count() !== count($ids)) {
+            return;
+        }
+
+        $priorities = [];
+        foreach ($children as $child) {
+            $priorities[(string)$child->permalink_slug] = (int)$child->priority;
+        }
+
+        foreach ($ids as $index => $id) {
+            $slug = self::ROOT_SLUG.'-'.$id;
+            $buggy = $index === 0 ? 3 : $index;
+            if (!array_key_exists($slug, $priorities) || $priorities[$slug] !== $buggy) {
+                return;
+            }
+        }
+
+        foreach ($ids as $index => $id) {
+            DB::table('categories')
+                ->where('permalink_slug', self::ROOT_SLUG.'-'.$id)
+                ->update(['priority' => $index + 1]);
+        }
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function sectionIds(): array
+    {
+        $ids = [];
+        foreach ($this->pack()['categories'] ?? [] as $category) {
+            if (!is_array($category)) {
+                continue;
+            }
+            $id = trim((string)($category['id'] ?? ''));
+            if ($id !== '') {
+                $ids[] = $id;
+            }
+        }
+
+        return $ids;
+    }
+
+    /**
      * @return array<string, mixed>
      */
     private function pack(): array
@@ -152,11 +220,14 @@ final class AlacarteImporter
         $category->status = true;
         $category->permalink_slug = $slug;
         $category->save();
+        $this->translate($category, $translations);
 
+        // Sortable treats priority 0 as empty and replaces it on create.
+        // Write the intended value after that hook has run.
         DB::table('categories')->where('category_id', $category->getKey())->update([
             'permalink_slug' => $slug,
+            'priority' => $priority,
         ]);
-        $this->translate($category, $translations);
 
         return $category;
     }

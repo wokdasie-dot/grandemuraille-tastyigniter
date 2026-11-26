@@ -28,11 +28,7 @@
     RewriteRule \.(env|md|lock|sql|pem|key|bak|log|zip|old)$ - [F,L]
     RewriteRule ~$ - [F,L]
 
-    # Once the installer has finished, gm-install.php stays closed.
-    # gm-maintain.php is not matched here and stays reachable.
-    RewriteCond %{DOCUMENT_ROOT}/storage/gm-data/install.lock -f [OR]
-    RewriteCond %{DOCUMENT_ROOT}/../gm-data/install.lock -f [OR]
-    RewriteCond %{DOCUMENT_ROOT}/../storage/gm-data/install.lock -f
+    # The installer is finished. Close it for good. gm-maintain.php stays reachable.
     RewriteRule ^(?:public/)?gm-install\.php$ - [F,L]
 
     RewriteRule ^(.*)$ public/$1 [L]
@@ -49,3 +45,9 @@
 </IfModule>
 
 Options -Indexes
+
+<Files "gm-install.php">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</Files>

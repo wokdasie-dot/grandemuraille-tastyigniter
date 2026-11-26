@@ -30,9 +30,7 @@
     RewriteRule \.(bak|log|zip|sql|old)$ - [F,L]
     RewriteRule ~$ - [F,L]
 
-    RewriteCond %{DOCUMENT_ROOT}/../storage/gm-data/install.lock -f [OR]
-    RewriteCond %{DOCUMENT_ROOT}/../../gm-data/install.lock -f [OR]
-    RewriteCond %{DOCUMENT_ROOT}/../gm-data/install.lock -f
+    # The installer is finished. Close it for good. gm-maintain.php stays reachable.
     RewriteRule ^gm-install\.php$ - [F,L]
 
     # Send Requests To Front Controller...
@@ -40,3 +38,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+<Files "gm-install.php">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</Files>

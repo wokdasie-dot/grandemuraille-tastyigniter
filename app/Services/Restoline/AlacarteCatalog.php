@@ -52,6 +52,7 @@ final class AlacarteCatalog
             ->where('status', true)
             ->orderBy('priority')
             ->orderBy('category_id')
+            ->orderBy('permalink_slug')
             ->get();
 
         foreach ($sections as $section) {

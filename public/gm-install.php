@@ -91,6 +91,16 @@ function gm_install_failure(Throwable $exception): string
     return implode("\n", $lines);
 }
 
+$installLocks = [
+    dirname($appRoot).'/gm-data/install.lock',
+    $appRoot.'/storage/gm-data/install.lock',
+];
+foreach ($installLocks as $installLock) {
+    if (is_file($installLock)) {
+        gm_install_reply(403, 'Installation déjà effectuée.');
+    }
+}
+
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     gm_install_reply(405, 'POST requis.');
 }
