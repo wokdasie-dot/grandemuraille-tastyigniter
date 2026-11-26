@@ -27,6 +27,8 @@ class GrandeMurailleSeeder extends Seeder
         $this->seedTables($location);
         $this->seedBuffetPrices((int)$location->getKey());
         $this->seedMenus((int)$location->getKey());
+        (new \App\Services\Restoline\AlacarteImporter())->import();
+        (new \App\Services\Restoline\SecondAdminProvisioner())->provision();
         $this->disableOutOfScopeDefaults();
 
         Settings::set([

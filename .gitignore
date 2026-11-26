@@ -3,6 +3,10 @@
 .env.*
 !.env.example
 !.env.dev.example
+secrets.env
+install.lock
+/gm-data/
+backups/
 *.pem
 *.key
 *.p12

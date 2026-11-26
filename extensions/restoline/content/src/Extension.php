@@ -87,6 +87,33 @@ class Extension extends BaseExtension
     #[Override]
     public function boot(): void
     {
+        \Illuminate\Support\Facades\Event::listen('system.formRequest.extendValidator', function ($request, $holder): void {
+            if (!$request instanceof \Igniter\Cart\Http\Requests\MenuRequest) {
+                return;
+            }
+            $holder->rules['alacarte_number'] = ['nullable', 'string', 'max:16'];
+            $holder->attributes['alacarte_number'] = 'Numéro sur la carte';
+        });
+
+        \Illuminate\Support\Facades\Event::listen('admin.form.extendFields', function ($widget): void {
+            $model = $widget->model ?? null;
+            if (!$model instanceof \Igniter\Cart\Models\Menu) {
+                return;
+            }
+            if (!\Illuminate\Support\Facades\Schema::hasColumn('menus', 'alacarte_number')) {
+                return;
+            }
+            $widget->addTabFields([
+                'alacarte_number' => [
+                    'label' => 'Numéro sur la carte',
+                    'type' => 'text',
+                    'span' => 'left',
+                    'comment' => 'Exemple : 01, 41a ou N. Vide pour un plat hors carte imprimée.',
+                    'tab' => 'lang:igniter.cart::default.menus.text_tab_general',
+                ],
+            ]);
+        });
+
         $this->app->make('router')->pushMiddlewareToGroup(
             'igniter',
             \Restoline\Content\Http\Middleware\RestrictPublicLocale::class,
